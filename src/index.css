@@ -1,5 +1,43 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+/*css setup for whole app*/
+
+:root {
+    --blue : #19a9e5;
+    --green-light : #d9e100;
+    --green-dark : #47a243;
+    --grey : #c9ced2;
+    --font: #a7a7a7;
+    --bg-box: #f7f7f7;
 }
+
+body, html {
+    margin: 0;
+    padding: 0;
+/*    font-family: 'Hind Madurai', sans-serif;*/
+    color: var(--grey);
+    overflow-y: hidden;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+*::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar {
+	width: 5px;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #bababa;
+}
+
