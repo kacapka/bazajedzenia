@@ -2,19 +2,25 @@
 
 :root {
     --blue : #19a9e5;
+    --red: #eb2f06;
     --green-light : #d9e100;
     --green-dark : #47a243;
     --grey : #c9ced2;
     --font: #a7a7a7;
     --bg-box: #f7f7f7;
+    --border: #c9ced2;
+    --line: #e7e7e7;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Hind+Madurai:300,400,500');
 
 body, html {
     margin: 0;
     padding: 0;
-/*    font-family: 'Hind Madurai', sans-serif;*/
-    color: var(--grey);
+    font-family: 'Hind Madurai', sans-serif;
+    color: var(--font);
     overflow-y: hidden;
+    font-weight: 300;
 }
 
 *, *:after, *:before {
@@ -39,5 +45,13 @@ body, html {
 
 *::-webkit-scrollbar-thumb {
 	background-color: #bababa;
+}
+
+input {
+    font-family: 'Hind Madurai', sans-serif;
+    color: var(--font);
+    font-size: .8rem;
+    font-weight: 300;
+    box-shadow: none;
 }
 

@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import getAddress from './reducer_getaddress';
+import address from './reducer_getaddress';
+import value from './reducer_setvalue';
 
 const rootReducer = combineReducers({
-    address: getAddress
+    address: address,
+    value: value
 });
 
 export default rootReducer;

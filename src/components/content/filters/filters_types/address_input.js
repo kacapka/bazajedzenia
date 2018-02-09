@@ -23,7 +23,11 @@ class AddressInput extends Component {
             settings.autocompleteOpt
         );
         
-        google.maps.event.addDomListener(this.searchbar, 'place_changed', this.showAddressOnMap);
+        google.maps.event.addDomListener(
+            this.searchbar, 
+            'place_changed', 
+            this.showAddressOnMap
+        );
     }
     
     showAddressOnMap() {
@@ -33,8 +37,9 @@ class AddressInput extends Component {
     
     render() {
         return (
-            <input ref="addressInput"
-                className="address-input" />
+            <input className="address-input"
+                placeholder="np. Grójecka 40"
+                ref="addressInput" />
         );
     }
 }

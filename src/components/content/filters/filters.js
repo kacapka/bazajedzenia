@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'styles/filters.css';
 
 import FiltersTypes from './filters_types/filters_types';
 import FiltersCorners from './filters_corners/filters_corners';
