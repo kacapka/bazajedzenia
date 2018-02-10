@@ -3,6 +3,8 @@ const google = window.google;
 
 export const GET_ADDRESS = 'get_address';
 export const SET_VALUE = 'set_value';
+export const CHECKBOX_SELECT = 'checkbox_select';
+export const SELECT_DAY = 'select_day';
 
 //get addres from searchbar input
 export function getAddress(place) {   
@@ -53,6 +55,28 @@ export function setValue(value) {
     return {
         type: SET_VALUE,
         payload: value
+    }
+    
+}
+
+//select checkbox in filter details section
+export function checkboxSelect(input) {
+     
+    if (input.chooseDate) input.openNow = false;
+    if (input.openNow) input.chooseDate = false;
+    
+    return {
+        type: CHECKBOX_SELECT,
+        payload: input
+    }
+}
+
+//select day of week in details filter
+export function selectDay(id) {
+    
+    return {
+        type: SELECT_DAY,
+        payload: id
     }
     
 }
