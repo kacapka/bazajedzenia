@@ -1,6 +1,9 @@
+import moment from 'moment';
 import { SELECT_DAY } from 'actions/index';
 
-export default function(state = null, action) {
+const initialState = moment().day();
+
+export default function(state = initialState, action) {
     
     switch(action.type) {
         case SELECT_DAY: 

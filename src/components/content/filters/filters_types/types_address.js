@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import 'styles/address_input.css';
 
-import FilterBox from '../filter_box';
-import AddressInput from './address_input';
+import FilterBox from '../../../reuse/filter_box';
+import AddressInput from './types_address_input';
 import { getMyLocation } from 'actions/index';
 
 class AddressSearchbar extends Component {
@@ -13,7 +13,7 @@ class AddressSearchbar extends Component {
         const { getMyLocation } = this.props;
         
         return (
-            <FilterBox title="Podaj adres">
+            <FilterBox title="Podaj adres" line>
                 <AddressInput />
                 <div className="address-locate" 
                     onClick={getMyLocation}>

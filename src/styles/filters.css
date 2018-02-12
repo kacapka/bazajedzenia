@@ -1,8 +1,57 @@
-.filter-box {
-    margin: 20px 0;
+.filters-column {
+    width: 50%;
+    position: relative;
+    overflow-y: scroll;
 }
 
-.filter-box::after {
+.filters-column--line::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 90%;
+    background-color: var(--line);
+    position: absolute;
+    top: 5%;
+    right: 0;
+    z-index: 10;
+}
+
+.filters-column__filters {
+    padding: 0 15px;
+    overflow-y: scroll;
+    height: calc(100% - 60px);
+}
+
+.filters-column__button {
+    margin: 0 15px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.filters-column__button::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--line);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.filters-column--corners {
+    padding: 0 15px;
+}
+
+.filter-box {
+   padding: 20px 0;
+}
+
+.filter-box--line::after {
     content: '';
     display: block;
     width: 100%;

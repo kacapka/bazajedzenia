@@ -12,6 +12,12 @@
     margin: 2px;
 }
 
+.select-corners__value-selected {
+    font-size: .9rem;
+    color: var(--green);
+    font-weight: 400;
+}
+
 .select__value-icon {
     font-size: .65rem;
     color: var(--font);
@@ -22,15 +28,30 @@
     color: var(--red);
 }
 
-.select__type {
+.select__type--kitchen {
     cursor: pointer;
-    font-size: .8rem;
-    padding: 2px 6px;
+    font-size: .9rem;
+    padding: 2px 8px;
 }
 
-.select__type:hover {
+.select__type--kitchen:hover,
+.select__type--corners:hover {
     background-color: var(--hover);
 }
+
+.select__type--corners {
+    cursor: pointer;
+    font-size: .9rem;
+    padding: 5px;
+    font-weight: 400;
+}
+
+.select__type--corners-district {
+   font-size: .6rem;
+    font-weight: 300;
+    padding-top: 2px;
+}
+
 
 /*override react-select style*/
 .Select-control {
@@ -46,6 +67,10 @@
 .Select-placeholder {
     display: inline-block;
     font-size: .9rem;
+}
+
+.Select-noresults {
+    padding: 4px 8px;
 }
 
 .Select-input>input {
@@ -101,7 +126,6 @@
     width: 100%;
     max-height: 200px;
     overflow-y: scroll;
-    padding: 4px 0;
     border-top: none;
     border: 1px solid var(--border);
     border-bottom-left-radius: 4px;
@@ -112,6 +136,10 @@
     position: relative;
     z-index: 11;
     box-shadow: 0 1px 5px var(--border);
+}
+
+.Select-menu-outer > div {
+    font-size: .9rem;
 }
 
 

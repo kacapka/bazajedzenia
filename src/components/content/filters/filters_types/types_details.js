@@ -5,12 +5,13 @@ import 'rc-time-picker/assets/index.css';
 import 'styles/details_filter.css';
 import moment from 'moment';
 
-import FilterBox from '../filter_box';
-import DetailsInput from './details_input';
-import DetailsDays from './details_days';
+import FilterBox from '../../../reuse/filter_box';
+import DetailsInput from './types_details_input';
+import DetailsDays from './types_details_days';
+
 import TimePicker from 'rc-time-picker';
 import { connect } from 'react-redux';
-import { checkboxSelect } from 'actions/index';
+import { checkboxSelect, getTime } from 'actions/index';
 
 
 class DetailsFilter extends Component {
@@ -28,16 +29,18 @@ class DetailsFilter extends Component {
     }
     
     onTimeChange(value) {
-        // here set time to app state,
-        // decide wchich format is neeeded to filter
-        // in corners data
+        this.props.getTime(value);
     }
     
     render() {
         const { delivery, openNow, chooseDate } = this.props.checkbox;
+        const transitionOpt = {
+            transitionName: 'slide-down',
+            transitionEnterTimeout: 300,
+            transitionLeaveTimeout: 300    
+        }
         
         const days = chooseDate && <DetailsDays />;
-        //const now = new Date();
         
         return (
             <FilterBox title='Szczegóły'>
@@ -61,11 +64,9 @@ class DetailsFilter extends Component {
                     showSecond={false}
                     defaultValue={moment()}
                     disabled={!chooseDate} 
-                    onChange={this.onTimeChange} />
-                <CSSTransitionGroup
-                    transitionName="slide-down"
-                    transitionEnterTimeout={300}
-                    transitionLeaveTimeout={300}>
+                    onChange={this.onTimeChange}
+                    allowEmpty={false} />
+                <CSSTransitionGroup {...transitionOpt} >
                     {days}
                 </CSSTransitionGroup>
             </FilterBox>
@@ -79,4 +80,7 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { checkboxSelect })(DetailsFilter);
+export default connect(
+    mapStateToProps, 
+    { checkboxSelect, getTime }
+)(DetailsFilter);

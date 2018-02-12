@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectDay } from 'actions/index';
 
-const days = ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'So', 'Nd']
+//set days with id equal to moment ids
+const days = [
+    { id: 1, day: 'Pon' }, { id: 2, day: 'Wt' }, { id: 3, day: 'Śr' }, { id: 4, day: 'Czw' }, { id: 5, day: 'Pt' }, { id: 6, day: 'So' }, { id: 0, day: 'Nd' }
+]
 
 class DetailsDays extends Component {
     
     renderDays() {
-        console.log(this.props);
-    
-        return days.map((day, index) => {
+        return days.map( day => {
             const { activeDay } = this.props;
-            const className = activeDay == index ? 'details-days__item--open' : ''; 
+            const className = activeDay == day.id ? 'details-days__item--open' : ''; 
+            
             return (
                 <li className={`details-days__item ${className}`}
-                    key={index}
-                    data-dayid={index}
+                    key={day.id}
+                    data-dayid={day.id}
                     onClick={e => {
                         this.props.selectDay(e.target.dataset.dayid);
                     }}>
-                    {day}
+                    {day.day}
                 </li>
            ); 
         });

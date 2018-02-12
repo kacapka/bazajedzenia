@@ -2,9 +2,11 @@
 
 :root {
     --blue : #19a9e5;
+    --blue-dark: #0087d5;
     --red: #eb2f06;
     --green-light : #d9e100;
-    --green-dark : #47a243;
+    --green: #47a243;
+    --green-dark: #30892d;
     --grey : #c9ced2;
     --font: #a7a7a7;
     --bg-box: #f7f7f7;
@@ -45,7 +47,8 @@ body, html {
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: #bababa;
+	background-color: var(--font);
+    border-radius: 4px;
 }
 
 input {

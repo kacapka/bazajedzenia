@@ -1,4 +1,4 @@
-const bj =  {
+const bjLocation =  {
     isAddressInWarsaw: (place) => {
         let isInWarsaw, con;
 
@@ -23,4 +23,4 @@ const bj =  {
     
 }
 
-export default bj;
+export default bjLocation;
