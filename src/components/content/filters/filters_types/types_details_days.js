@@ -19,7 +19,7 @@ class DetailsDays extends Component {
                     key={day.id}
                     data-dayid={day.id}
                     onClick={e => {
-                        this.props.selectDay(e.target.dataset.dayid);
+                        this.props.selectDay(parseInt(e.target.dataset.dayid));
                     }}>
                     {day.day}
                 </li>

@@ -1,4 +1,4 @@
-import markerAddress from '../../images/markers/marker_address.png';
+import markerAddress from '../images/markers/marker_address.png';
 
 const mapSettings = {
     mapOpt: {

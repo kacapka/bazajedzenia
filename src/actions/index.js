@@ -1,6 +1,6 @@
 import axios from 'axios';
-import bjLocation from '../components/util/bj_location';
-import bjFilters from '../components/util/bj_filters';
+import bjLocation from '../utils/bj_location';
+import bjFilters from '../utils/bj_filters';
 const google = window.google;
 
 export const FETCH_CORNERS = 'fetch_corners';
@@ -11,6 +11,7 @@ export const CHECKBOX_SELECT = 'checkbox_select';
 export const SELECT_DAY = 'select_day';
 export const GET_TIME = 'get_time';
 export const SELECT_CORNER = 'select_corner';
+export const SET_USER_CORNERS = 'set_user_corners';
 
 //get all corners from JSON file
 export function fetchCorners() {
@@ -31,7 +32,7 @@ export function fetchCorners() {
 
 //every time app is open get all kitchen types from corners base
 //even when new type is added it will be shown in kitchen input filters section
-//getKitchenTypes function returns array of objects according to react-select options prop
+//getKitchenTypes function returns array of kitchen types 
 export function setKitchenTypes(data) {
     
     if (!data) return { type: 'CANCEL_ACTION'};
@@ -138,6 +139,16 @@ export function selectCorner(corner) {
     return {
         type: SELECT_CORNER,
         payload: corner
+    }
+    
+}
+
+//set result of user choices to render list of corners in filter list section
+export function setUserCorners(corners) {
+    
+    return {
+        type: SET_USER_CORNERS,
+        payload: corners
     }
     
 }

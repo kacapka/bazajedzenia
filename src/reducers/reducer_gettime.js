@@ -1,18 +1,14 @@
 import moment from 'moment';
 import { GET_TIME } from 'actions/index';
+import bjTime from '../utils/bj_time';
 
-//get selected time in seconds 
-const getSec = (value) => { 
-    return value.hour() * 3600 + value.minute() * 60;
-}
-
-const initialState = getSec(moment());
+const initialState = bjTime.getSec(moment());
 
 export default function(state = initialState, action) {
     
     switch(action.type) {
         case GET_TIME: 
-            return getSec(action.payload);
+            return bjTime.getSec(action.payload);
         default: 
             return state;
     }

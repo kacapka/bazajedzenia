@@ -8,25 +8,28 @@ import checkbox from './reducer_checkbox';
 import activeDay from './reducer_selectday';
 import userTime from './reducer_gettime';
 import selectedCorner from './reducer_selectcorner';
+import userCorners from './reducer_setusercorners';
 
 
 const rootReducer = combineReducers({
     //all corners
     corners,
-    //all kithcen types
+    //all kitchen types
     kitchenTypes,
     //current address - user input or autolocation
     address,
-    //selected kitchen types
+    //selected kitchen types - obj with par value and label
     kitchen,
-    //checkbox status in details filter
+    //checkboxes status in details filter
     checkbox,
     //selected day in details filter
     activeDay,
-    //selected time
+    //selected time, value in seconds
     userTime,
-    //selected corner in corners filter section
-    selectedCorner
+    //selected corner in corners searchbar
+    selectedCorner,
+    //userCorners for render list of corners
+    userCorners
 });
 
 export default rootReducer;

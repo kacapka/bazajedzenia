@@ -35,7 +35,7 @@ class KitchenInput extends Component {
         );
     }
     
-    render() {
+    render() {    
         const selectOpt = {
             backspaceRemoves: false,
             closeOnSelect: false,
@@ -63,8 +63,15 @@ class KitchenInput extends Component {
 
 function mapStateToProps(state) {
     return {
-        kitchen: state.kitchen,
-        kitchenTypes: state.kitchenTypes
+        //transform kitchen types array to array of objects according to
+        //react slect options params
+        kitchenTypes: state.kitchenTypes.map(type => {
+            return {
+                value: type,
+                label: type
+            }
+        }),
+        kitchen: state.kitchen
     }
 }
 

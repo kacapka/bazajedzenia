@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import settings from '../../util/map_settings';
+import settings from '../../../utils/map_settings';
 
 const google = window.google;
 
