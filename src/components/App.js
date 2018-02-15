@@ -10,7 +10,7 @@ import Map from './content/map/map';
 class App extends Component {
     
     componentDidMount() {
-        this.props.fetchCorners();
+        this.props.fetchCorners('all');
     }
     
     render() {

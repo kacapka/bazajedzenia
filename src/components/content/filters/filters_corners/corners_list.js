@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FilterBox from '../../../reuse/filter_box';
+import ListItem from './corners_list_item';
+import { fetchCorners } from 'actions/index';
+import Loader from '../../../reuse/loader';
  
 class CornersList extends Component {
     
@@ -10,25 +13,29 @@ class CornersList extends Component {
         this.renderList = this.renderList.bind(this);
     }
     
+    componentDidMount() {
+        this.props.fetchCorners('recommended');    
+    }
+    
     renderList() {
         const { toRender } = this.props;
-        if(!toRender) return <div>nie wybrano filtrow</div>;
-        if(toRender.length === 0) return <div>nie znaleziono lokali</div>;
+        if(!toRender) return <Loader size={40}/>;
+        if(toRender.length === 0) return <div>nie znaleziono lokali spelniajacych podane kryteria</div>;
         
         return toRender.map(corner => {
             return (
-                <li>
-                    {corner.name}
+                <li key={corner.id}>
+                    <ListItem name={corner.name} 
+                        street={corner.street} />
                 </li>
             );    
         });
     }
      
-    render() {
-        
+    render() {    
         return(
-            <FilterBox title="Twoje wyniki">
-                <ul>
+            <FilterBox title={this.props.resultsTitle}>
+                <ul className="corners-list">
                     {this.renderList()}
                 </ul>
             </FilterBox>
@@ -38,8 +45,9 @@ class CornersList extends Component {
 
 function mapStateToProps(state) {
     return {
-        toRender: state.userCorners
+        toRender: state.userCorners,
+        resultsTitle: state.resultsTitle
     }
 };
 
-export default connect(mapStateToProps)(CornersList);
+export default connect(mapStateToProps, { fetchCorners })(CornersList);

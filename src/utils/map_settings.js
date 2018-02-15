@@ -1,4 +1,5 @@
 import markerAddress from '../images/markers/marker_address.png';
+import markerCorner from '../images/markers/marker_corner.png';
 
 const mapSettings = {
     mapOpt: {
@@ -14,7 +15,11 @@ const mapSettings = {
     },
     addressIcon: {
         url: markerAddress
+    },
+    cornerIcon: {
+        url: markerCorner
     }
+    
 }
 
 export default mapSettings;

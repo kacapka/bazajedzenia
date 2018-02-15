@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Async } from 'react-select';
 import FilterBox from '../../../reuse/filter_box';
 import OptionItem from './corners_input_item';
+import ListItem from './corners_list_item';
 
 import { selectCorner } from 'actions/index';
  
@@ -14,6 +15,7 @@ class CornersInput extends Component {
         this.getOptions = this.getOptions.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
         this.renderValue = this.renderValue.bind(this);
+        this.renderCorner = this.renderCorner.bind(this);
     }
     
 	getOptions(input) {
@@ -28,7 +30,7 @@ class CornersInput extends Component {
                     return {
                         value: corner.district.name,
                         label: corner.name,
-                        id: corner.id,
+                        corner: corner,
                         className: 'select__type--corners'
                     }
                 });
@@ -49,6 +51,20 @@ class CornersInput extends Component {
         );
     }
     
+    renderCorner() {
+        if(!this.props.selectedCorner) return;
+        const { corner } = this.props.selectedCorner;
+        
+        return (
+            <div className="list-item--wrapper">
+                <ListItem 
+                    name={corner.name}
+                    street={corner.street}
+                />
+            </div>
+        );
+    }
+    
     render() {
         const { selectedCorner } = this.props;
         const selectOpt = {
@@ -60,7 +76,7 @@ class CornersInput extends Component {
             noResultsText: "brak wyników",   
             className: "select-corners"
         }
-    
+        
         return(
             <FilterBox title="Szukaj lokalu" line>
                 <Async
@@ -72,6 +88,7 @@ class CornersInput extends Component {
                     onValueClick={this.onValueCikc}
                     {...selectOpt}
                 />
+                {this.renderCorner()}
             </FilterBox>
         );
     }

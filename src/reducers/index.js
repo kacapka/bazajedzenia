@@ -9,6 +9,7 @@ import activeDay from './reducer_selectday';
 import userTime from './reducer_gettime';
 import selectedCorner from './reducer_selectcorner';
 import userCorners from './reducer_setusercorners';
+import resultsTitle from './reducer_setresultstitle';
 
 
 const rootReducer = combineReducers({
@@ -29,7 +30,9 @@ const rootReducer = combineReducers({
     //selected corner in corners searchbar
     selectedCorner,
     //userCorners for render list of corners
-    userCorners
+    userCorners,
+    //title for corners list
+    resultsTitle
 });
 
 export default rootReducer;

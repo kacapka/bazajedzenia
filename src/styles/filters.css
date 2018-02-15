@@ -1,7 +1,6 @@
 .filters-column {
     width: 50%;
     position: relative;
-    overflow-y: scroll;
 }
 
 .filters-column--line::after {
@@ -45,6 +44,7 @@
 
 .filters-column--corners {
     padding: 0 15px;
+    overflow-y: scroll;
 }
 
 .filter-box {

@@ -3,7 +3,8 @@ import bjLocation from '../utils/bj_location';
 import bjFilters from '../utils/bj_filters';
 const google = window.google;
 
-export const FETCH_CORNERS = 'fetch_corners';
+export const FETCH_ALL_CORNERS = 'fetch_all_corners';
+export const FETCH_RECOMMENDED_CORNERS = 'fetch_recommended_corners';
 export const SET_KITCHEN_TYPES = 'set_kitchen_types';
 export const GET_ADDRESS = 'get_address';
 export const SET_VALUE = 'set_value';
@@ -12,16 +13,25 @@ export const SELECT_DAY = 'select_day';
 export const GET_TIME = 'get_time';
 export const SELECT_CORNER = 'select_corner';
 export const SET_USER_CORNERS = 'set_user_corners';
+export const SET_RESULTS_TITLE = 'set_results_title';
 
-//get all corners from JSON file
-export function fetchCorners() {
-   
+//get corners from JSON file
+export function fetchCorners(condition) {
+    let DATA_URL, actionType;
+    
+    if(condition === 'all') {
+        DATA_URL = 'JSON/baza.json'; 
+        actionType = FETCH_ALL_CORNERS;
+    } else if(condition === 'recommended') {
+        DATA_URL = 'JSON/recommended.json';
+        actionType = FETCH_RECOMMENDED_CORNERS;
+    }
+    
     return (dispatch) => {
-        const DATA_URL = 'JSON/baza.json';
         axios.get(DATA_URL).then(response => {
             dispatch(
                 {
-                    type: FETCH_CORNERS,
+                    type: actionType,
                     payload: response.data
                 }
             );
@@ -149,6 +159,16 @@ export function setUserCorners(corners) {
     return {
         type: SET_USER_CORNERS,
         payload: corners
+    }
+    
+}
+
+//set results title for corners list
+export function setResultsTitle(title) {
+    
+    return {
+        type: SET_RESULTS_TITLE,
+        payload: title
     }
     
 }
