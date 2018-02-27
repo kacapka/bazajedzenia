@@ -1,3 +1,9 @@
+/*.corner-list-wrapper {
+    height: 80%;
+    overflow-y: scroll;
+    padding: 20px 15px 20px 15px;
+}*/
+
 .corners-list {
     list-style: none;
 }
@@ -8,6 +14,7 @@
     color: var(--green-dark);
     padding: 10px 10px 0 10px;
     margin-top: 8px; 
+    position: relative;
 }
 
 .list-item--wrapper {
@@ -24,12 +31,30 @@
     padding-bottom: 10px;
 }
 
+.list-item__icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--line);
+} 
+
+.list-item__icon:hover {
+    color: #FF3A00;
+} 
+
 .list-item__button {
     text-align: center;
     font-size: .7rem;
     padding: 5px;
     cursor: pointer;
     position: relative;
+}
+
+.list-item__button a {
+    text-decoration: none;
+    color: var(--font);
 }
 
 .list-item__color1,

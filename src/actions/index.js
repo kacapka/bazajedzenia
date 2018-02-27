@@ -1,30 +1,21 @@
 import axios from 'axios';
 import bjLocation from '../utils/bj_location';
-import bjFilters from '../utils/bj_filters';
+import TYPES from './action_types';
+import { getCornerById } from '../selectors/selector_getcornerbyid';
 const google = window.google;
 
-export const FETCH_ALL_CORNERS = 'fetch_all_corners';
-export const FETCH_RECOMMENDED_CORNERS = 'fetch_recommended_corners';
-export const SET_KITCHEN_TYPES = 'set_kitchen_types';
-export const GET_ADDRESS = 'get_address';
-export const SET_VALUE = 'set_value';
-export const CHECKBOX_SELECT = 'checkbox_select';
-export const SELECT_DAY = 'select_day';
-export const GET_TIME = 'get_time';
-export const SELECT_CORNER = 'select_corner';
-export const SET_USER_CORNERS = 'set_user_corners';
-export const SET_RESULTS_TITLE = 'set_results_title';
-
-//get corners from JSON file
+// get corners from JSON file
+// get all corners before app is showed
+// or get recommended corners as a default ones
 export function fetchCorners(condition) {
     let DATA_URL, actionType;
     
     if(condition === 'all') {
         DATA_URL = 'JSON/baza.json'; 
-        actionType = FETCH_ALL_CORNERS;
+        actionType = TYPES.FETCH_ALL_CORNERS;
     } else if(condition === 'recommended') {
         DATA_URL = 'JSON/recommended.json';
-        actionType = FETCH_RECOMMENDED_CORNERS;
+        actionType = TYPES.FETCH_RECOMMENDED_CORNERS;
     }
     
     return (dispatch) => {
@@ -35,25 +26,8 @@ export function fetchCorners(condition) {
                     payload: response.data
                 }
             );
-            dispatch(setKitchenTypes(response.data));
         })    
     }   
-}
-
-//every time app is open get all kitchen types from corners base
-//even when new type is added it will be shown in kitchen input filters section
-//getKitchenTypes function returns array of kitchen types 
-export function setKitchenTypes(data) {
-    
-    if (!data) return { type: 'CANCEL_ACTION'};
-    
-    const types = bjFilters.getKitchenTypes(data);
-    
-    return {
-        type: SET_KITCHEN_TYPES,
-        payload: types
-    }
-    
 }
 
 //get addres from searchbar input
@@ -65,7 +39,7 @@ export function getAddress(place) {
     if (!isInWarsaw) return {type: 'ACTION_CANCEL'};
 
     return {
-        type: GET_ADDRESS,
+        type: TYPES.GET_ADDRESS,
         payload: place.geometry.location
     }
     
@@ -105,7 +79,7 @@ export function getMyLocation() {
 export function setValue(value) {
     
     return {
-        type: SET_VALUE,
+        type: TYPES.SET_VALUE,
         payload: value
     }
     
@@ -118,7 +92,7 @@ export function checkboxSelect(input) {
     if (input.openNow) input.chooseDate = false;
     
     return {
-        type: CHECKBOX_SELECT,
+        type: TYPES.CHECKBOX_SELECT,
         payload: input
     }
 }
@@ -127,7 +101,7 @@ export function checkboxSelect(input) {
 export function selectDay(id) {
     
     return {
-        type: SELECT_DAY,
+        type: TYPES.SELECT_DAY,
         payload: id
     }
     
@@ -137,27 +111,27 @@ export function selectDay(id) {
 export function getTime(value) {
     
     return {
-        type: GET_TIME,
+        type: TYPES.GET_TIME,
         payload: value
     }
     
 }
 
 //select and get corner from user input in cornerssearchbar section
-export function selectCorner(corner) {
+export const selectCorner = id => (dispatch, getState)  => {
     
-    return {
-        type: SELECT_CORNER,
-        payload: corner
-    }
-    
+    let corner = getCornerById(id)(getState());
+    dispatch({
+        type: TYPES.SELECT_CORNER,
+        payload: { label: corner.name, street: corner.street, id }
+    }); 
 }
 
 //set result of user choices to render list of corners in filter list section
 export function setUserCorners(corners) {
     
     return {
-        type: SET_USER_CORNERS,
+        type: TYPES.SET_USER_CORNERS,
         payload: corners
     }
     
@@ -167,8 +141,20 @@ export function setUserCorners(corners) {
 export function setResultsTitle(title) {
     
     return {
-        type: SET_RESULTS_TITLE,
+        type: TYPES.SET_RESULTS_TITLE,
         payload: title
+    }
+    
+}
+
+//set results title for corners list
+export function showCornerOnMap(id) {
+    
+    const random = Math.random();
+ 
+    return {
+        type: TYPES.SHOW_CORNER_ON_MAP,
+        payload: [parseInt(id, 10), random]
     }
     
 }

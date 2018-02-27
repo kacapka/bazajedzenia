@@ -1,0 +1,156 @@
+.corner-details {
+    color: #000;
+}
+
+.corner-header {
+    height: 40%;
+    padding: 0 5px;
+    position: relative;
+}
+
+.corner-header a {
+    text-decoration: none;
+}
+
+.corner-header__img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: -10;
+}
+
+.corner-header__name {
+    position: absolute;
+    left: 40px;
+    bottom: -10px;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 10px 15px;
+    font-size: 2rem;
+    border-radius: 10px;
+}
+
+.corner-info {
+    display: flex;
+    height: 60%;
+}
+
+.corner-info-details {
+    flex:1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.corner-info--box {
+    display: flex;
+    position: relative;
+}
+
+.corner-info--box:after {
+    content: '';
+    height: 1px;
+    width: 80%;
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    left: 5%;
+    background-color: var(--line);
+}
+
+.corner-info__icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    color: var(--blue);
+}
+
+.corner-info__values {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.corner-info__location-info {
+    font-style: italic;
+    font-size: .9rem;
+    margin-top: 5px;
+}
+
+.corner-info--social {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 20%;
+}
+
+.corner-info--social .on {
+    color: var(--green-light);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.corner-info--social .off {
+    color: var(--line);
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.corner-info--social .on:hover {
+    background-color: var(--green-light); 
+    color: #fff;
+}
+
+.corner-info-hours {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px 30px 30px;
+    margin-right: 40px;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 5px;
+    align-items: center;
+}
+
+.hours-row.today-active {
+    background-color: var(--hover);
+    font-weight: 400;
+}
+
+.hours-row_icon {
+    font-size: 1.5rem;
+    color: var(--green);
+}
+
+.hours-row_item {
+    flex: 2;
+}
+
+.hours-row_item--day {
+    flex: 1;
+}
+
+.hours-row_item--hour {
+    font-size: .9rem;
+}
+   

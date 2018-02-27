@@ -1,12 +1,11 @@
-import { SET_USER_CORNERS } from 'actions/index';
-import { FETCH_RECOMMENDED_CORNERS } from 'actions/index';
+import TYPES from 'actions/action_types';
 
-export default function( state = null, action) {
+export default function( state = [], action) {
     
     switch(action.type) {
-        case SET_USER_CORNERS:
+        case TYPES.SET_USER_CORNERS:
             return action.payload;
-        case FETCH_RECOMMENDED_CORNERS:
+        case TYPES.FETCH_RECOMMENDED_CORNERS:
             return action.payload;
         default:
             return state;

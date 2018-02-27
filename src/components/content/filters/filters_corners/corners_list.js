@@ -14,40 +14,44 @@ class CornersList extends Component {
     }
     
     componentDidMount() {
-        this.props.fetchCorners('recommended');    
+        this.props.fetchCorners('recommended');
     }
-    
+         
     renderList() {
-        const { toRender } = this.props;
-        if(!toRender) return <Loader size={40}/>;
+        const toRender = this.props.toRender;
+        if(!toRender) return <Loader />;
         if(toRender.length === 0) return <div>nie znaleziono lokali spelniajacych podane kryteria</div>;
         
-        return toRender.map(corner => {
+        return toRender.map((corner, index) => {
             return (
                 <li key={corner.id}>
                     <ListItem name={corner.name} 
-                        street={corner.street} />
+                        street={corner.street}
+                        id={corner.id} />
                 </li>
-            );    
+            );
         });
     }
      
-    render() {    
+    render() {   
+         
         return(
             <FilterBox title={this.props.resultsTitle}>
                 <ul className="corners-list">
                     {this.renderList()}
-                </ul>
+                </ul> 
             </FilterBox>
         );
     }
-};
+}
 
 function mapStateToProps(state) {
     return {
-        toRender: state.userCorners,
-        resultsTitle: state.resultsTitle
+        resultsTitle: state.resultsTitle,
+        toRender: state.userCorners
     }
-};
+}
 
 export default connect(mapStateToProps, { fetchCorners })(CornersList);
+
+

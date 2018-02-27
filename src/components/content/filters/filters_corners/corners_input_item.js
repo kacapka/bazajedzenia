@@ -24,7 +24,7 @@ class OptionItem extends Component {
                     {option.label}
                 </div>
                 <div className='select__type--corners-district'>
-                    {option.value}
+                    {option.district && option.district.name}
                 </div>
             </div>
         );

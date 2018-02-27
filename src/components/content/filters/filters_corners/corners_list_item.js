@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import 'styles/list_item.css';
 
+import { showCornerOnMap } from 'actions/index';
+
 class ListItem extends Component {
+    
+    constructor(props) {
+        super(props);
+        
+        this.onIconClick = this.onIconClick.bind(this);
+    }
+    
+    onIconClick(e) {
+        const id = this.props.id;
+        e.preventDefault();
+        e.stopPropagation();
+        this.props.showCornerOnMap(id);
+    }
+    
     render() {
-        const { name, street } = this.props;
+        const { name, street, id } = this.props;
         
         return(    
             <div className="list-item">
@@ -17,11 +35,14 @@ class ListItem extends Component {
                     <div className="list-item__color1"></div>
                     <div className="list-item__color2"></div>
                     <div className="list-item__color3"></div>
-                    wiecej
+                    <Link to={`/${id}`}>więcej</Link>
                 </div>
+                <i className="ion-android-pin list-item__icon"
+                    onClick={this.onIconClick} >
+                </i>
             </div>
         );
     }
 }
 
-export default ListItem;
+export default connect(null, { showCornerOnMap })(ListItem);

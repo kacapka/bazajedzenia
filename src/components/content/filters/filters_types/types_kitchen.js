@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import FilterBox from '../../../reuse/filter_box';
+import { getKitchenTypes } from '../../../../selectors/selector_kitchentypes';
 import { connect } from 'react-redux';
 import { setValue } from 'actions/index';
 
@@ -42,9 +43,10 @@ class KitchenInput extends Component {
             tabSelectsValue: false,
             noResultsText: "brak wyników",
             optionClassName: "select__type--kitchen",
-            placeholder: "szukaj kuchni",
+            placeholder: "wszystkie kuchnie",
             clearAllText: 'wyczyść',
-            multi: true
+            multi: true,
+            className: "select-kitchen"
         }
         
         return (
@@ -63,14 +65,7 @@ class KitchenInput extends Component {
 
 function mapStateToProps(state) {
     return {
-        //transform kitchen types array to array of objects according to
-        //react slect options params
-        kitchenTypes: state.kitchenTypes.map(type => {
-            return {
-                value: type,
-                label: type
-            }
-        }),
+        kitchenTypes: getKitchenTypes(state),
         kitchen: state.kitchen
     }
 }

@@ -12,7 +12,7 @@ import { filterByDate } from './selector_date';
 export const getUserCorners = createSelector(
     [filterByKitchen, filterByDelivery, filterByOpenNow, filterByDate],
     (kitchen, delivery, openNow, date) => {
-        
+               
         return _.intersection(kitchen, delivery, openNow, date);
         
     }

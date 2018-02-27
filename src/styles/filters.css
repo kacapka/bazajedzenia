@@ -43,8 +43,9 @@
 }
 
 .filters-column--corners {
-    padding: 0 15px;
+    padding: 0;
     overflow-y: scroll;
+    padding: 0 15px;
 }
 
 .filter-box {

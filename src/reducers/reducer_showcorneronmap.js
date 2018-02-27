@@ -1,11 +1,9 @@
 import TYPES from 'actions/action_types';
 
-const initialValue = 'Polecane restauracje';
-
-export default function(state = initialValue, action) {
+export default function(state = null, action) {
     
     switch(action.type) {
-        case TYPES.SET_RESULTS_TITLE:
+        case TYPES.SHOW_CORNER_ON_MAP:
             return action.payload;
         default:
             return state;

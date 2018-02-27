@@ -1,9 +1,9 @@
-import { GET_ADDRESS } from 'actions/index';
+import TYPES from 'actions/action_types';
 
 export default function(state = null, action) {
         
     switch(action.type) {
-        case GET_ADDRESS: 
+        case TYPES.GET_ADDRESS: 
             return action.payload;
         default:
             return state;

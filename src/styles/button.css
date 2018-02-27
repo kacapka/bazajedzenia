@@ -33,6 +33,24 @@ button {
     width: 70%;
 }
 
+.button--back {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    font-size: .8rem;
+    border: 2px solid #fff;
+    border-radius: 6px;
+}
+
+.button--back .button__name {
+    padding: 5px 10px!important
+}
+
+.button--back .button__icon {
+    padding-left: 0;
+}
+
 .button--green .button__name {
     background-color: var(--green);
 }

@@ -1,4 +1,4 @@
-import { CHECKBOX_SELECT} from 'actions/index';
+import TYPES from 'actions/action_types';
 
 const initialState = {
     delivery: false,
@@ -9,7 +9,7 @@ const initialState = {
 export default function(state = initialState, action) {
     
     switch(action.type) {
-        case CHECKBOX_SELECT: 
+        case TYPES.CHECKBOX_SELECT: 
             return {...state, ...action.payload}
         default:
             return state;

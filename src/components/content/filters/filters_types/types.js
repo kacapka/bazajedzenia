@@ -49,4 +49,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { setUserCorners, setResultsTitle })(FiltersTypes);
+export default connect(mapStateToProps,
+    { setUserCorners, setResultsTitle }
+)(FiltersTypes);

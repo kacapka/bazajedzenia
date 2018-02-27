@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 import thunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom'
 
 import 'normalize.css';
 import 'styles/ionicons.min.css';
@@ -16,7 +17,9 @@ const createStoreWithMiddleware = applyMiddleware(thunk, ReduxPromise)(createSto
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)} >
-        <App />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </Provider>
     , document.getElementById('bjApp')
 );

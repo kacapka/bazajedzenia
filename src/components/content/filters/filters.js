@@ -6,7 +6,8 @@ import FiltersTypes from './filters_types/types';
 import FiltersCorners from './filters_corners/corners';
 
 class Filters extends Component {
-    render() {
+    
+    render() {    
         return (
             <div className="filters">
                 <FiltersTypes />
@@ -15,5 +16,5 @@ class Filters extends Component {
         );
     }
 }
-
+        
 export default Filters;

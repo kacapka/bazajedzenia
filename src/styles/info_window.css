@@ -1,0 +1,33 @@
+.info-window {
+    min-width: 140px;
+    background-color: #fff;
+    transform: translate(-50%, -77px);
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: -3px 3px 7px #a5a5a5;
+    z-index: 10;
+    padding: 5px;
+    overflow-x: visible;
+    color: var(--green-dark);
+}
+
+.info-window__name {
+    font-size: .8rem;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+
+.info-window__street {
+    font-size: .7rem;
+}
+
+.info-window-multiple {
+    transform: translate(-50%, -115%);
+    cursor: pointer;
+}
+
+.multiple-corner:hover {
+    background-color: var(--hover);
+}
+
+

@@ -18,7 +18,7 @@ export const filterByKitchen = createSelector(
             return corner.cornerTypes.some(type => {
                 if(userKitchen.includes(type.foodType.name)) {
                     return corner;
-                };         
+                }         
             });
         });
         

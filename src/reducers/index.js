@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
 import corners from './reducer_fetchcorners';
-import kitchenTypes from './reducer_setkitchentypes';
 import address from './reducer_getaddress';
 import kitchen from './reducer_setvalue';
 import checkbox from './reducer_checkbox';
@@ -10,13 +9,11 @@ import userTime from './reducer_gettime';
 import selectedCorner from './reducer_selectcorner';
 import userCorners from './reducer_setusercorners';
 import resultsTitle from './reducer_setresultstitle';
-
+import showOnMap from './reducer_showcorneronmap';
 
 const rootReducer = combineReducers({
     //all corners
     corners,
-    //all kitchen types
-    kitchenTypes,
     //current address - user input or autolocation
     address,
     //selected kitchen types - obj with par value and label
@@ -29,10 +26,12 @@ const rootReducer = combineReducers({
     userTime,
     //selected corner in corners searchbar
     selectedCorner,
-    //userCorners for render list of corners
+    //userCorners for render list of corners and print on map
     userCorners,
     //title for corners list
-    resultsTitle
+    resultsTitle,
+    //corner to show on map
+    showOnMap
 });
 
 export default rootReducer;

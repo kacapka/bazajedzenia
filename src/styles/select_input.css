@@ -124,22 +124,29 @@
 .Select-menu-outer {
     background-color: #fff;
     width: 100%;
-    max-height: 200px;
-    overflow-y: scroll;
     border-top: none;
     border: 1px solid var(--border);
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: none;
-    border-top-right-radius: none;
-    margin-top: -2px;
+    border-radius: 4px;
+    margin-top: 3px;
     position: relative;
     z-index: 11;
-    box-shadow: 0 1px 5px var(--border);
+    color: #000;
 }
 
 .Select-menu-outer > div {
     font-size: .9rem;
 }
+
+
+.select-kitchen .Select-menu-outer {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.select-corners .Select-menu-outer {
+    padding-bottom: 2px;
+    max-height: 200px;
+}
+
 
 

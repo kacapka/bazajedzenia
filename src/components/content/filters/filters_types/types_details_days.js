@@ -12,14 +12,14 @@ class DetailsDays extends Component {
     renderDays() {
         return days.map( day => {
             const { activeDay } = this.props;
-            const className = activeDay == day.id ? 'details-days__item--open' : ''; 
+            const className = parseInt(activeDay, 10) === day.id ? 'details-days__item--open' : ''; 
             
             return (
                 <li className={`details-days__item ${className}`}
                     key={day.id}
                     data-dayid={day.id}
                     onClick={e => {
-                        this.props.selectDay(parseInt(e.target.dataset.dayid));
+                        this.props.selectDay(parseInt(e.target.dataset.dayid, 10));
                     }}>
                     {day.day}
                 </li>

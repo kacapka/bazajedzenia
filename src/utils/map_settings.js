@@ -1,5 +1,7 @@
 import markerAddress from '../images/markers/marker_address.png';
 import markerCorner from '../images/markers/marker_corner.png';
+import markerCornerSpecial from '../images/markers/marker_corner_special.png';
+import markerMultiple from '../images/markers/marker_corner_multiple.png';
 
 const mapSettings = {
     mapOpt: {
@@ -18,6 +20,13 @@ const mapSettings = {
     },
     cornerIcon: {
         url: markerCorner
+    },
+    cornerIconSpecial: {
+        url: markerCornerSpecial
+    },
+    clusterOpt: {
+        imagePath: markerMultiple,
+        gridSize: 1
     }
     
 }
