@@ -37,10 +37,8 @@ class Map extends Component {
         this.markers = [];
         this.activeOpenInfo = null;
         this.markerCluster = new MarkerClusterer(this.map, null, settings.clusterOpt);
+        this.markerCluster.onClickZoom = (cluster) => this.openMultipleInfoWindow(cluster);
         
-        this.markerCluster.onClickZoom = () => { 
-            this.openMultipleInfoWindow(this.markerCluster);
-        }
     }
     
     openInfoWindow(name, street, marker) {
@@ -52,12 +50,7 @@ class Map extends Component {
         marker.infoWindow.setMap(null);
     }
      
-    openMultipleInfoWindow(markCluster) {
-        
-        console.log(markCluster);
-        
-        let cluster = markCluster.clusters_.sort((a,b) => b.markers_.length - a.markers_.length )
-        cluster = cluster[0];        
+    openMultipleInfoWindow(cluster) {   
         let markers = cluster.markers_;
         if(cluster.infoWindow) {
             cluster.infoWindow.isOpen === false ? cluster.infoWindow.setMap(this.map) : cluster.infoWindow.setMap(null);   
@@ -97,6 +90,7 @@ class Map extends Component {
                 markerOpt = {
                     position: latLng,
                     name: corner.name,
+                    info: corner.locationInfo,
                     map: null,
                     icon: settings.cornerIcon
                 }
@@ -133,7 +127,7 @@ class Map extends Component {
         if(this.props.markerToShow !== markerToShow) {
             const markerOld = this.props.markerToShow;
             if(markerOld) {
-                this.markers.find(marker => marker.id === markerOld[0]).setIcon(settings.cornerIcon.url)    
+                this.markers.find(marker => marker.id === markerOld[0]).setIcon(settings.cornerIcon.url);    
             }
             
             const marker = this.markers.find(marker => marker.id === markerToShow[0]);
@@ -152,14 +146,11 @@ class Map extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    
-    return {
-        address: state.address,
-        allCorners: state.corners,
-        cornersId: getCornersId(state),
-        markerToShow: state.showOnMap
-    }
-}
+const mapStateToProps = (state) => ({
+    address: state.address,
+    allCorners: state.corners,
+    cornersId: getCornersId(state),
+    markerToShow: state.showOnMap
+})
 
 export default connect(mapStateToProps, { selectCorner, showCornerOnMap })(Map);

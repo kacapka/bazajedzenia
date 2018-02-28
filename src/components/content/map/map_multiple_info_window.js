@@ -7,6 +7,7 @@ class MultipleInfoWindow extends google.maps.OverlayView {
         
         this.markers = markers;
         this.latLng = markers[0].position;
+        this.infoLocation = markers[0].info;
         this.div = null;
         this.isOpen = false;
         this.callback = callback;
@@ -20,16 +21,25 @@ class MultipleInfoWindow extends google.maps.OverlayView {
     
     onAdd() {
         this.isOpen = true;
-        let infoWindow = this.markers.map(marker => {
+        let info = this.infoLocation;
+        let first = info.charAt(0);
+        if(info && (first === first.toUpperCase() && first !== first.toLowerCase())){
+            info = info.split(',')[0];    
+        } else {
+            info = '';
+        }
+        let title = `<div class="multiple-title">${info}</div>`;
+        let corners = this.markers.map(marker => {
             return `
                 <div class="multiple-corner" data-id=${marker.id}>
                     ${marker.name}
                 </div>
             `;
         }).join(' ');
+        let divInner = title + corners;
         let div = document.createElement('div');
         div.classList.add('info-window','info-window-multiple');
-        div.innerHTML = infoWindow;
+        div.innerHTML = divInner;
         let panes = this.getPanes();
         panes.floatPane.appendChild(div);
         this.div = div;

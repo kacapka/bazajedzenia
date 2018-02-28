@@ -13,10 +13,10 @@ import App from './components/App';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-const createStoreWithMiddleware = applyMiddleware(thunk, ReduxPromise)(createStore);
+export const store = createStore(reducers, applyMiddleware(thunk, ReduxPromise));
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)} >
+    <Provider store={store} >
         <BrowserRouter>
             <App />
         </BrowserRouter>

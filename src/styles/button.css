@@ -10,6 +10,7 @@ button {
     display: flex;
     align-items: center;
     cursor: pointer;
+    background-color: transparent;
 }
 
 .button__name {
@@ -26,12 +27,22 @@ button {
     border-top-right-radius: 6px;
 }
 
-/*green button - search filters*/
+/*BUTTON GREEN*/
 
 .button--green {
     font-size: .9rem;
     width: 70%;
 }
+
+.button--green .button__name {
+    background-color: var(--green);
+}
+
+.button--green .button__icon {
+    background-color: var(--green-dark);
+}
+
+/*BUTTON BACK TO MAP*/
 
 .button--back {
     position: absolute;
@@ -51,10 +62,18 @@ button {
     padding-left: 0;
 }
 
-.button--green .button__name {
-    background-color: var(--green);
+/*BUTTON ADD CORNER*/
+
+.button--add {
+    font-size: .8rem;
 }
 
-.button--green .button__icon {
-    background-color: var(--green-dark);
+.button--add .button__name {
+    background-color: var(--blue);
+    padding: 5px 10px;
+}
+
+.button--add .button__icon {
+    background-color: var(--blue-dark);
+    padding: 5px 10px;
 }

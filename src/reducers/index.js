@@ -11,6 +11,9 @@ import userCorners from './reducer_setusercorners';
 import resultsTitle from './reducer_setresultstitle';
 import showOnMap from './reducer_showcorneronmap';
 
+//add corner
+import addCorner from '../components/addcorner/reducers';
+
 const rootReducer = combineReducers({
     //all corners
     corners,
@@ -31,7 +34,11 @@ const rootReducer = combineReducers({
     //title for corners list
     resultsTitle,
     //corner to show on map
-    showOnMap
+    showOnMap,
+    
+    
+    //add corner
+    addCorner
 });
 
 export default rootReducer;

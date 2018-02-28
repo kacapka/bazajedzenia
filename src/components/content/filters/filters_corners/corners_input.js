@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import VirtualizedSelect from 'react-virtualized-select';
 import { getOptions } from '../../../../selectors/selector_options';
 import FilterBox from '../../../reuse/filter_box';
-import ListItem from './corners_list_item';
-
+import CornerItem from './corners_input_item';
 import { selectCorner } from 'actions/index';
 
 class CornersInput extends Component {
@@ -14,7 +13,6 @@ class CornersInput extends Component {
         
         this.onInputChange = this.onInputChange.bind(this);
         this.renderValue = this.renderValue.bind(this);
-        this.renderCorner = this.renderCorner.bind(this);     
     }
         
     onInputChange(value) {
@@ -30,21 +28,6 @@ class CornersInput extends Component {
         );
     }
         
-    renderCorner() {
-        if(!this.props.selectedCorner) return;
-        const selectedCorner = this.props.selectedCorner;
-        
-        return (
-            <div className="list-item--wrapper">
-                <ListItem 
-                    name={selectedCorner.label}
-                    street={selectedCorner.street}
-                    id={selectedCorner.id}
-                />
-            </div>
-        );
-    }
- 
     render() {    
         const selectedCorner = this.props.selectedCorner;
         const selectOpt = {
@@ -57,6 +40,12 @@ class CornersInput extends Component {
             className: "select-corners",
             matchPos: "start"
         }
+        
+        const transitionOpt = {
+            transitionName: 'slide-down',
+            transitionEnterTimeout: 300,
+            transitionLeaveTimeout: 300    
+        }
          
         return(
             <FilterBox title="Szukaj lokalu" line>
@@ -67,7 +56,7 @@ class CornersInput extends Component {
                     onChange={this.onInputChange}
                     {...selectOpt}
                 />
-                {this.renderCorner()}
+                    {selectedCorner && <CornerItem corner={selectedCorner} />}
             </FilterBox>
         );
     }

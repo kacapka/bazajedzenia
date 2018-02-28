@@ -9,19 +9,6 @@
     height: 88vh;
 }
 
-.header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
-    height: 12vh;
-}
-
-.header__logo {
-    width: 180px;
-    height: auto;
-}
-
 .filters {
     background-color: var(--bg-box);
     width: 40%;
@@ -31,7 +18,7 @@
 .map {
     width: 60%;
     position: relative;
-    z-index: 999;
+    z-index: 99;
 }
 
 .corner-details {
@@ -40,7 +27,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    z-index: 9999;
+    z-index: 199;
     background-color: #fff;
 }
 

@@ -760,7 +760,7 @@ MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
  * @private
  */
 MarkerClusterer.prototype.addToClosestCluster_ = function(marker) {
-  var distance = .000000001; // Some large number
+  var distance = 40000; // Some large number
   var clusterToAddTo = null;
   var pos = marker.getPosition();
   for (var i = 0, cluster; cluster = this.clusters_[i]; i++) {
@@ -1062,26 +1062,20 @@ function ClusterIcon(cluster, styles, opt_padding) {
  */
 ClusterIcon.prototype.triggerClusterClick = function() {
   var markerClusterer = this.cluster_.getMarkerClusterer();
-
+    
   // Trigger the clusterclick event.
   google.maps.event.trigger(markerClusterer.map_, 'clusterclick', this.cluster_);
     
     var zoom = markerClusterer.map_.getZoom();
     var maxZoom = 15;
     if (zoom >= maxZoom && this.cluster_.markers_.length > 1) {
+        var markers = this.cluster_.markers;
         return markerClusterer.onClickZoom(this.cluster_);
     } else {
         this.map_.panTo(this.cluster_.center_);
         this.map_.setZoom(16);
     }
     
-
-//  if (markerClusterer.isZoomOnClick()) {
-//    // Zoom into the cluster.
-//    this.map_.setZ(this.cluster_.getBounds());
-//      
-//      console.log(this);
-//  }
 };
 
 

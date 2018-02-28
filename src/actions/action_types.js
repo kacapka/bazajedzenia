@@ -10,7 +10,10 @@ const Types = {
     SET_USER_CORNERS: 'set-user-corners',
     SET_RESULTS_TITLE: 'set-results-title',
     SHOW_CORNER_ON_MAP: 'show-corner-on-map',
-    UPDATE_INFO_WINDOW: 'update-info-window'
+    UPDATE_INFO_WINDOW: 'update-info-window',
+    
+    //adcorner
+    SET_STEP: 'set-step'
 }
 
 export default Types;

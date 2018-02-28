@@ -1,34 +1,19 @@
 import React, { Component } from 'react';
+import ListItem from './corners_list_item';
 
-class OptionItem extends Component {
-    
-    constructor(props) {
-        super(props);
-        
-        this.onClickHandle = this.onClickHandle.bind(this);
-    }
-    
-    onClickHandle(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.props.onSelect(this.props.option, e);
-    }
+class CornerItem extends Component {
     
     render() {
-        const { option } = this.props;
+        const corner = this.props.corner;
         
         return (
-            <div className={option.className}
-                onClick={this.onClickHandle}>
-                <div>
-                    {option.label}
-                </div>
-                <div className='select__type--corners-district'>
-                    {option.district && option.district.name}
-                </div>
+            <div className="list-item--wrapper"> 
+                <ListItem name={corner.label}
+                    street={corner.street}
+                    id={corner.id} />
             </div>
         );
     }
 }
 
-export default OptionItem;
+export default CornerItem;

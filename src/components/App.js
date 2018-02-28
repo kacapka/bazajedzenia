@@ -8,6 +8,7 @@ import Header from './header/header';
 import Filters from './content/filters/filters';
 import Map from './content/map/map';
 import Corner from './content/corner/corner'
+import AddCorner from './addcorner/add_corner';
 import Loader from './reuse/loader';
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
         
         return (
             <div className="app">
+                <Route path="/addcorner" component={AddCorner} />
                 <Header />
                 <div className="app-content">
                     {content}

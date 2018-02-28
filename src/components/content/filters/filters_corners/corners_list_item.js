@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import 'styles/list_item.css';
-
 import { showCornerOnMap } from 'actions/index';
 
 class ListItem extends Component {
@@ -20,14 +19,22 @@ class ListItem extends Component {
         this.props.showCornerOnMap(id);
     }
     
+    componentDidUpdate() {
+        this.refs.efect.addEventListener('transitionend', () => this.refs.efect.classList.remove('list-item--higlight')); 
+    }
+    
+    componentWillUpdate() {
+        this.refs.efect.classList.add('list-item--higlight');
+    }
+      
     render() {
         const { name, street, id } = this.props;
         
         return(    
-            <div className="list-item">
-                <div className="list-item__name">
+            <div ref="efect" className="list-item">
+                {<div className="list-item__name">
                     {name}
-                </div>
+                </div>}
                 <div className="list-item__street">
                     ul. {street}
                 </div>
@@ -41,6 +48,7 @@ class ListItem extends Component {
                     onClick={this.onIconClick} >
                 </i>
             </div>
+            
         );
     }
 }
