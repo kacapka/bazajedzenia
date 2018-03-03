@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { setStep } from './actions';
+import 'styles/button.css'
 
 class AddButtons extends Component {
     
@@ -9,6 +11,7 @@ class AddButtons extends Component {
         
         this.onButtonClickBack = this.onButtonClickBack.bind(this);
         this.onButtonClickForward = this.onButtonClickForward.bind(this);
+        this.onButtonClickAdd = this.onButtonClickAdd.bind(this);
     }
     
     onButtonClickBack() {
@@ -19,15 +22,25 @@ class AddButtons extends Component {
         this.props.setStep('forward');
     }
     
+    onButtonClickAdd() {
+        this.props.history.goBack();
+        this.props.setStep('close');
+    }
+    
     
     render() {
+        const { back, forward, save } = this.props; 
         return(
-            <div>
-                <button onClick={this.onButtonClickBack}> wstecz </button>
-                <button onClick={this.onButtonClickForward}> dalej </button>
+            <div className='modal_buttons'>
+                {back && <button className='button--step-form modal_buttons--back' 
+                    onClick={this.onButtonClickBack}> wstecz </button>}
+                {forward && <button className='button--step-form modal_buttons--forward'
+                    onClick={this.onButtonClickForward}> dalej </button>}
+                {save && <button className='button--step-form modal_buttons--forward'
+                    onClick={this.onButtonClickAdd}> dodaj </button>}
             </div>
         );
     }
 }
 
-export default connect(null, { setStep })(AddButtons);
+export default withRouter(connect(null, { setStep })(AddButtons));

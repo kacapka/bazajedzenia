@@ -55,11 +55,17 @@ a {
     border-radius: 4px;
 }
 
-input {
+input,
+textarea {
     font-family: 'Hind Madurai', sans-serif;
     color: var(--font);
     font-size: .8rem;
     font-weight: 300;
     box-shadow: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none;
+    outline: none;
+    border: none;
 }
 

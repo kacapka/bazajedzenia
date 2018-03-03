@@ -1,43 +1,23 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import settings from '../../utils/map_settings';
 import AddButtons from './add_corner_buttons';
 import { updateStep } from './actions';
 import { getStepData } from './selectors';
 
-const google = window.google;
-
-class SecondStep extends Component {
+class ThirdStep extends Component {
     
     constructor(props) {
         super(props);
         
+        this.open = {};
+        this.delivery = {};
         this.onInputChange = this.onInputChange.bind(this);
     }
        
-    componentDidMount() {
-        
-        const coords = this.props.stepData.coords.value;
-        
-        this.map = new google.maps.Map(this.refs.map, settings.mapOpt);
-        this.map.setCenter({lat: coords[0], lng: coords[1]});
-    
-        this.marker = new google.maps.Marker({
-            position: new google.maps.LatLng(coords[0], coords[1]), 
-            map: this.map, 
-            icon: settings.cornerIcon,
-            draggable: true
-        });
-        
-        google.maps.event.addDomListener(this.marker, 'dragend', () => {
-            let coords = [this.marker.position.lat(), this.marker.position.lng()];
-            this.props.updateStep({value: coords, name: 'coords'});
-        });
-    }
-    
     onInputChange(e) {
-        this.props.updateStep({ value: e.target.value, name: e.target.name });
+        let name = e.target.name;
+        this.props.updateStep({ value: [this.open[name].value, this.delivery[name].value ], name });
     }
     
     render() {
@@ -46,8 +26,8 @@ class SecondStep extends Component {
     
         return(
             <div className='modal_step'>
-                <div className="modal_step_map">
-                    <div className="modal_step_map_inputs">
+                <div className="modal_step_hours">
+
                         {_.map(data, (value, key) => (
                         key !== 'coords' &&
                         <div className="modal_input" key={key} >
@@ -55,13 +35,20 @@ class SecondStep extends Component {
                             <input className="modal_input_input"
                                 placeholder={value.placeholder}
                                 type='text' 
-                                value={value.value}
+                                value={value.value[0]}
                                 name={key}
+                                ref={input => this.open[key] = input}
+                                onChange={e => this.onInputChange(e)} />
+                            <input className="modal_input_input"
+                                placeholder={value.placeholder}
+                                type='text' 
+                                value={value.value[1]}
+                                name={key}
+                                ref={input => this.delivery[key] = input}
                                 onChange={e => this.onInputChange(e)} />
                         </div> 
                         ))}
-                    </div>
-                    <div ref='map' className='map-add-corner'></div>
+                    
                 </div>
                 <AddButtons back forward/>
             </div>
@@ -73,4 +60,4 @@ const mapStateToProps = state => ({
     stepData: getStepData(state)
 })
 
-export default connect(mapStateToProps, { updateStep })(SecondStep);
+export default connect(mapStateToProps, { updateStep })(ThirdStep);

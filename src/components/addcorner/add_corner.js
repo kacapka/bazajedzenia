@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'styles/modal_add_corner.css';
+import ProgressBar from './add_corner_progress_bar';
 import FirstStep from './add_corner_first_step';
 import SecondStep from './add_corner_second_step';
+import ThirdStep from './add_corner_third_step';
+import FinalStep from './add_corner_final_step';
+
+import { setStep } from './actions';
 
 
 class AddCorner extends Component {
@@ -15,26 +20,32 @@ class AddCorner extends Component {
     
     onCloseClick() {
         this.props.history.goBack();
+        this.props.setStep('close');
     }
     
     renderStep() {
-        switch(this.props.addCorner) {
-            case (1):
+        switch(this.props.step) {
+            case 0:
                 return <FirstStep />;
-            case 2:
+            case 1:
                 return <SecondStep />;
+            case 2:
+                return <ThirdStep />;
+            case 3:
+                return <FinalStep />;
         }
     }
     
     render() {
         
-        console.log(this.props);
-        
+        const { step, data } = this.props;
+    
         return (
             <div className="modal-wrapper">
                 <div className="modal">
                     <i className='ion-close-round modal_close' 
                         onClick={this.onCloseClick} /> 
+                    <ProgressBar step={step} data={data} />
                     {this.renderStep()}
                 </div>
             </div>
@@ -43,7 +54,8 @@ class AddCorner extends Component {
 }
 
 const mapStateToProps = state => ({
-    addCorner: state.addCorner.step
+    step: state.addCorner.step,
+    data: state.addCorner.data
 });
 
-export default connect(mapStateToProps)(AddCorner);
+export default connect(mapStateToProps, { setStep })(AddCorner);

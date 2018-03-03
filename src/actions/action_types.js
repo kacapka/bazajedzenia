@@ -13,7 +13,8 @@ const Types = {
     UPDATE_INFO_WINDOW: 'update-info-window',
     
     //adcorner
-    SET_STEP: 'set-step'
+    SET_STEP: 'set-step',
+    UPDATE_STEP: 'update-step'
 }
 
 export default Types;

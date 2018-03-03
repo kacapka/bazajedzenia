@@ -11,11 +11,10 @@
 .modal {
     background-color: #fff;
     width: 70%;
-    height: 70%;
+    height: 80vh;
     margin-left: 15%;
-    margin-top: 15vh;
-/*    border-radius: 20px;*/
-    padding: 50px;
+    margin-top: 10vh;
+    padding: 0 50px 20px 50px;
     z-index: 1999;
     position: relative;
 }
@@ -29,3 +28,184 @@
     cursor: pointer;
 }
 
+.modal_progress-bar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin: 0 50px;
+    height: 20%;
+}
+
+.modal_progress-bar:after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 95%;
+    background-color: var(--line);
+    position: absolute;
+    left: 2.5%;
+    top: 40px;
+    z-index: 50;
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.progress-bar_step {
+    position: relative;
+    font-size: 1.3rem;
+    display: block;
+    color: var(--line);
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 2px solid var(--line);
+    z-index: 100;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.progress-bar_step:after,
+.progress-bar_step:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+}
+
+.progress-bar_step:after {
+    right: -9px;
+}
+
+.progress-bar_step:before {
+    left: -9px;
+} 
+
+.progress-bar_step.progress-bar_step--active {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.progress-bar_step.progress-bar_step--done {
+    background-color: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+}
+
+.progress-bar_step i {
+    display: block;
+    transform: translateY(40%);
+}
+
+.progress-bar_step .ion-chevron-down {
+    display: block;
+    transform: translateY(47%);
+}
+
+.progress-bar_name--active {
+    color: var(--blue);
+    font-weight: 500;
+}
+
+.modal_buttons--back {
+    float: left;
+}
+
+.modal_buttons--forward {
+    float: right;   
+}
+
+.modal_step {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*MODAL INPUT*/
+
+.modal_step_form {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal_input {
+    display: flex;
+    margin-bottom: 10px;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    letter-spacing: 2px;
+    word-spacing: 4px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    letter-spacing: 2px;
+    word-spacing: 4px;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    letter-spacing: 2px;
+    word-spacing: 4px;
+}
+
+.modal_input_label {
+    flex: 1;
+}
+
+.modal_input_input {
+    flex: 2;
+    color: #000;
+    border: 1px solid var(--border);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/*LOCATION STEP - MAP*/
+
+.modal_step_map {
+    display: flex;
+    height: 100%; 
+    padding: 20px;
+}
+
+.modal_step_map_inputs {
+    flex: 1;
+    padding: 20px;
+    padding-left: 0;
+}
+
+.map-add-corner {
+    position: relative;
+    z-index: 9999;
+    flex: 1.5;
+    margin-left: 20px;
+}
+
+.modal_step_map_inputs .modal_input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.modal_step_map_inputs .modal_input > * {
+    width: 100%;
+}

@@ -9,6 +9,7 @@ button {
     color: #fff;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     background-color: transparent;
 }
@@ -76,4 +77,14 @@ button {
 .button--add .button__icon {
     background-color: var(--blue-dark);
     padding: 5px 10px;
+}
+
+/*BUTTON STEP-BY-STEP FORM*/
+
+.button--step-form {
+    background-color: var(--blue);
+    color: #fff;
+    width: 100px;
+    padding: 10px;
+    border-radius: 6px;
 }
