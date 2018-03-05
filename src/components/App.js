@@ -8,7 +8,7 @@ import Header from './header/header';
 import Filters from './content/filters/filters';
 import Map from './content/map/map';
 import Corner from './content/corner/corner'
-import AddCorner from './addcorner/add_corner';
+import AddCorner from './addcorner/components/add_corner';
 import Loader from './reuse/loader';
 
 class App extends Component {

@@ -44,7 +44,12 @@ const initialData = {
         }
     },
     3: {
-        name: 'potwierdz'
+        name: 'potwierdz',
+        data: {
+            owner: {label: 'pracownik restauracji', value: true },    
+            user: {label: 'gość', value: false },   
+            email: {label: 'kontakt', placeholder: 'telefon / mail', value: ''}   
+        }
     }
 }
 

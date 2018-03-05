@@ -1,9 +1,9 @@
 import _ from 'underscore';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import AddButtons from './add_corner_buttons';
-import { updateStep } from './actions';
-import { getStepData } from './selectors';
+import { updateStep } from '../actions';
+import { getStepData } from '../selectors';
 
 class FirstStep extends Component {
     
@@ -21,12 +21,12 @@ class FirstStep extends Component {
         const data = this.props.stepData
         
         return(
-            <div className="modal_step">
+            <Fragment>
                 <div className="modal_step_form">
                     {_.map(data, (value, key) => (
-                    <div className="modal_input" key={key} >
-                        <label className="modal_input_label">{value.label}</label>
-                        <input className="modal_input_input"
+                    <div className="modal_step_form_item" key={key} >
+                        <label className="modal_label">{value.label}</label>
+                        <input className="modal_input"
                             placeholder={value.placeholder}
                             type='text' 
                             value={value.value}
@@ -36,8 +36,7 @@ class FirstStep extends Component {
                     ))}
                 </div>
                 <AddButtons forward />
-            </div>
-            
+            </Fragment>
         );
     }
 }

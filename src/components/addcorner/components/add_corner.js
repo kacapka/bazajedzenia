@@ -7,7 +7,7 @@ import SecondStep from './add_corner_second_step';
 import ThirdStep from './add_corner_third_step';
 import FinalStep from './add_corner_final_step';
 
-import { setStep } from './actions';
+import { setStep } from '../actions';
 
 
 class AddCorner extends Component {
@@ -46,7 +46,9 @@ class AddCorner extends Component {
                     <i className='ion-close-round modal_close' 
                         onClick={this.onCloseClick} /> 
                     <ProgressBar step={step} data={data} />
-                    {this.renderStep()}
+                    <div className='modal_step'>
+                        {this.renderStep()}
+                    </div>
                 </div>
             </div>
         );
