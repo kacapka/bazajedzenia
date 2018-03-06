@@ -20,7 +20,7 @@ class SecondStep extends Component {
         
         const coords = this.props.stepData.coords.value;
         
-        this.map = new google.maps.Map(this.refs.map, settings.mapOpt);
+        this.map = new google.maps.Map(this.mapDiv, settings.mapOpt);
         this.map.setCenter({lat: coords[0], lng: coords[1]});
     
         this.marker = new google.maps.Marker({
@@ -48,21 +48,28 @@ class SecondStep extends Component {
             <Fragment>
                 <div className="modal_step_map">
                     <div className="modal_step_map_inputs">
-                        <div className="modal_step_map_description">Aby określić dokładne położenie restauracji ustaw marker zgodnie z rzeczywistym polożeniem lokalu. </div>
+                        <div className="modal_step_map_description">
+                            Aby określić dokładne położenie restauracji ustaw czerwony pin zgodnie z rzeczywistym polożeniem lokalu. 
+                        </div>
                         {_.map(data, (value, key) => (
                         key !== 'coords' &&
-                        <div className="modal_step_map_item" key={key} >
-                            <label className="modal_label">{value.label}</label>
+                        <div className="modal_step_map_item" 
+                            key={key} 
+                        >
+                            <label className="modal_label">
+                                {value.label}
+                            </label>
                             <input className="modal_input"
                                 placeholder={value.placeholder}
                                 type='text' 
                                 value={value.value}
                                 name={key}
-                                onChange={e => this.onInputChange(e)} />
+                                onChange={e => this.onInputChange(e)} 
+                            />
                         </div> 
                         ))}
                     </div>
-                    <div ref='map' className='map-add-corner'></div>
+                    <div ref={ref => this.mapDiv = ref} className='map-add-corner'></div>
                 </div>
                 <AddButtons back forward/>
             </Fragment>

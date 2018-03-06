@@ -24,14 +24,19 @@ class FirstStep extends Component {
             <Fragment>
                 <div className="modal_step_form">
                     {_.map(data, (value, key) => (
-                    <div className="modal_step_form_item" key={key} >
-                        <label className="modal_label">{value.label}</label>
+                    <div className="modal_step_form_item" 
+                        key={key} 
+                    >
+                        <label className="modal_label">
+                            {value.label}
+                        </label>
                         <input className="modal_input"
                             placeholder={value.placeholder}
                             type='text' 
                             value={value.value}
                             name={key}
-                            onChange={e => this.onInputChange(e)} />
+                            onChange={e => this.onInputChange(e)} 
+                        />
                     </div>            
                     ))}
                 </div>

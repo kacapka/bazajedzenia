@@ -20,18 +20,18 @@ class ListItem extends Component {
     }
     
     componentDidUpdate() {
-        this.refs.efect.addEventListener('transitionend', () => this.refs.efect.classList.remove('list-item--higlight')); 
+        this.efectDiv.addEventListener('transitionend', () => this.efectDiv.classList.remove('list-item--higlight')); 
     }
     
     componentWillUpdate() {
-        this.refs.efect.classList.add('list-item--higlight');
+        this.efectDiv.classList.add('list-item--higlight');
     }
       
     render() {
         const { name, street, id } = this.props;
         
         return(    
-            <div ref="efect" className="list-item">
+            <div ref={ref => this.efectDiv = ref} className="list-item">
                 {<div className="list-item__name">
                     {name}
                 </div>}

@@ -20,7 +20,7 @@ class Map extends Component {
     
         //init map
         this.map = new google.maps.Map(
-            this.refs.map, 
+            this.mapDiv, 
             settings.mapOpt
         );
         google.maps.event.addDomListener(this.map, 'zoom_changed', () => {
@@ -141,7 +141,7 @@ class Map extends Component {
     render() {
     
         return (
-            <div className="map" ref="map" />
+            <div className="map" ref={ref => this.mapDiv = ref} />
         );
     }
 }

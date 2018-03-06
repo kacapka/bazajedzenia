@@ -45,7 +45,10 @@ class AddCorner extends Component {
                 <div className="modal">
                     <i className='ion-close-round modal_close' 
                         onClick={this.onCloseClick} /> 
-                    <ProgressBar step={step} data={data} />
+                    <ProgressBar 
+                        step={step} 
+                        data={data} 
+                    />
                     <div className='modal_step'>
                         {this.renderStep()}
                     </div>

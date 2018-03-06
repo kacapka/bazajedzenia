@@ -72,8 +72,8 @@ export const data = (state = initialData, action) => {
 }
 
 const addCorner = combineReducers({
-    step: step,
-    data: data
+    step,
+    data
 }); 
 
 export default addCorner;

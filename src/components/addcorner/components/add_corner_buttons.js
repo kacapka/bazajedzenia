@@ -32,12 +32,24 @@ class AddButtons extends Component {
         const { back, forward, save } = this.props; 
         return(
             <div className='modal_buttons'>
-                {back && <button className='button--step-form modal_buttons--back' 
-                    onClick={this.onButtonClickBack}> wstecz </button>}
-                {forward && <button className='button--step-form modal_buttons--forward'
-                    onClick={this.onButtonClickForward}> dalej </button>}
-                {save && <button className='button--step-form modal_buttons--forward'
-                    onClick={this.onButtonClickAdd}> dodaj </button>}
+                {back && 
+                <button className='button--step-form modal_buttons--back' 
+                    onClick={this.onButtonClickBack}
+                > 
+                    wstecz 
+                </button>}
+                {forward && 
+                <button className='button--step-form modal_buttons--forward'
+                    onClick={this.onButtonClickForward}
+                > 
+                    dalej 
+                </button>}
+                {save && 
+                <button className='button--step-form modal_buttons--forward'
+                    onClick={this.onButtonClickAdd}
+                > 
+                    dodaj 
+                </button>}
             </div>
         );
     }
