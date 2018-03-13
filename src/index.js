@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 import thunk from 'redux-thunk';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
 import 'normalize.css';
-import 'styles/ionicons.min.css';
+import 'styles/ionicons.css';
 import './index.css'
 import App from './components/App';
 import reducers from './reducers';

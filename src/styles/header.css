@@ -10,3 +10,19 @@
     width: 180px;
     height: auto;
 }
+
+.header__signin {
+    font-size: .8rem;
+}
+
+.header__user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user__photo {
+    width: 2rem;
+    height: auto;
+    border-radius: 50%;
+    margin-left: 10px;
+}

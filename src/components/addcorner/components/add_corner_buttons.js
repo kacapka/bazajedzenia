@@ -23,7 +23,7 @@ class AddButtons extends Component {
     }
     
     onButtonClickAdd() {
-        this.props.history.goBack();
+        this.props.history.push('/');
         this.props.setStep('close');
     }
     

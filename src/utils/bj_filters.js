@@ -4,6 +4,7 @@ const bjFilters = {
     getKitchenTypes: (corners) => {
         let kitchenTypes = [];
         corners.forEach(corner => {
+            if(!corner.cornerTypes) return;
             corner.cornerTypes.forEach(el => {
                 if(kitchenTypes.indexOf(el.foodType.name) === -1) {
                     kitchenTypes.push(el.foodType.name);

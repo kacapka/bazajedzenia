@@ -1,33 +1,51 @@
-import axios from 'axios';
+//import axios from 'axios';
 import bjLocation from '../utils/bj_location';
 import TYPES from './action_types';
 import { getCornerById } from '../selectors/selector_getcornerbyid';
-const google = window.google;
+//import fire from '../firebase';
+import firebase from 'firebase';
 
-// get corners from JSON file
+const google = window.google;
+const database = window.database;
+
+//set logged user
+export function setUser() {
+    
+    return (dispatch) => {
+        firebase.auth().onAuthStateChanged(user => {
+            dispatch({
+                type: TYPES.SET_USER,
+                payload: user
+            })
+        });    
+    }
+    
+}
+
 // get all corners before app is showed
 // or get recommended corners as a default ones
 export function fetchCorners(condition) {
-    let DATA_URL, actionType;
+    let PATH, actionType;
     
     if(condition === 'all') {
-        DATA_URL = 'JSON/baza.json'; 
+        PATH = 'corners'; 
         actionType = TYPES.FETCH_ALL_CORNERS;
     } else if(condition === 'recommended') {
-        DATA_URL = 'JSON/recommended.json';
+        PATH = 'recommended';
         actionType = TYPES.FETCH_RECOMMENDED_CORNERS;
-    }
+    } 
     
     return (dispatch) => {
-        axios.get(DATA_URL).then(response => {
+        database.ref(PATH).once('value').then(response => {
+            
             dispatch(
                 {
                     type: actionType,
-                    payload: response.data
+                    payload: response.val()
                 }
             );
         })    
-    }   
+    } 
 }
 
 //get addres from searchbar input

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import user from './reducer_setuser';
 import corners from './reducer_fetchcorners';
 import address from './reducer_getaddress';
 import kitchen from './reducer_setvalue';
@@ -14,7 +15,12 @@ import showOnMap from './reducer_showcorneronmap';
 //add corner
 import addCorner from '../components/addcorner/reducers';
 
+//comments
+import comments from '../components/content/corner/reducers';
+
 const rootReducer = combineReducers({
+    //user object
+    user,
     //all corners
     corners,
     //current address - user input or autolocation
@@ -38,7 +44,10 @@ const rootReducer = combineReducers({
     
     
     //add corner
-    addCorner
+    addCorner,
+    
+    //comments
+    comments
 });
 
 export default rootReducer;

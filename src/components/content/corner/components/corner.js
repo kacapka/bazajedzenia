@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getCornerById } from 'selectors/selector_corner';
-import Loader from '../../reuse/loader';
+import Loader from '../../../reuse/loader';
 import 'styles/corner_details.css';
-import pizza from '../../../images/kitchen/pizza.jpg';
-import Button from '../../reuse/button';
+import pizza from '../../../../images/kitchen/pizza.jpg';
+import Button from '../../../reuse/button';
 import CornerHours from './corner_hours';
+import CornerComments from './corner_comments';
 import { Link } from 'react-router-dom';
 
 class Corner extends Component {
@@ -18,6 +19,8 @@ class Corner extends Component {
      
     renderDetails() {
         const { hours, corner: {name, street, town, district, locationInfo, clientNumber1, clientNumber2, cornerTypes, mail, homePage, instagram, facebook }} = this.props.details;
+        
+        //const social = [mail, homePage, instagram, facebook];
 
         return (
             <Fragment>
@@ -62,29 +65,12 @@ class Corner extends Component {
                                 {cornerTypes.map((type, i) =><span key={i}>{type.foodType.name}</span>)}
                             </div>
                         </div>
-                        <div className="corner-info--social">
-                            <a href={mail} target='_blank'
-                                className={mail ? 'on' : 'off'}>
-                                <i className="ion-email social-icon" />
-                            </a>
-                            <a href={homePage} target='_blank'
-                                className={homePage ? 'on' : 'off'}>
-                                <i className="ion-earth social-icon" />
-                            </a>
-                            <a href={facebook} target='_blank'
-                                className={facebook ? 'on' : 'off'}>
-                                <i className="ion-social-facebook social-icon" />
-                            </a>
-                            <a href={instagram} target='_blank'
-                                className={instagram ? 'on' : 'off'}>
-                                <i className="ion-social-instagram social-icon" />
-                            </a>
-                        </div>
                     </div>
                     <div className='corner-info-hours'>
                         <CornerHours hours={hours} />
                     </div> 
-                </div>         
+                </div>        
+                <CornerComments id={this.props.match.params.id} />
             </Fragment>
         );
     }
@@ -108,3 +94,24 @@ function mapStateToProps(state, props) {
 }
 
 export default connect(mapStateToProps)(Corner);
+
+
+
+/*<div className="corner-info--social">
+                            <a href={mail} target='_blank'
+                                className={mail ? 'on' : 'off'}>
+                                <i className="ion-email social-icon" />
+                            </a>
+                            <a href={homePage} target='_blank'
+                                className={homePage ? 'on' : 'off'}>
+                                <i className="ion-earth social-icon" />
+                            </a>
+                            <a href={facebook} target='_blank'
+                                className={facebook ? 'on' : 'off'}>
+                                <i className="ion-social-facebook social-icon" />
+                            </a>
+                            <a href={instagram} target='_blank'
+                                className={instagram ? 'on' : 'off'}>
+                                <i className="ion-social-instagram social-icon" />
+                            </a>
+                        </div>*/

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'styles/modal_add_corner.css';
+import Modal from '../../reuse/modal';
 import ProgressBar from './add_corner_progress_bar';
 import FirstStep from './add_corner_first_step';
 import SecondStep from './add_corner_second_step';
@@ -19,7 +20,7 @@ class AddCorner extends Component {
     }
     
     onCloseClick() {
-        this.props.history.goBack();
+        this.props.history.push('/');
         this.props.setStep('close');
     }
     
@@ -41,19 +42,16 @@ class AddCorner extends Component {
         const { step, data } = this.props;
     
         return (
-            <div className="modal-wrapper">
-                <div className="modal">
-                    <i className='ion-close-round modal_close' 
-                        onClick={this.onCloseClick} /> 
-                    <ProgressBar 
-                        step={step} 
-                        data={data} 
-                    />
-                    <div className='modal_step'>
-                        {this.renderStep()}
-                    </div>
+            <Modal onClick={this.onCloseClick} 
+                className='modal-add-corner'>
+                <ProgressBar 
+                    step={step} 
+                    data={data} 
+                />
+                <div className='modal_step'>
+                    {this.renderStep()}
                 </div>
-            </div>
+            </Modal>
         );
     }
 }

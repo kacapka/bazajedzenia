@@ -1,4 +1,8 @@
 const Types = {
+    //user auth
+    SET_USER: 'set-user',
+    
+    
     FETCH_ALL_CORNERS: 'fetch-all-corners',
     FETCH_RECOMMENDED_CORNERS: 'fetch-recommended-corners',
     GET_ADDRESS: 'get-address',
@@ -14,7 +18,11 @@ const Types = {
     
     //adcorner
     SET_STEP: 'set-step',
-    UPDATE_STEP: 'update-step'
+    UPDATE_STEP: 'update-step',
+    
+    //comments
+    UPDATE_INPUT: 'update-input',
+    UPDATE_RATES: 'update-rates'
 }
 
 export default Types;
