@@ -23,9 +23,21 @@ export const rate = (state = null, action) => {
     
 }
 
-const comments = combineReducers({
+export const comments = (state = null, action) => {
+    
+    switch(action.type) {
+        case TYPES.FETCH_COMMENTS:
+            return action.payload;
+        default:
+            return state;
+    }
+    
+}
+
+const reviews = combineReducers({
     input,
-    rate
+    rate,
+    comments
 });
 
-export default comments;
+export default reviews;

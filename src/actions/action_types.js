@@ -22,7 +22,8 @@ const Types = {
     
     //comments
     UPDATE_INPUT: 'update-input',
-    UPDATE_RATES: 'update-rates'
+    UPDATE_RATES: 'update-rates',
+    FETCH_COMMENTS: 'fetch-comments'
 }
 
 export default Types;

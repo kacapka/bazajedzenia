@@ -8,6 +8,7 @@ import Button from '../../../reuse/button';
 import CornerHours from './corner_hours';
 import CornerComments from './corner_comments';
 import { Link } from 'react-router-dom';
+import { fetchComments } from '../actions';
 
 class Corner extends Component {
     
@@ -16,7 +17,17 @@ class Corner extends Component {
         
         this.renderDetails = this.renderDetails.bind(this);
     }
-     
+    
+    componentWillMount() {
+        this.props.fetchComments(this.props.match.params.id);
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.location !== this.props.location) {
+            this.props.fetchComments(nextProps.match.params.id);    
+        }
+    }
+         
     renderDetails() {
         const { hours, corner: {name, street, town, district, locationInfo, clientNumber1, clientNumber2, cornerTypes, mail, homePage, instagram, facebook }} = this.props.details;
         
@@ -26,6 +37,7 @@ class Corner extends Component {
             <Fragment>
                 <div className='corner-header'>
                     <img src={pizza} 
+                        alt='restaurnat background'
                         className='corner-header__img'/>
                     <div className='corner-header__name'>
                         {name}
@@ -78,6 +90,7 @@ class Corner extends Component {
     
     render() {
         const details = this.props.details;
+
         return(
             <div className="corner-details"> 
                 {!details ? <Loader className="loader--details"/> : this.renderDetails()} 
@@ -86,14 +99,11 @@ class Corner extends Component {
     }
 }
 
-function mapStateToProps(state, props) {
-    
-    return {
-        details: getCornerById(props.match.params.id)(state)
-    }
-}
+const mapStateToProps = (state, props) => ({
+    details: getCornerById(props.match.params.id)(state)
+})
 
-export default connect(mapStateToProps)(Corner);
+export default connect(mapStateToProps, { fetchComments })(Corner);
 
 
 

@@ -16,7 +16,7 @@ import showOnMap from './reducer_showcorneronmap';
 import addCorner from '../components/addcorner/reducers';
 
 //comments
-import comments from '../components/content/corner/reducers';
+import reviews from '../components/content/corner/reducers';
 
 const rootReducer = combineReducers({
     //user object
@@ -47,7 +47,7 @@ const rootReducer = combineReducers({
     addCorner,
     
     //comments
-    comments
+    reviews
 });
 
 export default rootReducer;

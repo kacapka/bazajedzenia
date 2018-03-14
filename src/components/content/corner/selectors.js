@@ -1,14 +1,14 @@
 import { createSelector } from 'reselect';
 
-const getComments = state => state.comments;
+const getReviews = state => state.reviews;
 const getUser = state => state.user;
 export const createComment = id => createSelector(
-    [ getComments, getUser ],
-    (comments, user) => ({
+    [ getReviews, getUser ],
+    (reviews, user) => ({
         id,
-        rate: comments.rate, 
-        content: comments.input,
-        userName: user.displayName,
+        rate: reviews.rate, 
+        content: reviews.input,
+        userName: user.displayName.split(' ')[0],
         userPhoto: user.photoURL
     })
 ); 

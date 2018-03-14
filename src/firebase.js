@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
-let database = window.database;
+let Database;
+let Firebase;
 
 export const init = () => {
     
@@ -12,10 +13,31 @@ export const init = () => {
         messagingSenderId: "249021328086"
     }
     
-    firebase.initializeApp(config);
-    database = firebase.database();
+    Firebase = firebase.initializeApp(config);
+    Database = firebase.database();
     
 }
+
+export const fetchCornersDB = (path) => {
+    return Database.ref(path).once('value');
+}
+
+export const setAuthStateChange = () => {
+    return Firebase.auth();
+}
+
+export const addCommentDB = (comment, id) => {
+    return new Promise((resolve, reject) => {
+        Database.ref(`comments/${id}`).push(comment)
+            .then(res => {resolve(res)})
+            .catch(error => {reject(error)})
+    })
+}
+
+export const getCommentsDB = id => {
+    return Database.ref(`comments/${id}`);
+} 
+
 
 
 

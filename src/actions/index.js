@@ -2,29 +2,28 @@
 import bjLocation from '../utils/bj_location';
 import TYPES from './action_types';
 import { getCornerById } from '../selectors/selector_getcornerbyid';
-//import fire from '../firebase';
-import firebase from 'firebase';
+import { fetchCornersDB, setAuthStateChange } from '../firebase.js';
 
 const google = window.google;
-const database = window.database;
 
-//set logged user
-export function setUser() {
+
+//set event on users auth status
+export const setUser = () => {
     
     return (dispatch) => {
-        firebase.auth().onAuthStateChanged(user => {
+        setAuthStateChange()
+            .onAuthStateChanged(user => {
             dispatch({
                 type: TYPES.SET_USER,
                 payload: user
             })
-        });    
-    }
-    
+        })
+    }  
 }
 
 // get all corners before app is showed
 // or get recommended corners as a default ones
-export function fetchCorners(condition) {
+export const fetchCorners = (condition) => {
     let PATH, actionType;
     
     if(condition === 'all') {
@@ -36,15 +35,13 @@ export function fetchCorners(condition) {
     } 
     
     return (dispatch) => {
-        database.ref(PATH).once('value').then(response => {
-            
-            dispatch(
-                {
-                    type: actionType,
-                    payload: response.val()
-                }
-            );
-        })    
+        fetchCornersDB(PATH)
+            .then(corners => {
+            dispatch({
+                type: actionType,
+                payload: corners.val()
+            })
+        })
     } 
 }
 
