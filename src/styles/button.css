@@ -79,6 +79,12 @@ button {
     padding: 3px 8px;
 }
 
+/*BUTTON COMMENT*/
+
+.button--comment {
+    width: 50%;
+}
+
 /*BUTTON STEP-BY-STEP FORM*/
 
 .button--step-form {

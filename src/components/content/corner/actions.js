@@ -9,7 +9,7 @@ export const updateInput = value => ({
 
 export const updateRates = value => {
     
-    if(!value) return {type: 'CANCEL'};
+    //if(!value) return {type: 'CANCEL'};
     
     return {
         type: TYPES.UPDATE_RATES,

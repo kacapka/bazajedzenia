@@ -8,7 +8,7 @@ import Button from '../../../reuse/button';
 import CornerHours from './corner_hours';
 import CornerComments from './corner_comments';
 import { Link } from 'react-router-dom';
-import { fetchComments } from '../actions';
+import { fetchComments, updateInput, updateRates } from '../actions';
 
 class Corner extends Component {
     
@@ -24,6 +24,8 @@ class Corner extends Component {
     
     componentWillReceiveProps(nextProps) {
         if(nextProps.location !== this.props.location) {
+            this.props.updateInput(' ');
+            this.props.updateRates(0);
             this.props.fetchComments(nextProps.match.params.id);    
         }
     }
@@ -103,7 +105,7 @@ const mapStateToProps = (state, props) => ({
     details: getCornerById(props.match.params.id)(state)
 })
 
-export default connect(mapStateToProps, { fetchComments })(Corner);
+export default connect(mapStateToProps, { fetchComments, updateInput, updateRates })(Corner);
 
 
 
