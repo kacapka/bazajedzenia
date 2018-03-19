@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { CSSTransitionGroup } from 'react-transition-group';
-
-import 'rc-time-picker/assets/index.css';
-import 'styles/details_filter.css';
 import moment from 'moment';
+import TimePicker from 'rc-time-picker';
 
-import FilterBox from '../../../reuse/filter_box';
+import FilterBox from 'reuse/filter_box';
 import DetailsInput from './types_details_input';
 import DetailsDays from './types_details_days';
 
-import TimePicker from 'rc-time-picker';
-import { connect } from 'react-redux';
-import { checkboxSelect, getTime } from 'actions/index';
+import { checkboxSelect, getTime } from 'actions/filterActions';
+import { getCheckbox } from 'selectors/filters/filterSelector';
 
+import 'rc-time-picker/assets/index.css';
+import 'styles/details_filter.css';
 
 class DetailsFilter extends Component {
     
@@ -74,11 +74,9 @@ class DetailsFilter extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        checkbox: state.checkbox
-    }
-}
+const mapStateToProps = (state) => ({
+    checkbox: getCheckbox(state)
+})
 
 export default connect(
     mapStateToProps, 

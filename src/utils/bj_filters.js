@@ -16,6 +16,7 @@ const bjFilters = {
     },
     filterByTime: (corners, seconds, dayId) => {
         return corners.filter(corner => {
+            if(!corner.dayRanges) return;
             return corner.dayRanges.find(day => {
                 
                 if(day.dayOfWeek === dayId || dayId === null) {

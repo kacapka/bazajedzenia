@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 let Database;
 let Firebase;
+let Storage;
 
 export const init = () => {
     
@@ -15,8 +16,18 @@ export const init = () => {
     
     Firebase = firebase.initializeApp(config);
     Database = firebase.database();
+    Storage = firebase.storage();
     
 }
+
+export const uiConfig = () => ({
+    signInFlow: 'popup',
+    signInSuccessUrl: '/',
+    signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID
+  ]
+});
 
 export const fetchCornersDB = (path) => {
     return Database.ref(path).once('value');
@@ -24,6 +35,10 @@ export const fetchCornersDB = (path) => {
 
 export const setAuthStateChange = () => {
     return Firebase.auth();
+}
+
+export const logOut = () => {
+    Firebase.auth().signOut();
 }
 
 export const addCommentDB = (comment, id) => {
@@ -34,9 +49,14 @@ export const addCommentDB = (comment, id) => {
     })
 }
 
-export const getCommentsDB = id => {
+export const fetchCommentsDB = id => {
     return Database.ref(`comments/${id}`);
-} 
+}
+
+export const fetchPhotoSB = (path) => {
+    return Storage.ref('images/' + path + '.jpeg').getDownloadURL();
+}
+
 
 
 

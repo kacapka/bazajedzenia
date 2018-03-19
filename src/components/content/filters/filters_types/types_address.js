@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import 'styles/address_input.css';
-
-import FilterBox from '../../../reuse/filter_box';
+import FilterBox from 'reuse/filter_box';
 import AddressInput from './types_address_input';
-import { getMyLocation } from 'actions/index';
+
+import { getMyLocation } from 'actions/filterActions';
+
+import 'styles/address_input.css';
 
 class AddressSearchbar extends Component {
     
-    render() {
-        const { getMyLocation } = this.props;
+    constructor(props) {
+        super(props);
         
+        this.onLocationClick = this.onLocationClick.bind(this);
+    }
+    
+    onLocationClick() {
+        this.props.getMyLocation();
+    }
+    
+    render() {
         return (
             <FilterBox title="Podaj adres" line>
                 <AddressInput />
                 <div className="address-locate" 
-                    onClick={getMyLocation}>
-                    
+                    onClick={this.onLocationClick}>
                     <i className="ion-android-locate address-locate__icon"></i>
-                    
                     <span className="address-locate__text">
                         szukaj dla obecnej lokalizacji
                     </span>

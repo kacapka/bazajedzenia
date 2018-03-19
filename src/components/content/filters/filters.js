@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import 'styles/filters.css';
-import 'styles/select_input.css';
 
 import FiltersTypes from './filters_types/types';
 import FiltersCorners from './filters_corners/corners';
+
+import 'styles/filters.css';
+import 'styles/select_input.css';
 
 class Filters extends Component {
     

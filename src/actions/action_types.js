@@ -2,7 +2,7 @@ const Types = {
     //user auth
     SET_USER: 'set-user',
     
-    
+    FETCH_PHOTO: 'fetch-photo',
     FETCH_ALL_CORNERS: 'fetch-all-corners',
     FETCH_RECOMMENDED_CORNERS: 'fetch-recommended-corners',
     GET_ADDRESS: 'get-address',
@@ -11,6 +11,7 @@ const Types = {
     SELECT_DAY: 'select-day',
     GET_TIME: 'get-time',
     SELECT_CORNER: 'select-corner',
+    SELECT_CORNER_NULL: 'select-corner-null',
     SET_USER_CORNERS: 'set-user-corners',
     SET_RESULTS_TITLE: 'set-results-title',
     SHOW_CORNER_ON_MAP: 'show-corner-on-map',
@@ -23,7 +24,9 @@ const Types = {
     //comments
     UPDATE_INPUT: 'update-input',
     UPDATE_RATES: 'update-rates',
-    FETCH_COMMENTS: 'fetch-comments'
+    FETCH_COMMENTS: 'fetch-comments',
+    VALIDATE_COMMENT: 'validate-comment',
+    VALIDATE_RESET: 'validate-reset'
 }
 
 export default Types;

@@ -7,7 +7,7 @@ class FiltersCorners extends Component {
     render() {
                 
         return (
-            <div className="filters-column filters-column--corners">
+            <div className='filters-column filters-column--corners'>
                 <CornersInput />
                 <CornersList />
             </div>

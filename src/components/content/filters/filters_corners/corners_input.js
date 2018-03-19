@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import VirtualizedSelect from 'react-virtualized-select';
-import { getOptions } from '../../../../selectors/selector_options';
-import FilterBox from '../../../reuse/filter_box';
+
+import FilterBox from 'reuse/filter_box';
 import CornerItem from './corners_input_item';
-import { selectCorner } from 'actions/index';
+
+import { getOptions } from 'selectors/filters/optionsSelector';
+import { getSelectedCorner } from 'selectors/filters/filterSelector';
+import { selectCorner } from 'actions/filterActions';
 
 class CornersInput extends Component {
     
@@ -16,7 +19,8 @@ class CornersInput extends Component {
     }
         
     onInputChange(value) {
-        this.props.selectCorner(value.id);
+        let id = value ? value.id : null;
+        this.props.selectCorner(id);
     }
     
     renderValue(params) {
@@ -29,7 +33,8 @@ class CornersInput extends Component {
     }
         
     render() {    
-        const selectedCorner = this.props.selectedCorner;
+        const { selectedCorner, options } = this.props;
+        
         const selectOpt = {
             clearable: false,
             arrowRenderer: null,
@@ -40,17 +45,11 @@ class CornersInput extends Component {
             className: "select-corners",
             matchPos: "start"
         }
-        
-        const transitionOpt = {
-            transitionName: 'slide-down',
-            transitionEnterTimeout: 300,
-            transitionLeaveTimeout: 300    
-        }
          
         return(
             <FilterBox title="Szukaj lokalu" line>
                 <VirtualizedSelect
-                    options={this.props.options}
+                    options={options}
                     value={selectedCorner}
                     valueComponent={this.renderValue}
                     onChange={this.onInputChange}
@@ -62,11 +61,9 @@ class CornersInput extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        selectedCorner: state.selectedCorner,
-        options: getOptions(state)
-    }
-}
+const mapStateToProps = (state) => ({
+    selectedCorner: getSelectedCorner(state),
+    options: getOptions(state)
+})
 
 export default connect(mapStateToProps, { selectCorner } )(CornersInput);

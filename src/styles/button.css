@@ -47,12 +47,14 @@ button {
 
 .button--back {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: transparent;
+    top: 10px;
+    left: 15px;
+    background-color: #fff;;
     font-size: .8rem;
     border: 2px solid #fff;
     border-radius: 6px;
+    z-index: 999;
+    color: #000;
 }
 
 .button--back .button__name {
@@ -65,7 +67,8 @@ button {
 
 /*BUTTON ADD CORNER*/
 
-.button--add {
+.button--add,
+.button--login {
     font-size: .8rem;
 }
 
@@ -76,6 +79,18 @@ button {
 
 .button--add .button__icon {
     background-color: var(--blue-dark);
+    padding: 3px 8px;
+}
+
+/*BUTTON COMMENT*/
+
+.button--login .button__name {
+    background-color: var(--green-light);
+    padding: 3px 8px;
+}
+
+.button--login .button__icon {
+    background-color: var(--green-light-plus);
     padding: 3px 8px;
 }
 

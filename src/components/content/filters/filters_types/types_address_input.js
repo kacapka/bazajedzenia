@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import settings from '../../../../utils/map_settings';
-import { getAddress } from 'actions/index';
+
+import settings from 'utils/map_settings';
+
+import { getAddress } from 'actions/filterActions';
 
 const google = window.google;
 

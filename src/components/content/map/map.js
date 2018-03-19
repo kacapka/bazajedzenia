@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import settings from '../../../utils/map_settings';
-import { getCornersId } from 'selectors/selector_map';
+
 import InfoWindow from './map_info_window';
 import MultipleInfoWindow from './map_multiple_info_window';
-import { selectCorner, showCornerOnMap } from 'actions/index';
+import { MarkerClusterer } from 'utils/markerclusterer';
+import settings from 'utils/map_settings';
+
+import { getCornersId, getAddress, getMarker } from 'selectors/map/mapSelector';
+import { getCorners } from 'selectors/data/dataSelector';
+import { selectCorner, showCornerOnMap } from 'actions/filterActions';
 
 import 'styles/info_window.css';
-
-import { MarkerClusterer } from '../../../utils/markerclusterer';
 
 const google = window.google;
 
@@ -147,10 +149,10 @@ class Map extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    address: state.address,
-    allCorners: state.corners,
+    address: getAddress(state),
+    allCorners: getCorners(state),
     cornersId: getCornersId(state),
-    markerToShow: state.showOnMap
+    markerToShow: getMarker(state)
 })
 
 export default connect(mapStateToProps, { selectCorner, showCornerOnMap })(Map);

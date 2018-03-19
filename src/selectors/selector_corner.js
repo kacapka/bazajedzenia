@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import bjFilters from '../utils/bj_filters';
 
-const getCorners = state => state.corners;
+const getCorners = state => state.data.corners;
 export const getCornerById = id => createSelector(getCorners, corners => {
     let corner = corners.filter(corner => corner.id === parseInt(id,10)).pop();
     if(!corner) return;

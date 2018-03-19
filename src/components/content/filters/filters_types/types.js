@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import AddressSearchbar from './types_address';
 import KitchenInput from './types_kitchen';
 import DetailsFilter from './types_details';
-import Button from '../../../reuse/button';
+import Button from 'reuse/button';
 
-import { setUserCorners } from 'actions/index';
-import { setResultsTitle } from 'actions/index';
-import { getUserCorners } from '../../../../selectors/index';
+import { setUserCorners, setResultsTitle } from 'actions/filterActions';
+import { getUserCorners } from 'selectors/filters/filterResultSelector';
 
 
 class FiltersTypes extends Component {
@@ -43,11 +43,9 @@ class FiltersTypes extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        userCorners: getUserCorners(state)
-    }
-}
+const mapStateToProps = (state) => ({
+    userCorners: getUserCorners(state)
+})
 
 export default connect(mapStateToProps,
     { setUserCorners, setResultsTitle }

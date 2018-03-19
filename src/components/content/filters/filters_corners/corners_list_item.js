@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { showCornerOnMap } from 'actions/filterActions';
+
 import 'styles/list_item.css';
-import { showCornerOnMap } from 'actions/index';
 
 class ListItem extends Component {
     

@@ -114,6 +114,7 @@
 }
 
 .comments__star--big {
+    font-weight: lighter;
     font-size: 2rem;
     color: var(--green-dark);
 }

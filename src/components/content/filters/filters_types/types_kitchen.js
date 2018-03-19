@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
-import FilterBox from '../../../reuse/filter_box';
-import { getKitchenTypes } from '../../../../selectors/selector_kitchentypes';
 import { connect } from 'react-redux';
-import { setValue } from 'actions/index';
+import Select from 'react-select';
+
+import FilterBox from 'reuse/filter_box';
+
+import { setValue } from 'actions/filterActions';
+import { getKitchenTypes } from 'selectors/data/kitchenTypesSelector';
+import { getKitchen } from 'selectors/filters/filterSelector';
 
 class KitchenInput extends Component {
     
@@ -63,12 +66,10 @@ class KitchenInput extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        kitchenTypes: getKitchenTypes(state),
-        kitchen: state.kitchen
-    }
-}
+const mapStateToProps = (state) => ({
+    kitchenTypes: getKitchenTypes(state),
+    kitchen: getKitchen(state)
+})
 
 export default connect(mapStateToProps, { setValue })(KitchenInput);
 

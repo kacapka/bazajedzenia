@@ -90,7 +90,10 @@ module.exports = {
       'react-native': 'react-native-web',
       'styles': path.resolve(__dirname, '../src/styles'),
       'actions': path.resolve(__dirname, '../src/actions'),
-      'selectors': path.resolve(__dirname, '../src/selectors')
+      'selectors': path.resolve(__dirname, '../src/selectors'),
+      'reuse': path.resolve(__dirname, '../src/components/reuse'),
+      'images': path.resolve(__dirname, '../src/images'),
+      'utils': path.resolve(__dirname, '../src/utils')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

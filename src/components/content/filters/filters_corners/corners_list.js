@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FilterBox from '../../../reuse/filter_box';
+
+import FilterBox from 'reuse/filter_box';
 import ListItem from './corners_list_item';
-import { fetchCorners } from 'actions/index';
-import Loader from '../../../reuse/loader';
+import Loader from 'reuse/loader';
+
+import { fetchCorners } from 'actions/dataActions';
+import { getResultCorners } from 'selectors/data/dataSelector';
+import { getResultTitle} from 'selectors/filters/filterSelector';
  
 class CornersList extends Component {
     
@@ -45,12 +49,10 @@ class CornersList extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        resultsTitle: state.resultsTitle,
-        toRender: state.userCorners
-    }
-}
+const mapStateToProps = (state) => ({
+    resultsTitle: getResultTitle(state),
+    toRender: getResultCorners(state)
+})
 
 export default connect(mapStateToProps, { fetchCorners })(CornersList);
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectDay } from 'actions/index';
+
+import { selectDay } from 'actions/filterActions';
+import { getActiveDay } from 'selectors/filters/filterSelector';
 
 //set days with id equal to moment ids
 const days = [
@@ -36,10 +38,8 @@ class DetailsDays extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        activeDay: state.activeDay
-    }
-}
+const mapStateToProps = (state) => ({
+    activeDay: getActiveDay(state)
+})
 
 export default connect(mapStateToProps, { selectDay })(DetailsDays);

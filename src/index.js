@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxPromise from 'redux-promise';
-import thunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 
 import 'normalize.css';
 import 'styles/ionicons.css';
-import './index.css'
+import './styles/index.css'
+
 import App from './components/App';
-import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-export const store = createStore(reducers, applyMiddleware(thunk, ReduxPromise));
+import configStore from './store/configStore';
+const store = configStore();
+
+const rootEl = document.getElementById('bjApp');
 
 ReactDOM.render(
     <Provider store={store} >
@@ -21,7 +21,7 @@ ReactDOM.render(
             <App />
         </BrowserRouter>
     </Provider>
-    , document.getElementById('bjApp')
+    , rootEl
 );
 
 registerServiceWorker();
