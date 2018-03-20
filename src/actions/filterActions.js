@@ -1,6 +1,6 @@
 import TYPES from './action_types';
-import bjLocation from 'utils/bj_location';
-import { getCornerById } from '../selectors/selector_getcornerbyid';
+import { isAddressInWarsaw, getUserLocation } from 'utils/bj_location';
+import { getCornerById } from 'selectors/data/cornerSelector';
 
 const google = window.google;
 
@@ -9,7 +9,7 @@ const google = window.google;
 //if out of Warsaw ask for continue
 export const getAddress = (place) => {   
    
-    const isInWarsaw = bjLocation.isAddressInWarsaw(place);
+    const isInWarsaw = isAddressInWarsaw(place);
     if (!isInWarsaw) return {type: 'ACTION_CANCEL'};
 
     return {
@@ -21,7 +21,7 @@ export const getAddress = (place) => {
 
 //get user location based on async action
 export const getMyLocation = () => (dispatch) => {
-    bjLocation.getUserLocation(data => {
+    getUserLocation(data => {
         const latLng = new google.maps.LatLng(
             data.coords.latitude,
             data.coords.longitude

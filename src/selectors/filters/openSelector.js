@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import moment from 'moment';
-import bjTime from 'utils/bj_time';
-import bjFilters from 'utils/bj_filters';
+import { getSec, getDayId }  from 'utils/bj_time';
+import { filterByTime } from 'utils/bj_filters';
 
 //OPEN NOW FILTER
 const getCorners = state => state.data.corners;
@@ -14,10 +14,10 @@ export const filterByOpenNow = createSelector(
         if(!openNow) return corners;
         
         //get current time and day
-        const nowInSec = bjTime.getSec(moment());
-        const nowDayId = bjTime.getDayId(moment());
+        const nowInSec = getSec(moment());
+        const nowDayId = getDayId(moment());
         
-        const userCorners = bjFilters.filterByTime(corners, nowInSec, nowDayId);
+        const userCorners = filterByTime(corners, nowInSec, nowDayId);
     
         return userCorners;
     

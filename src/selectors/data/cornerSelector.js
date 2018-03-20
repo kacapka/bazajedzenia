@@ -1,8 +1,10 @@
 import { createSelector } from 'reselect';
-import bjFilters from '../utils/bj_filters';
+import { getOpeningHours } from 'utils/bj_filters';
 
 const getCorners = state => state.data.corners;
-export const getCornerById = id => createSelector(getCorners, corners => {
+export const getCornerById = id => createSelector(getCorners, corners => corners.filter(corner => corner.id == id).pop());
+
+export const getDetailsById = id => createSelector(getCorners, corners => {
     let corner = corners.filter(corner => corner.id === parseInt(id,10)).pop();
     if(!corner) return;
     
@@ -13,8 +15,8 @@ export const getCornerById = id => createSelector(getCorners, corners => {
         day.type === 1 ? open.push(day) : delivery.push(day);
     });
     
-    let openingHours = bjFilters.getOpeningHours(open);
-    let deliveryHours = bjFilters.getOpeningHours(delivery);
+    let openingHours = getOpeningHours(open);
+    let deliveryHours = getOpeningHours(delivery);
     let hours = {
         pon: [1, openingHours.pon, deliveryHours.pon],
         wt: [2, openingHours.wt, deliveryHours.wt],
@@ -30,4 +32,3 @@ export const getCornerById = id => createSelector(getCorners, corners => {
         hours
     }
 });
-

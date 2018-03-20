@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
-import bjFilters from 'utils/bj_filters';
+import { filterKitchenTypes } from 'utils/bj_filters';
 
 const getCorners = state => state.data.corners;
 export const getKitchenTypes = createSelector(
     getCorners, 
     corners => {
-        const kitchenTypes = bjFilters.getKitchenTypes(corners);
+        const kitchenTypes = filterKitchenTypes(corners);
         
         return kitchenTypes.map(type => {
             return {

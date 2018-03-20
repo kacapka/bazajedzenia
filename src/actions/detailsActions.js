@@ -1,6 +1,6 @@
 import TYPES from 'actions/action_types';
-import { createComment } from '../selectors/details/detailsSelector';
-import { addCommentDB, fetchCommentsDB, fetchPhotoSB } from '../firebase';
+import { createComment } from 'selectors/details/detailsSelector';
+import { addCommentDB, fetchCommentsDB } from '../firebase';
 
 export const updateInput = value => ({
     type: TYPES.UPDATE_INPUT,

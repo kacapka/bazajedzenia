@@ -11,7 +11,7 @@ import Button from 'reuse/button';
 import { fetchComments, resetCommentForm } from 'actions/detailsActions';
 import { fetchPhoto } from 'actions/dataActions';
 import { getCornerPhotos } from 'selectors/data/dataSelector';
-import { getCornerById } from 'selectors/selector_corner';
+import { getDetailsById } from 'selectors/data/cornerSelector';
 
 import 'styles/corner_details.css';
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -64,7 +64,8 @@ class Corner extends Component {
                             <a href={social.name} 
                                 key={social.name}
                                 target='_blank'
-                                className={social.name ? 'on' : 'off'}>
+                                className={social.name ? 'on' : 'off'}
+                            >
                                 <i className={`${social.icon} social-icon`} />
                             </a>
                         ))}
@@ -114,7 +115,7 @@ class Corner extends Component {
                                 <i className="ion-android-restaurant" />
                             </div>
                             <div className="corner-info__values">
-                                {cornerTypes.map((type, i) =><span key={i}>{type.foodType.name}</span>)}
+                                {cornerTypes.map((type, i) => <span key={i}>{type.foodType.name}</span>) }
                             </div>
                         </div> 
                     </div>
@@ -140,7 +141,7 @@ class Corner extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    details: getCornerById(props.match.params.id)(state),
+    details: getDetailsById(props.match.params.id)(state),
     photos: getCornerPhotos(props.match.params.id)(state)
 })
 

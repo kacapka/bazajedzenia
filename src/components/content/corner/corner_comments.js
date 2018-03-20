@@ -29,7 +29,7 @@ class CornerComments extends Component {
                 </div>
                 <div className='comments comments-add'>
                     <div className='comments__title'>
-                        Podziel się swoją opinią
+                        Dodaj recenjzę
                     </div>
                     {user ? <CommentsAdd id={id} user={user}/>
                     :

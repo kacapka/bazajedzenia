@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import bjFilters from 'utils/bj_filters';
+import { filterByTime } from 'utils/bj_filters';
 
 //DATE FILTER
 const getCorners = state => state.data.corners;
@@ -15,7 +15,7 @@ export const filterByDate = createSelector(
         
         const dayId = (day === 0) ? 7 : day;
         
-        const userCorners = bjFilters.filterByTime(corners, time, dayId);
+        const userCorners = filterByTime(corners, time, dayId);
         
         return userCorners;
     

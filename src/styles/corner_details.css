@@ -23,10 +23,15 @@
 .image-gallery-swipe,
 .image-gallery-slides,
 .image-gallery-slide,
-.image-gallery-image,
-.image-gallery-image img {
+.image-gallery-image {
     height: 100%;
     width: 100%;
+}
+
+.image-gallery-image img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
 }
 
 .image-gallery-fullscreen-button {
@@ -142,6 +147,10 @@
 .corner-info--social .on:hover {
     background-color: var(--green-light); 
     color: #000;
+}
+
+.corner-info--social .off:hover {
+    background-color: var(--green-light); 
 }
 
 .corner-info-hours {

@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { combineReducers } from 'redux';
-import TYPES from '../actions/action_types';
-import bjTime from '../utils/bj_time';
+import TYPES from 'actions/action_types';
+import { getSec } from 'utils/bj_time';
 
 const initialCheckbox = {
     delivery: false,
@@ -19,13 +19,13 @@ const checkbox = (state = initialCheckbox, action) => {
     }
 }
 
-const initialTime = bjTime.getSec(moment());
+const initialTime = getSec(moment());
 
 const time = (state = initialTime, action) => {
     
     switch(action.type) {
         case TYPES.GET_TIME: 
-            return bjTime.getSec(action.payload);
+            return getSec(action.payload);
         default: 
             return state;
     }
