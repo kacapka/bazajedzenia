@@ -7,6 +7,7 @@ import DetailsFilter from './types_details';
 import Button from 'reuse/button';
 
 import { setUserCorners, setResultsTitle } from 'actions/filterActions';
+import { setInfiniteLoadOn } from 'actions/dataActions';
 import { getUserCorners } from 'selectors/filters/filterResultSelector';
 
 
@@ -19,6 +20,7 @@ class FiltersTypes extends Component {
     }
     
     onButtonClick() {
+        this.props.setInfiniteLoadOn();
         this.props.setUserCorners(this.props.userCorners);
         this.props.setResultsTitle('Wyniki wyszukiwania');
     }
@@ -48,5 +50,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps,
-    { setUserCorners, setResultsTitle }
+    { setUserCorners, setResultsTitle, setInfiniteLoadOn }
 )(FiltersTypes);

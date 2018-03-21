@@ -44,12 +44,19 @@
 
 .filters-column--corners {
     padding: 0;
-    overflow-y: scroll;
-    padding: 0 15px;
+    overflow-y: hidden;
 }
 
 .filter-box {
    padding: 20px 0;
+}
+
+.filter-box--padding {
+   padding: 20px 15px; 
+}
+
+.filter-box--title-padding .filter-box__title {
+    padding: 0 15px;
 }
 
 .filter-box--line::after {

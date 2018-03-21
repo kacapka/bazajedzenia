@@ -74,4 +74,34 @@ export const fetchPhoto = (id) => (dispatch, getState) => {
         dispatch(savePhotos(num, id));    
     })
 }
+
+export const getMoreItems = () => (dispatch, getState) => {
+    
+    const toRender = getState().data.resultCorners;
+    const renderLength = toRender.length;
+    const { size } = getState().data.load;      
+    let newSize, isMore;
+    
+    if(renderLength > size) {
+        newSize = size + 20;
+        isMore = true;
+    } else {
+        newSize = 20;
+        isMore = false;
+    } 
+        
+    dispatch ({
+        type: TYPES.LOAD_CORNERS,
+        payload: {
+            isMore,
+            size: newSize
+        }
+    })
+    
+}
+
+export const setInfiniteLoadOn = () => ({
+    type: TYPES.SET_LOAD_CORNERS_ON,
+    payload: {isMore: true}
+})
  

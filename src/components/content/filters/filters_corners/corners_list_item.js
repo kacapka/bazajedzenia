@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { showCornerOnMap } from 'actions/filterActions';
 
+import { getSelectedCorner } from 'selectors/filters/filterSelector';
+
 import 'styles/list_item.css';
 
 class ListItem extends Component {
@@ -11,9 +13,19 @@ class ListItem extends Component {
     constructor(props) {
         super(props);
         
+        this.listDiv = document.querySelector('.corners-list');
+        this.parentDivHeight = document.querySelector('.filters-column--corners').offsetHeight;
         this.onIconClick = this.onIconClick.bind(this);
     }
     
+    componentDidMount() {
+        this.setDivHeight();
+    }
+        
+    componentDidUpdate() {
+        this.setDivHeight();
+    }
+        
     onIconClick(e) {
         const id = this.props.id;
         e.preventDefault();
@@ -21,19 +33,18 @@ class ListItem extends Component {
         this.props.showCornerOnMap(id);
     }
     
-    componentDidUpdate() {
-        this.efectDiv.addEventListener('transitionend', () => this.efectDiv.classList.remove('list-item--higlight')); 
-    }
-    
-    componentWillUpdate() {
-        this.efectDiv.classList.add('list-item--higlight');
+    setDivHeight() {
+        const { parentDivHeight, listDiv } = this;
+        const topDiv = document.querySelector('.filter-box--padding');
+        const newPx =  parentDivHeight - topDiv.offsetHeight - 65;
+        listDiv.style.height = newPx + 'px';       
     }
       
     render() {
         const { name, street, id } = this.props;
         
         return(    
-            <div ref={ref => this.efectDiv = ref} className="list-item">
+            <div className="list-item">
                 {<div className="list-item__name">
                     {name}
                 </div>}
@@ -55,4 +66,8 @@ class ListItem extends Component {
     }
 }
 
-export default connect(null, { showCornerOnMap })(ListItem);
+const mapStateToProps = state => ({
+    selectedCorner: getSelectedCorner(state)
+})
+
+export default connect(mapStateToProps, { showCornerOnMap })(ListItem);

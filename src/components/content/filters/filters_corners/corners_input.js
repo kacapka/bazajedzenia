@@ -9,6 +9,17 @@ import { getOptions } from 'selectors/filters/optionsSelector';
 import { getSelectedCorner } from 'selectors/filters/filterSelector';
 import { selectCorner } from 'actions/filterActions';
 
+const selectOpt = {
+    clearable: false,
+    arrowRenderer: null,
+    placeholder: 'np. Amrit Kebab',
+    loadingPlaceholder: 'szukam...',
+    searchPromptText: 'wpisz nazwę lokalu',
+    noResultsText: "brak wyników",   
+    className: "select-corners",
+    matchPos: "start"
+}
+
 class CornersInput extends Component {
     
     constructor(props) {
@@ -34,20 +45,12 @@ class CornersInput extends Component {
         
     render() {    
         const { selectedCorner, options } = this.props;
-        
-        const selectOpt = {
-            clearable: false,
-            arrowRenderer: null,
-            placeholder: 'np. Amrit Kebab',
-            loadingPlaceholder: 'szukam...',
-            searchPromptText: 'wpisz nazwę lokalu',
-            noResultsText: "brak wyników",   
-            className: "select-corners",
-            matchPos: "start"
-        }
          
         return(
-            <FilterBox title="Szukaj lokalu" line>
+            <FilterBox title="Szukaj lokalu" 
+                className='filter-box--padding'
+                line
+            >
                 <VirtualizedSelect
                     options={options}
                     value={selectedCorner}
@@ -55,13 +58,13 @@ class CornersInput extends Component {
                     onChange={this.onInputChange}
                     {...selectOpt}
                 />
-                    {selectedCorner && <CornerItem corner={selectedCorner} />}
+                    {selectedCorner && <CornerItem corner={selectedCorner} /> }
             </FilterBox>
         );
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     selectedCorner: getSelectedCorner(state),
     options: getOptions(state)
 })

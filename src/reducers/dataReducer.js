@@ -64,12 +64,34 @@ const images = (state = initialImages, action) => {
     
 }
 
+const initialLoad = {
+    isMore: true,
+    size: 20
+}
+
+const load = (state = initialLoad, action) => {
+    
+    switch(action.type) {
+        case TYPES.LOAD_CORNERS:
+            return action.payload;
+        case TYPES.SET_LOAD_CORNERS_ON:
+            return {
+                ...state,
+                ...action.payload
+            }
+        default:
+            return state;
+    }
+    
+}
+
 
 const data = combineReducers({
     user,
     corners,
     resultCorners,
-    images
+    images,
+    load
 });
 
 

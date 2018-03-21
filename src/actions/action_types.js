@@ -17,6 +17,9 @@ const Types = {
     SHOW_CORNER_ON_MAP: 'show-corner-on-map',
     UPDATE_INFO_WINDOW: 'update-info-window',
     
+    LOAD_CORNERS: 'load-corners',
+    SET_LOAD_CORNERS_ON: 'load-corners-on',
+    
     //adcorner
     SET_STEP: 'set-step',
     UPDATE_STEP: 'update-step',

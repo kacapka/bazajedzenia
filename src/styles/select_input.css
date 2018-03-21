@@ -131,6 +131,11 @@
     position: relative;
     z-index: 11;
     color: #000;
+    
+    position: absolute;
+    top: 35px;
+    left: 0;
+    display: block;
 }
 
 .Select-menu-outer > div {
@@ -146,6 +151,10 @@
 .select-corners .Select-menu-outer {
     padding-bottom: 2px;
     max-height: 200px;
+}
+
+.Select {
+    position: relative;
 }
 
 

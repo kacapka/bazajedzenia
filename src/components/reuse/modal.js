@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import 'styles/modal.css';
 
 class Modal extends Component {
@@ -18,4 +17,4 @@ class Modal extends Component {
     }
 }
 
-export default connect(null)(Modal);
+export default Modal;
