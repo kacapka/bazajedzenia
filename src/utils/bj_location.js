@@ -14,6 +14,7 @@ export const isAddressInWarsaw = (place) => {
     
 export const getUserLocation = (callback) => {
     if(navigator.geolocation) {
+        alert('jest navigator wykryty');
         navigator.geolocation.getCurrentPosition(callback);
     } else {
         alert('Twoja przeglądarka nie obsługuję wykrywania lokalizacji');

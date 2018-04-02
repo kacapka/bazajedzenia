@@ -22,9 +22,10 @@
     font-size: .65rem;
     color: var(--font);
     cursor: pointer;
+    position: relative;
 }
 
-.select__value-icon:hover {
+.hover .select__value-icon:hover {
     color: var(--red);
 }
 
@@ -129,13 +130,14 @@
     border-radius: 4px;
     margin-top: 3px;
     position: relative;
-    z-index: 11;
     color: #000;
     
+/*
     position: absolute;
     top: 35px;
     left: 0;
     display: block;
+*/
 }
 
 .Select-menu-outer > div {

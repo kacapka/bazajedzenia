@@ -16,13 +16,6 @@ import { getDetailsById } from 'selectors/data/cornerSelector';
 import 'styles/corner_details.css';
 import "react-image-gallery/styles/css/image-gallery.css";
 
-const galleryOpt = {
-    additionalClass: 'corner-header__images',
-    thumbnailPosition: 'right',
-    showPlayButton: false,
-    showNav: false
-}
-
 class Corner extends Component {
     
     constructor(props) {
@@ -48,7 +41,9 @@ class Corner extends Component {
          
     renderDetails() {
         const { hours, corner: {name, street, town, district, locationInfo, clientNumber1, clientNumber2, cornerTypes, mail, homePage, instagram, facebook }} = this.props.details;
-        const photos = this.props.photos;
+        const { photos, isMobile } = this.props;
+        
+        const classNameSocialIcon = isMobile ? 'header-social--mobile' : 'header-social--pc';
         
         const social = [
             {name: homePage, icon: 'ion-earth'},
@@ -56,10 +51,18 @@ class Corner extends Component {
             {name: instagram, icon: 'ion-social-instagram'}
         ]
         
+        const galleryOpt = {
+            additionalClass: 'corner-header__images',
+            thumbnailPosition: isMobile ? 'bottom' : 'right',
+            showPlayButton: false,
+            showNav: false,
+            showFullscreenButton: isMobile ? false : true
+        }
+        
         return (
             <Fragment>
                 <div className='corner-header'>
-                    <div className="corner-info--social">
+                    <div className={'header-social ' + classNameSocialIcon} >
                         {social.map(social => (
                             <a href={social.name} 
                                 key={social.name}
@@ -72,7 +75,7 @@ class Corner extends Component {
                     </div>
                     <Link to="/">
                         <Button className="button--back"
-                            name="powrot do mapy"
+                            name={!isMobile && 'powrot do mapy'}
                             icon="ion-arrow-left-c" 
                         />
                     </Link>
@@ -130,10 +133,11 @@ class Corner extends Component {
     
     
     render() {
-        const details = this.props.details;
+        const { details, isMobile } = this.props;
+        const classCornerDetails = isMobile ? 'corner-details-mobile' : 'corner-details';
 
         return(
-            <div className="corner-details"> 
+            <div className={classCornerDetails} > 
                 {!details ? <Loader className="loader--details"/> : this.renderDetails()} 
             </div>
         );    
@@ -142,7 +146,8 @@ class Corner extends Component {
 
 const mapStateToProps = (state, props) => ({
     details: getDetailsById(props.match.params.id)(state),
-    photos: getCornerPhotos(props.match.params.id)(state)
+    photos: getCornerPhotos(props.match.params.id)(state),
+    isMobile: state.isMobile
 })
 
 export default connect(mapStateToProps, { fetchComments, resetCommentForm, fetchPhoto })(Corner);

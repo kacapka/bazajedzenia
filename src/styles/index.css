@@ -23,8 +23,12 @@ body, html {
     padding: 0;
     font-family: 'Hind Madurai', sans-serif;
     color: var(--font);
-    overflow-y: hidden;
     font-weight: 300;
+    font-size: 16px;
+}
+
+html {
+    overflow-y: hidden;
 }
 
 a {
@@ -58,7 +62,8 @@ a {
 }
 
 input,
-textarea {
+textarea,
+select {
     font-family: 'Hind Madurai', sans-serif;
     color: var(--font);
     font-size: .8rem;
@@ -69,5 +74,34 @@ textarea {
     appearance: none;
     outline: none;
     border: none;
+}
+
+
+/*MEDAI QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+        
+
+    *::-webkit-scrollbar-track {display: none;}
+
+    *::-webkit-scrollbar {display: none;}
+
+    *::-webkit-scrollbar-thumb {display: none;}
+
+    html {
+        overflow-y: auto;
+    } 
+}
+
+@media only screen and (max-width: 480px) {
+    
 }
 

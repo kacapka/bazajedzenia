@@ -9,16 +9,15 @@ export const getCornerPhotos = id => createSelector(getPhotos, photos => photos.
 
 const getBool = state => state.data.load.isMore;
 const getSize = state => state.data.load.size;
+
 export const getCornersToLoad = createSelector(
     [getResultCorners, getBool, getSize],
     (corners, isMore, size) => {
         let newItems
         
         if(isMore){
-            //console.log(isMore);
             newItems = corners.slice(0, size);
         } else {
-            //console.log(isMore);
             newItems = corners;
         }
         

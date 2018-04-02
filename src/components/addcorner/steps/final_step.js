@@ -34,7 +34,7 @@ class FinalStep extends Component {
                     <div className="modal_step_confirm_item" 
                         key={key} 
                     >
-                        <input className="modal_input modal_checkbox details-input__checkbox"
+                        <input className=" modal_checkbox details-input__checkbox"
                             type='radio' 
                             checked={value.value}
                             name="user"

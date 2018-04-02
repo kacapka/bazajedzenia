@@ -22,7 +22,7 @@ class ProgressBar extends Component {
                         <div className='progress-bar_step progress-bar_step'>
                             <i className='ion-chevron-right'/>
                         </div>}
-                        <div className={step == key ? 'progress-bar_name--active' : ''}>
+                        <div className={step == key ? 'progress-bar_name progress-bar_name--active' : 'progress-bar_name'}>
                             {value.name}
                         </div>
                     </div>

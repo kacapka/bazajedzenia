@@ -8,6 +8,7 @@ import Button from 'reuse/button';
 
 import { setUserCorners, setResultsTitle } from 'actions/filterActions';
 import { setInfiniteLoadOn } from 'actions/dataActions';
+import { toggleView } from 'actions/mobileActions';
 import { getUserCorners } from 'selectors/filters/filterResultSelector';
 
 
@@ -20,9 +21,11 @@ class FiltersTypes extends Component {
     }
     
     onButtonClick() {
-        this.props.setInfiniteLoadOn();
-        this.props.setUserCorners(this.props.userCorners);
-        this.props.setResultsTitle('Wyniki wyszukiwania');
+        const {isMobile, toggleView, setInfiniteLoadOn, setUserCorners, setResultsTitle} = this.props;
+        if(isMobile) toggleView('isFilters'); 
+        setInfiniteLoadOn();
+        setUserCorners(this.props.userCorners);
+        setResultsTitle('Wyniki wyszukiwania');
     }
     
     render() {
@@ -46,9 +49,10 @@ class FiltersTypes extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    userCorners: getUserCorners(state)
+    userCorners: getUserCorners(state),
+    isMobile: state.isMobile
 })
 
 export default connect(mapStateToProps,
-    { setUserCorners, setResultsTitle, setInfiniteLoadOn }
+    { setUserCorners, setResultsTitle, setInfiniteLoadOn, toggleView }
 )(FiltersTypes);

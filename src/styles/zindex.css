@@ -1,0 +1,81 @@
+.app-mobile {
+    z-index: 9;
+}
+
+.map {
+    z-index: 999;
+}
+
+.corner-details {
+    z-index: 2999;
+}
+
+.corner-info-details:after,
+.corner-info-hours:after,
+.comments-view:after,
+.corner-details:before {
+    z-index: 3999;
+}
+
+.header-social {
+    z-index: 3999;
+}
+
+
+.button-mobile {
+    z-index: 4999;
+}
+
+
+.button--back {
+    z-index: 4999;
+}
+
+.modal-wrapper {
+    z-index: 5999;
+}
+
+.modal { 
+    z-index: 6999;
+}
+
+
+
+
+.filters-column--line::after {
+    z-index: 19;
+}
+
+.filters-column__button::before {
+    z-index: 10;
+}
+
+.filter-box--line::after {
+    z-index: 10;
+}
+
+.info-window {
+    z-index: 11;
+}
+
+
+
+.modal_progress-bar:after {
+    z-index: 50;
+}
+
+.progress-bar_step {
+    z-index: 100;
+}
+
+.map-add-corner {
+    z-index: 9999;
+}
+
+.select__value-icon {
+    z-index: 500;
+}
+
+.Select-menu-outer {
+    z-index: 11;
+}

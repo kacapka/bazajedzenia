@@ -48,7 +48,7 @@ class CornersInput extends Component {
          
         return(
             <FilterBox title="Szukaj lokalu" 
-                className='filter-box--padding'
+                className='filter-box--padding filter-box-corner-input'
                 line
             >
                 <VirtualizedSelect

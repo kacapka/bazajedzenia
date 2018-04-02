@@ -4,6 +4,7 @@
     align-items: center;
     padding: 20px;
     height: 12vh;
+    background-color: #fff;
 }
 
 .header__navbar {
@@ -46,4 +47,31 @@
     height: auto;
     border-radius: 50%;
     margin-left: 10px;
+}
+
+
+/*MEDIA QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+    .header {
+        padding: 15px;
+    }
+    .header__logo {
+        width: 150px;
+    }
+    .user__photo {
+        width: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    
 }

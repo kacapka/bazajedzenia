@@ -1,12 +1,21 @@
 .app {
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
 }
 
 .app-content {
     display: flex;
     height: 88vh;
+}
+
+.app-mobile {
+    min-height: 100vh;
+    background-color: var(--bg-box);
+    width: 100%;
+    display: none;
+}
+
+.app-mobile.on {
+    display: block;
 }
 
 .filters {
@@ -18,7 +27,24 @@
 .map {
     width: 60%;
     position: relative;
-    z-index: 99;
+}
+
+.map-mobile {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.map-mobile.on {
+    display: block;
+}
+
+.map-mobile.on .map {
+    width: 100%;
+    height: 100%;
 }
 
 .corner-details {
@@ -27,10 +53,41 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    z-index: 199;
     background-color: #fff;
     overflow-y: scroll;
+    overflow-x: hidden;
     border-top: 1px solid var(--line);
+}
+
+.corner-details-mobile {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    color: #000;
+} 
+
+
+/*MEDAI QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .filters {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    
 }
 
 

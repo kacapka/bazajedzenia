@@ -45,6 +45,7 @@ class MultipleInfoWindow extends google.maps.OverlayView {
         this.div = div;
         
         google.maps.event.addDomListener(this.div, 'click', (e) => {
+            e.stopPropagation();
             if(e.target.closest('.multiple-corner')){
                 this.callback(parseInt(e.target.dataset.id, 10));
             }

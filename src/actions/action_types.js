@@ -10,6 +10,7 @@ const Types = {
     CHECKBOX_SELECT: 'checkbox-select',
     SELECT_DAY: 'select-day',
     GET_TIME: 'get-time',
+    GET_TIME_MOBILE: 'get-time-mobile',
     SELECT_CORNER: 'select-corner',
     SELECT_CORNER_NULL: 'select-corner-null',
     SET_USER_CORNERS: 'set-user-corners',
@@ -29,7 +30,11 @@ const Types = {
     UPDATE_RATES: 'update-rates',
     FETCH_COMMENTS: 'fetch-comments',
     VALIDATE_COMMENT: 'validate-comment',
-    VALIDATE_RESET: 'validate-reset'
+    VALIDATE_RESET: 'validate-reset',
+    
+    TOGGLE_FILTERS: 'toggle-filters',
+    TOGGLE_VIEW: 'select-view',
+    TOGGLE_TOP: 'toggle_top_arrow'
 }
 
 export default Types;

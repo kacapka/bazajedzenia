@@ -2,14 +2,16 @@ const google = window.google;
 
 class InfoWindow extends google.maps.OverlayView {
     
-    constructor(name, street, coords) {
+    constructor(name, street, marker, callback) {
         super();
         
         this.name = name;
         this.street = street;
-        this.latLng = coords;
+        this.latLng = marker.position;
         this.div = null;
         this.isOpen = false;
+        this.callback = callback;
+        this.id = marker.id;
     }
     
     onRemove() {
@@ -29,6 +31,12 @@ class InfoWindow extends google.maps.OverlayView {
         let panes = this.getPanes();
         panes.floatPane.appendChild(div);
         this.div = div;
+        
+        google.maps.event.addDomListener(this.div, 'click', (e) => {
+            e.stopPropagation();
+            this.callback(parseInt(this.id, 10));
+        });
+    
     }
     
     draw() {

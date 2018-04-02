@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import InfoWindow from './map_info_window';
 import MultipleInfoWindow from './map_multiple_info_window';
@@ -9,6 +10,7 @@ import settings from 'utils/map_settings';
 import { getCornersId, getAddress, getMarker } from 'selectors/map/mapSelector';
 import { getCorners } from 'selectors/data/dataSelector';
 import { selectCorner, showCornerOnMap } from 'actions/filterActions';
+import { toggleView } from 'actions/mobileActions';
 
 import 'styles/info_window.css';
 
@@ -16,7 +18,9 @@ const google = window.google;
 
 class Map extends Component {
          
-    shouldComponentUpdate() {return false;}
+    shouldComponentUpdate() {
+        return false;
+    }
     
     componentDidMount() {
     
@@ -28,6 +32,9 @@ class Map extends Component {
         google.maps.event.addDomListener(this.map, 'zoom_changed', () => {
             this.resetMapView();
         });
+        google.maps.event.addDomListener(this.map, 'click', () => {
+            this.resetMapView();
+        });
         
         //create marker for address
         this.markerAddress = new google.maps.Marker({
@@ -37,14 +44,16 @@ class Map extends Component {
         });
         
         this.markers = [];
-        this.activeOpenInfo = null;
+        this.clusterOpenInfo = null;
+        this.markerOpenInfo = null;
         this.markerCluster = new MarkerClusterer(this.map, null, settings.clusterOpt);
         this.markerCluster.onClickZoom = (cluster) => this.openMultipleInfoWindow(cluster);
         
+        this.selectCornerInfoWindow = this.selectCornerInfoWindow.bind(this);
     }
     
     openInfoWindow(name, street, marker) {
-        if(!marker.infoWindow) marker.infoWindow = new InfoWindow(name, street, marker.position);
+        if(!marker.infoWindow) marker.infoWindow = new InfoWindow(name, street, marker, this.selectCornerInfoWindow);
         marker.infoWindow.setMap(this.map);
     }
     
@@ -52,20 +61,30 @@ class Map extends Component {
         marker.infoWindow.setMap(null);
     }
      
-    openMultipleInfoWindow(cluster) {   
+    openMultipleInfoWindow(cluster) { 
+        this.resetMapView();
         let markers = cluster.markers_;
         if(cluster.infoWindow) {
             cluster.infoWindow.isOpen === false ? cluster.infoWindow.setMap(this.map) : cluster.infoWindow.setMap(null);   
         } else {
-            cluster.infoWindow = new MultipleInfoWindow(markers, this.props.selectCorner);
-            this.activeOpenInfo = cluster.infoWindow;
+            cluster.infoWindow = new MultipleInfoWindow(markers, this.selectCornerInfoWindow);
+            this.clusterOpenInfo = cluster.infoWindow;
             cluster.infoWindow.setMap(this.map)
         }
     }
     
     resetMapView() {
-        let isOpen = this.activeOpenInfo;
-        if(isOpen) isOpen.setMap(null);
+        this.clusterOpenInfo && this.clusterOpenInfo.setMap(null);
+        this.markerOpenInfo && this.markerOpenInfo.setMap(null);
+    }
+    
+    selectCornerInfoWindow(id) {
+        const { isMobile, selectCorner, toggleView, history } = this.props;
+        selectCorner(id);
+        if(isMobile) {
+            history.push(`/${id}`); 
+            toggleView('isMap');
+        }
     }
      
     componentWillReceiveProps(nextProps) {
@@ -78,8 +97,8 @@ class Map extends Component {
             this.markerAddress.setPosition(address);
         }
         
-        //set marker for every corner, print reccomended corners,
-        //because allCorners wont change do it once after geting data 
+        //set marker for every corner
+        //because allCorners wont change do it once after data is fetched
         if(this.props.allCorners !== allCorners) {
              
             allCorners.forEach(corner => {
@@ -103,13 +122,16 @@ class Map extends Component {
                 
                 google.maps.event.addDomListener(marker, 'mouseover', () => {
                     this.openInfoWindow(corner.name, corner.street, marker);
-                });  
+                }); 
                 google.maps.event.addDomListener(marker, 'mouseout', () => {
                     this.closeInfoWindow(marker);
                 });
                 google.maps.event.addDomListener(marker, 'click', () => {
                     this.props.selectCorner(marker.id);
                     this.props.showCornerOnMap(marker.id);
+                    this.resetMapView();
+                    this.openInfoWindow(corner.name, corner.street, marker);
+                    this.markerOpenInfo = marker.infoWindow;
                 });
             })
                          
@@ -141,7 +163,7 @@ class Map extends Component {
     }
     
     render() {
-    
+   
         return (
             <div className="map" ref={ref => this.mapDiv = ref} />
         );
@@ -152,7 +174,8 @@ const mapStateToProps = (state) => ({
     address: getAddress(state),
     allCorners: getCorners(state),
     cornersId: getCornersId(state),
-    markerToShow: getMarker(state)
+    markerToShow: getMarker(state),
+    isMobile: state.isMobile
 })
 
-export default connect(mapStateToProps, { selectCorner, showCornerOnMap })(Map);
+export default withRouter(connect(mapStateToProps, { selectCorner, showCornerOnMap, toggleView })(Map));

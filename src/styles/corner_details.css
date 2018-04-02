@@ -1,5 +1,6 @@
 .corner-details {
     color: #000;
+    height: 100%;
 }
 
 .corner-header {
@@ -114,22 +115,29 @@
     margin-top: 5px;
 }
 
-.corner-info--social {
+.header-social {
     position: absolute;
-    left: 15px;
-    bottom: 10px;
     background-color: #fff;
-    z-index: 999;
     display: flex;
 }
 
-.corner-info--social .on {
+.header-social--mobile {
+    top: 5px;
+    right: 10px; 
+}
+
+.header-social--pc {
+    bottom: 10px;
+    left: 15px; 
+}
+
+.header-social .on {
     color: #000;
     cursor: pointer;
     text-decoration: none;
 }
 
-.corner-info--social .off {
+.header-social .off {
     color: var(--line);
     cursor: not-allowed;
     text-decoration: none;
@@ -189,5 +197,91 @@
 
 .hours-row_item--hour {
     font-size: .8rem;
+}
+
+
+
+/*MEDAI QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .corner-header {
+        height: auto;
+        width: 100%;
+        padding: 0 5px;
+        position: relative;
+    }
+    
+    .corner-info {
+        display: block;
+        height: auto;
+    }
+    
+    .corner-info:after {
+        display: none;
+    }
+    
+    .corner-info--box {
+        margin: 10px 0;
+    }
+    
+    .corner-info-details {
+        width: 100%;
+        padding: 10px 20px 25px 20px;
+        margin-bottom: 25px;
+    }
+    
+    .corner-info-hours {
+        width: 100%;
+        position: relative;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .corner-info-details:after {
+        height: 1px;
+        width: 90%;
+        top: 100%;
+        right: 5%;
+    }
+    
+    .corner-info-hours:after {
+        display: block;
+        content: '';
+        background-color: var(--line);
+        position: absolute;
+        height: 1px;
+        width: 90%;
+        top: 100%;
+        right: 5%;
+    }
+    
+    .image-gallery-content,
+    .image-gallery-slide-wrapper,
+    .image-gallery-swipe,
+    .image-gallery-slides,
+    .image-gallery-slide,
+    .image-gallery-image {
+        height: auto;
+        width: auto;
+    }
+    
+    .image-gallery-thumbnail {
+        height: auto;
+        width: 130px!important;
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
 }
    

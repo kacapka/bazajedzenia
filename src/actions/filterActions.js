@@ -22,6 +22,7 @@ export const getAddress = (place) => {
 //get user location based on async action
 export const getMyLocation = () => (dispatch) => {
     getUserLocation(data => {
+        alert('callback odpalnoy');
         const latLng = new google.maps.LatLng(
             data.coords.latitude,
             data.coords.longitude
@@ -75,12 +76,22 @@ export const selectDay = (id) => ({
 })
 
 //select and get user time in details filter
-export const getTime = (value) => ({
+export const getTime = (value) => {
     
-    type: TYPES.GET_TIME,
-    payload: value
+    let type;
     
-})
+    if(typeof value === 'string') {
+        type = TYPES.GET_TIME_MOBILE    
+    } else {
+        type = TYPES.GET_TIME     
+    }
+    
+    return {
+        type,
+        payload: value
+    }
+    
+}
 
 //select and get corner from user input in cornerssearchbar section
 export const selectCorner = id => (dispatch, getState)  => {
@@ -123,3 +134,5 @@ export const showCornerOnMap = (id) => {
     }
     
 }
+
+

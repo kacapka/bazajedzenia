@@ -1,31 +1,51 @@
 /*app buttons*/
 
 button {
+    box-shadow: none;
+    outline: none; 
+    border: none;
     appearance: none;
+    font-family: 'Hind Madurai', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+}
+
+.button {
     box-shadow: none;
     outline: none;
     border: none;
     font-family: 'Hind Madurai', sans-serif;
     color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     cursor: pointer;
-    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
 }
 
 .button__name {
     flex-basis: 90%;
-    padding: 5px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
+    height: 100%;
+    padding: 5px;
 }
 
 .button__icon {
     flex-basis: 10%;
-    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
+    height: 100%;
+    padding: 5px;
 }
 
 /*BUTTON GREEN*/
@@ -37,10 +57,12 @@ button {
 
 .button--green .button__name {
     background-color: var(--green);
+    padding: 8px;
 }
 
 .button--green .button__icon {
     background-color: var(--green-dark);
+    padding: 8px;
 }
 
 /*BUTTON BACK TO MAP*/
@@ -53,16 +75,15 @@ button {
     font-size: .8rem;
     border: 2px solid #fff;
     border-radius: 6px;
-    z-index: 999;
     color: #000;
 }
 
 .button--back .button__name {
-    padding: 5px 10px!important
+    
 }
 
 .button--back .button__icon {
-    padding-left: 0;
+    
 }
 
 /*BUTTON ADD CORNER*/
@@ -74,24 +95,21 @@ button {
 
 .button--add .button__name {
     background-color: var(--blue);
-    padding: 3px 8px;
 }
 
 .button--add .button__icon {
     background-color: var(--blue-dark);
-    padding: 3px 8px;
 }
 
 /*BUTTON COMMENT*/
 
 .button--login .button__name {
     background-color: var(--green-light);
-    padding: 3px 8px;
+   
 }
 
 .button--login .button__icon {
     background-color: var(--green-light-plus);
-    padding: 3px 8px;
 }
 
 /*BUTTON COMMENT*/
@@ -106,6 +124,100 @@ button {
     background-color: var(--blue);
     color: #fff;
     width: 100px;
-    padding: 10px;
     border-radius: 6px;
+}
+
+/*BUTTON FILTERS - MOBILE*/
+
+.button-filters {
+    width: 100%;
+    font-size: 1rem;
+    background-color: var(--blue);
+    color: #fff;
+    padding: 8px 0;
+}
+
+.button-mobile {
+   font-size: .9rem;
+    color: #fff;
+    background-color: var(--blue);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+}
+
+.button-mobile--view {
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -40%);
+    transition: .25s ease-out all;
+}
+
+.button-mobile--view.on {
+    left: 30%;
+    bottom: 0;
+    transform: translate(0, -40%);
+}
+
+.button-mobile--top {
+    right: 30%;
+    bottom: 0;
+    transform: translate(0, 130%);
+    transition: .25s ease-out all;
+}
+
+.button-mobile--top.on {
+    right: 30%;
+    bottom: 0;
+    transform: translate(0, -40%);
+}
+
+.button-mobile i {
+    font-size: 1.8rem;
+}
+
+.button-mobile--top i {
+    font-size: 1.5rem;
+}
+
+
+/*MEDIA QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .button--step-form {
+        font-size: .75rem;
+        padding: 3px 0x;    
+        width: 70px;
+    }
+    
+    .button--back {
+        height: 30px;
+    }
+    
+    .button--back .button__name {
+        padding: 0!important
+    }
+
+    .button--back .button__icon {
+        font-size: 1.1rem;
+        padding: 7px;
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
 }

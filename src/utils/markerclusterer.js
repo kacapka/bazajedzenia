@@ -1064,7 +1064,11 @@ ClusterIcon.prototype.triggerClusterClick = function() {
   var markerClusterer = this.cluster_.getMarkerClusterer();
     
   // Trigger the clusterclick event.
-  google.maps.event.trigger(markerClusterer.map_, 'clusterclick', this.cluster_);
+  google.maps.event.trigger(markerClusterer.map_, 'clusterclick', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      this.cluster_;
+  });
     
     var zoom = markerClusterer.map_.getZoom();
     var maxZoom = 15;
@@ -1095,7 +1099,9 @@ ClusterIcon.prototype.onAdd = function() {
   panes.overlayMouseTarget.appendChild(this.div_);
 
   var that = this;
-  google.maps.event.addDomListener(this.div_, 'click', function() {
+  google.maps.event.addDomListener(this.div_, 'click', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
     that.triggerClusterClick();
   });
 };

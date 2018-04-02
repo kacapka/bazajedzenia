@@ -12,15 +12,16 @@
     content: '';
     display: block;
     height: 2px;
-    width: 95%;
+    width: 80%;
     background-color: var(--line);
     position: absolute;
-    left: 2.5%;
+    left: 10%;
     top: 40px;
-    z-index: 50;
 }
 
 .progress-bar {
+    flex: 1;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -34,10 +35,9 @@
     color: var(--line);
     width: 40px;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 50%;
     background-color: #fff;
     border: 2px solid var(--line);
-    z-index: 100;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -82,6 +82,10 @@
     transform: translateY(47%);
 }
 
+.progress-bar_name {
+    font-size: 1rem;
+}
+
 .progress-bar_name--active {
     color: var(--blue);
     font-weight: 500;
@@ -108,22 +112,22 @@
     color: #000;
 }
 
-/*MODAL INPUT - BASIC TYSLE SETUP*/
+/*MODAL INPUT - BASIC STYLE SETUP*/
 
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
+.modal_input::-webkit-input-placeholder,
+.modal_textarea::-webkit-input-placeholder {
     letter-spacing: 2px;
     word-spacing: 4px;
 }
 
-input::placeholder,
-textarea::placeholder {
+.modal_input::placeholder,
+.modal_textarea::placeholder {
     letter-spacing: 2px;
     word-spacing: 4px;
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+.modal_input:-ms-input-placeholder,
+.modal_textarea:-ms-input-placeholder {
     letter-spacing: 2px;
     word-spacing: 4px;
 }
@@ -198,7 +202,6 @@ textarea:-ms-input-placeholder {
 
 .map-add-corner {
     position: relative;
-    z-index: 9999;
     flex: 1.5;
     margin-left: 40px;
 }
@@ -268,4 +271,123 @@ textarea:-ms-input-placeholder {
 
 .modal_step_confirm_item .modal_checkbox {
     margin-right: 10px;
+}
+
+
+/*MEDAI QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .modal_progress-bar {
+        margin: 0;
+        padding-top: 0;
+    }
+
+    .progress-bar_step {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+    
+    .progress-bar_name {font-size: .8rem;}
+    
+    .progress-bar_step i {transform: translateY(25%);}
+    
+    .progress-bar_step .ion-chevron-down {transform: translateY(42%);}
+    
+    .modal_progress-bar:after {top: 15px;}
+    
+    .modal_step_form {padding-top: 0;}
+    
+    .modal_step_form_item {
+        flex-direction: column; 
+        width: 90%;
+    }
+    
+    .modal_label {
+        font-size: .8rem;
+        margin-bottom: 3px;
+    }
+    
+    .modal_input {
+        padding: 1px;
+        width: 100%;
+        font-size: .8rem;
+    }
+    
+    .modal_input::-webkit-input-placeholder,
+    .modal_textarea::-webkit-input-placeholder {
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        font-size: .8rem;
+    }
+
+    .modal_input::placeholder,
+    .modal_textarea::placeholder {
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        font-size: .8rem;
+    }
+
+    .modal_input:-ms-input-placeholder,
+    .modal_textarea:-ms-input-placeholder {
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        font-size: .8rem;
+    }
+    
+    .details-input__checkbox:checked:after {
+        top: 15%;
+        left: 13%;
+        color: #fff!important;
+    }
+    
+    .modal_step_map {
+        flex-direction: column;
+        padding: 0 10px 10px 10px;
+    }
+    
+    .modal_step_map_item .modal_label {
+        padding-bottom: 0;
+    }
+    
+    .modal_step_map_description {
+        font-size: .8rem;
+        margin-bottom: 10px;
+    }
+    
+    .map-add-corner {
+        margin-left: 0;
+    }
+    
+    .modal_step_hours {
+        padding: 40px 10px;
+    }
+    
+    .modal_step_hours_item {
+        width: 100%;
+    }
+    
+    .modal_step_confirm_item .modal_label {
+        margin-bottom: 0;
+    }
+    
+    .modal_step_confirm_description {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: .95rem;
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
 }

@@ -17,6 +17,12 @@ class KitchenInput extends Component {
         this.renderValues = this.renderValues.bind(this);
     }
     
+    onRemoveClick(e, value, onRemove) {
+        onRemove(value);
+        e.stopPropagation();
+        e.preventDefault();
+    }
+     
 	handleSelectChange(value) {
 		this.props.setValue(value);
 	}
@@ -30,11 +36,12 @@ class KitchenInput extends Component {
                 <span className="select__value-name">
                     {children}
                 </span>
+                
                 <i className="select__value-icon ion-close-circled" 
-                    onClick={(e) =>{
-                        onRemove(value);
-                        e.stopPropagation();
-                }}/>
+                    onClick={(e) => { this.onRemoveClick(e, value, onRemove) } } 
+                    onTouchEnd={(e) => { this.onRemoveClick(e, value, onRemove) } }
+                />
+                
             </div>
         );
     }

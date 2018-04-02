@@ -67,12 +67,14 @@
     display: inline-block;
     position: relative;
     margin-right: 6px;
+    color: #fff!important;
 }
 
 .details-input__checkbox:checked, 
 .details-input__checkbox:checked:active {
     background-color: var(--blue);
     border: 1px solid var(--blue);
+    color: #fff!important;
 }
 
 .details-input__checkbox:checked:after {
@@ -80,7 +82,7 @@
     position: absolute;
     top: 10%;
     left: 10%;
-    color: #fff;
+    color: #fff!important;
     display: block;
     font-size: 70%;
 }
@@ -104,16 +106,28 @@
     text-align: center;
 }
 
-.details-days__item:hover {
+.hover .details-days__item:hover {
     background-color: var(--blue);
     color: #fff;
     border-color: var(--blue);
 }
 
 .details-days__item--open {
-    background-color: var(--hover);
-    color: var(--blue);
+    background-color: var(--blue);
+    color: #fff;
     border-color: var(--blue);
+}
+
+.details-select {
+    border: 1px solid var(--border);
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-left: 20px;
+}
+
+.details-select:disabled {
+    background-color: var(--bg-box);
 }
 
 /*animation for days component*/
@@ -138,4 +152,37 @@
     opacity: 0;
     transform: translateY(-30%);
     transition: .2s ease-in;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .details-input__checkbox:checked:after {
+        top: 15%;
+        left: 13%;
+        color: #fff!important;
+    }
+    
+    .details-days {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .details-days__item {
+        flex: 1;
+        width: auto;
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
 }

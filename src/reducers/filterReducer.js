@@ -19,13 +19,13 @@ const checkbox = (state = initialCheckbox, action) => {
     }
 }
 
-const initialTime = getSec(moment());
-
-const time = (state = initialTime, action) => {
+const time = (state = 0, action) => {
     
     switch(action.type) {
         case TYPES.GET_TIME: 
             return getSec(action.payload);
+        case TYPES.GET_TIME_MOBILE: 
+            return action.payload;
         default: 
             return state;
     }

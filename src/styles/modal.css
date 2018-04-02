@@ -5,12 +5,10 @@
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.85);
-    z-index: 999;
 }
 
 .modal {
     background-color: #fff; 
-    z-index: 1999;
     position: relative;
     display: flex;
 }
@@ -42,4 +40,44 @@
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+
+
+/*MEDAI QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+        
+    .modal-add-corner {
+        width: 85%;
+        height: 80vh;
+        margin: 5vh auto;
+        padding: 10px;
+    }
+
+    .modal-sign-in {
+        width: 80%;
+        height: 70;
+        margin: 10vh auto;
+        padding: 10px;
+    }
+    
+    .modal_close {
+        top: -1.2rem;
+        right:-1.2rem;
+        font-size: 1.2rem;
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
 }

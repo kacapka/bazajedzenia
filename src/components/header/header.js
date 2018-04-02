@@ -23,29 +23,33 @@ class Header extends Component {
     }
     
     render() {
-        
-        const user = this.props.user;
+        const { user, isMobile } = this.props;
         
         return (
             <div className="header">
                 <img src={logo} 
                     alt="logo" 
-                    className="header__logo" />
+                    className="header__logo" 
+                />
                 <div className='header__navbar'>
+                    {!isMobile && 
                     <div className='header__nav'>
                         <Link to='/addcorner'>
                             <Button className='button--add'
                                 name='dodaj lokal'
-                                icon='ion-plus-round' />
+                                icon='ion-plus-round' 
+                            />
                         </Link>
                     </div>
+                    }
                     {user ? 
                     <div className='header__user'>
                         <div className='header__user-info'>
                             <span>{user.displayName}</span>
                             <img className='user__photo'
                                 alt='user thumbnail'
-                                src={user.photoURL} />
+                                src={user.photoURL} 
+                            />
                         </div>
                         <Link to='/'>
                             <div className='header__signin'
@@ -58,7 +62,8 @@ class Header extends Component {
                     <Link to='/login'>
                         <Button className='button--login'
                             name='zaloguj się'
-                            icon='ion-log-in' />
+                            icon='ion-log-in' 
+                        />
                     </Link>
                     }
                 </div>
@@ -68,13 +73,8 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-    user: getUser(state)
+    user: getUser(state),
+    isMobile: state.isMobile
 });
 
 export default connect(mapStateToProps)(Header);
-
-/*<Link to='/login'>
-                        <div className='header__signin'>
-                            zaloguj sie
-                        </div>
-                    </Link>*/

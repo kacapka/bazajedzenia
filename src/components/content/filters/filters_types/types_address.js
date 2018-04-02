@@ -25,7 +25,9 @@ class AddressSearchbar extends Component {
             <FilterBox title="Podaj adres" line>
                 <AddressInput />
                 <div className="address-locate" 
-                    onClick={this.onLocationClick}>
+                    onClick={this.onLocationClick}
+                    onTouchEnd={this.onLocationClick}
+                >
                     <i className="ion-android-locate address-locate__icon"></i>
                     <span className="address-locate__text">
                         szukaj dla obecnej lokalizacji

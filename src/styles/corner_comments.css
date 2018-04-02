@@ -18,7 +18,18 @@
 /*coments view*/
 
 .comments-view {
-    
+    position: relative;  
+}
+
+.comments-view:after {
+    content: '';
+    display: block;
+    background-color: var(--line);
+    height: 90%;
+    width: 1px;
+    top: 5%;
+    left: 10px;
+    position: absolute;
 }
 
 .comments-view-empty {
@@ -147,3 +158,44 @@
     display: flex;
     justify-content: flex-end;
 }
+
+
+/*MEDAI QUERIES*/
+
+@media only screen and (max-width: 1200px) {
+    
+}
+
+@media only screen and (max-width: 1023px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+     
+    .corner-comments {
+        display: block;
+        padding: 0;
+    }
+    
+    .comments {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+    }
+    
+    .comments-view:after {
+        width: 90%;
+        height: 1px;
+        top: 100%;
+        left: 5%;
+    }
+    
+    .comments-add {
+        margin-bottom: 50px;
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
+}
+   

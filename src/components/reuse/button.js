@@ -5,11 +5,14 @@ class Button extends Component {
     render() {
         const { className, onClick, name, icon } = this.props;
         return (
-            <button className={className}
-                onClick={onClick}>
+            <div className={`button ${className}`}
+                onClick={onClick}
+            >
                 <span className='button__name'>{name}</span>
-                <i className={`button__icon ${icon}`} />
-            </button>
+                <div className='button__icon'>
+                    <i className={icon} />
+                </div>
+            </div>
         );
     }
 }

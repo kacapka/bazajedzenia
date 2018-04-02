@@ -3,6 +3,11 @@ import { fetchCornersDB, setAuthStateChange, fetchPhotoSB } from '../firebase.js
 import { getRandomNumbers } from 'utils/bj_random';
 import { getCornerPhotos } from 'selectors/data/dataSelector';
 
+export const checkUserDevice = (status) => ({
+    type: 'DEVICE',
+    isMobile: status
+})
+
 //set event on users auth status
 export const setUser = () => {
     
