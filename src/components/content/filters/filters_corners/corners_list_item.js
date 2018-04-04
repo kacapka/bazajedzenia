@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { showCornerOnMap } from 'actions/filterActions';
 import { toggleView } from 'actions/mobileActions';
-import { getSelectedCorner } from 'selectors/filters/filterSelector';
 
 import 'styles/list_item.css';
 
@@ -13,18 +12,8 @@ class ListItem extends Component {
     constructor(props) {
         super(props);
         
-        //this.listDiv = document.querySelector('.corners-list');
-        //this.parentDivHeight = document.querySelector('.filters-column--corners').offsetHeight;
         this.onPinClick = this.onPinClick.bind(this);
         this.onDetailsClick = this.onDetailsClick.bind(this);
-    }
-    
-    componentDidMount() {
-        //this.setDivHeight();
-    }
-        
-    componentDidUpdate() {
-        //this.setDivHeight();
     }
         
     onPinClick(e) {
@@ -40,13 +29,6 @@ class ListItem extends Component {
         this.props.showCornerOnMap(id);
     }
     
-    setDivHeight() {
-        //const { parentDivHeight, listDiv } = this;
-        //const topDiv = document.querySelector('.filter-box--padding');
-        //const newPx =  parentDivHeight - topDiv.offsetHeight - 65;
-        //listDiv.style.height = newPx + 'px';       
-    }
-      
     render() {
         const { name, street, id } = this.props;
         
@@ -77,8 +59,4 @@ class ListItem extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    selectedCorner: getSelectedCorner(state)
-})
-
-export default connect(mapStateToProps, { showCornerOnMap, toggleView })(ListItem);
+export default connect(null, { showCornerOnMap, toggleView })(ListItem);

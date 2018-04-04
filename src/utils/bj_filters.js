@@ -22,8 +22,8 @@ export const filterByTime = (corners, seconds, dayId) => {
                 if(day.dayOfWeek === dayId || dayId === null) {
                     if(day.fromInSeconds <= seconds && day.toInSeconds >= seconds) {
                         return corner;
-                    };    
-                }; 
+                    }    
+                }
                 
             });    
         });

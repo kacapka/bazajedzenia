@@ -53,7 +53,7 @@ class App extends Component {
     
     handleScroll() {
         const { mobile: {isTop}, toggleView } = this.props;
-        if(window.scrollY > 1.5 * window.innerHeight) {
+        if(window.scrollY > 1.7 * window.innerHeight) {
             if(!isTop) toggleView('isTop'); 
         } else {
             if(isTop) toggleView('isTop');

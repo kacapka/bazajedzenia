@@ -21,14 +21,17 @@ class FiltersTypes extends Component {
     }
     
     onButtonClick() {
-        const {isMobile, toggleView, setInfiniteLoadOn, setUserCorners, setResultsTitle} = this.props;
-        if(isMobile) toggleView('isFilters'); 
+        const {isMobile, toggleView, setInfiniteLoadOn, setUserCorners, setResultsTitle} = this.props; 
         setInfiniteLoadOn();
+        isMobile && toggleView('isFilters');
         setUserCorners(this.props.userCorners);
         setResultsTitle('Wyniki wyszukiwania');
     }
     
     render() {
+        
+        
+        
         return (
             <div className="filters-column filters-column--line">
                 <div className="filters-column__filters">

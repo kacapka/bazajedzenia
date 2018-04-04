@@ -34,7 +34,8 @@ const Types = {
     
     TOGGLE_FILTERS: 'toggle-filters',
     TOGGLE_VIEW: 'select-view',
-    TOGGLE_TOP: 'toggle_top_arrow'
+    TOGGLE_TOP: 'toggle_top_arrow',
+    TOGGLE_NAV: 'toggle-nav-mobile'
 }
 
 export default Types;

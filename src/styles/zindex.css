@@ -22,7 +22,8 @@
 }
 
 
-.button-mobile {
+.button-mobile,
+.header__logout--mobile {
     z-index: 4999;
 }
 

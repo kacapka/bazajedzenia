@@ -8,7 +8,7 @@ import Loader from 'reuse/loader';
 
 import { getMoreItems } from 'actions/dataActions';
 import { getCornersToLoad } from 'selectors/data/dataSelector';
-import { getResultTitle} from 'selectors/filters/filterSelector';
+import { getResultTitle, getSelectedCorner} from 'selectors/filters/filterSelector';
  
 class CornersList extends Component {
     
@@ -16,14 +16,41 @@ class CornersList extends Component {
         super(props);
         
         this.loadMoreItems = this.loadMoreItems.bind(this);
+        this.setCornerListDivHeight = this.setCornerListDivHeight.bind(this);
+    }
+    
+    componentDidMount() {
+        !this.props.isMobile && this.setCornerListDivHeight();
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.slectedCorner !== this.props.selectedCorner) {
+            setTimeout(this.setCornerListDivHeight, 50);   
+        }
+    }
+    
+    setCornerListDivHeight() {
+        if (!this.props.isMobile) {
+            const menuOuter = document.querySelector('.Select-menu-outer');
+            const topDiv = document.querySelector('.filter-box-corner-input'); 
+            let topDivheight;
+            if(menuOuter) {
+                topDivheight = topDiv.offsetHeight - 210;    
+            } else {
+                topDivheight = topDiv.offsetHeight  
+            }
+            const listDiv = document.querySelector('.corners-list');
+            const parentDiv = document.querySelector('.filters-column--corners');
+            listDiv.style.height = parentDiv.offsetHeight - topDivheight - 65 + 'px';    
+        }
     }
               
     loadMoreItems() {
         this.props.getMoreItems();   
     }
      
-    render() {   
-        
+    render() {
+
         const { toLoad, load, corners, resultsTitle, isMobile } = this.props;
          
         const list = (toLoad.length === 0) ? 
@@ -65,6 +92,7 @@ class CornersList extends Component {
 const mapStateToProps = (state) => ({
     resultsTitle: getResultTitle(state),
     toLoad: getCornersToLoad(state),
+    selectedCorner: getSelectedCorner(state),
     load: state.data.load,
     corners: state.data.corners,
     isMobile: state.isMobile

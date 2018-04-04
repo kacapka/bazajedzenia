@@ -1,18 +1,6 @@
 import { combineReducers } from 'redux';
 import TYPES from 'actions/action_types';
 
-
-const isFilters = (state = false, action) => {
-    
-    switch(action.type) {
-        case TYPES.TOGGLE_FILTERS:
-            return action.payload;
-        default:
-            return state;
-    }
-    
-}
-
 const isMap = (state = false, action) => {
     
     switch(action.type) {
@@ -35,11 +23,34 @@ const isTop = (state = false, action) => {
     
 }
 
+const isFilters = (state = false, action) => {
+    
+    switch(action.type) {
+        case TYPES.TOGGLE_FILTERS:
+            return action.payload;
+        default:
+            return state;
+    }
+    
+}
+
+const isNav = (state = false, action) => {
+    
+    switch(action.type) {
+        case TYPES.TOGGLE_NAV:
+            return action.payload;
+        default:
+            return state;
+    }
+    
+}
+
 
 const mobile = combineReducers({
-    isFilters,
     isMap,
-    isTop
+    isTop,
+    isFilters,
+    isNav
 });
 
 export default mobile;

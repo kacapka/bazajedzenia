@@ -5,13 +5,13 @@ import ListItem from './corners_list_item';
 class CornerItem extends Component {
         
     componentDidUpdate() {
-        //const div = this.efectDiv.firstChild;
-        //div.addEventListener('transitionend', () => div.classList.remove('list-item--higlight')); 
+        const div = this.efectDiv.firstChild;
+        div.addEventListener('transitionend', () => div.classList.remove('list-item--higlight')); 
     }
     
     componentWillUpdate() {
-        //const div = this.efectDiv.firstChild;
-        //div.classList.add('list-item--higlight');
+        const div = this.efectDiv.firstChild;
+        div.classList.add('list-item--higlight');
     }
      
     render() {

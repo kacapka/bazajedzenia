@@ -40,7 +40,8 @@ class Map extends Component {
         this.markerAddress = new google.maps.Marker({
             position: null, 
             map: this.map, 
-            icon: settings.addressIcon
+            icon: settings.addressIcon,
+            optimized: false
         });
         
         this.markers = [];
@@ -113,7 +114,8 @@ class Map extends Component {
                     name: corner.name,
                     info: corner.locationInfo,
                     map: null,
-                    icon: settings.cornerIcon
+                    icon: settings.cornerIcon,
+                    optimized: false
                 }
                 
                 marker = new google.maps.Marker(markerOpt);

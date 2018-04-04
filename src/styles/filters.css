@@ -119,6 +119,22 @@
     padding-bottom: 80px;
 }
 
+.filters-accordion {
+    background-color: #fff;
+    transition: max-height .4s linear;
+    overflow: hidden;
+}
+
+.filters-accordion.is-open {
+    max-height: 700px;
+}
+
+.filters-accordion.is-closed {
+    max-height: 0px;
+}
+
+
+
 
 /*MEDAI QUERIES*/
 

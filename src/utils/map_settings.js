@@ -1,6 +1,6 @@
 import markerAddress from '../images/markers/marker_address.png';
-import markerCorner from '../images/markers/marker_corner.png';
-import markerCornerSpecial from '../images/markers/marker_corner_special.png';
+import markerCorner from '../images/markers/marker_corner_red_small.png';
+import markerCornerSpecial from '../images/markers/marker_corner_green_small.png';
 import markerMultiple from '../images/markers/marker_corner_multiple.png';
 
 const mapSettings = {

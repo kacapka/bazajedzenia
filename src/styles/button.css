@@ -34,7 +34,7 @@ button {
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
     height: 100%;
-    padding: 5px;
+    padding: 5px 10px;
 }
 
 .button__icon {
@@ -124,17 +124,17 @@ button {
     background-color: var(--blue);
     color: #fff;
     width: 100px;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 /*BUTTON FILTERS - MOBILE*/
 
-.button-filters {
-    width: 100%;
-    font-size: 1rem;
-    background-color: var(--blue);
+.button-accordion {
     color: #fff;
-    padding: 8px 0;
+    background-color: var(--blue);
+    width: 100%;
+    text-align: center;
+    padding: 7px;
 }
 
 .button-mobile {
@@ -208,9 +208,14 @@ button {
     }
     
     .button--back .button__name {
-        padding: 0!important
+        padding: 0!important;
     }
-
+    
+    .button--add .button__name,
+    .button--login .button__name {
+        padding: 3px!important;;
+    }
+    
     .button--back .button__icon {
         font-size: 1.1rem;
         padding: 7px;

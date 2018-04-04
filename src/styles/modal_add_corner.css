@@ -260,6 +260,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    width: 90%;
 }
 
 .modal_step_confirm_contact {
@@ -310,6 +311,7 @@
     .modal_step_form_item {
         flex-direction: column; 
         width: 90%;
+        margin-bottom: 8px;
     }
     
     .modal_label {
@@ -318,30 +320,41 @@
     }
     
     .modal_input {
-        padding: 1px;
+        padding: 2px;
         width: 100%;
         font-size: .8rem;
+        height: 20px;
+        line-height: .8rem;
     }
     
     .modal_input::-webkit-input-placeholder,
     .modal_textarea::-webkit-input-placeholder {
         letter-spacing: 1px;
         word-spacing: 2px;
+        padding: 2px;
         font-size: .8rem;
+        height: 1rem;
+        line-height: .8rem;
     }
 
     .modal_input::placeholder,
     .modal_textarea::placeholder {
         letter-spacing: 1px;
         word-spacing: 2px;
+        padding: 2px;
         font-size: .8rem;
+        height: 1rem;
+        line-height: .8rem;
     }
 
     .modal_input:-ms-input-placeholder,
     .modal_textarea:-ms-input-placeholder {
         letter-spacing: 1px;
         word-spacing: 2px;
+        padding: 2px;
         font-size: .8rem;
+        height: 1rem;
+        line-height: .8rem;
     }
     
     .details-input__checkbox:checked:after {

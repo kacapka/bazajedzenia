@@ -49,6 +49,23 @@
     margin-left: 10px;
 }
 
+/*mobile*/
+
+.header__logout--mobile {
+    background-color: #fff;
+    padding: 3px 7px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    position: absolute;
+    top: 10p;
+    right: 10px;
+    display: none;
+}
+
+.header__logout--mobile.on {
+    display: block;
+}
+
 
 /*MEDIA QUERIES*/
 
@@ -67,8 +84,22 @@
     .header__logo {
         width: 150px;
     }
+    
+    .header__signin {
+        margin-top: 5px;    
+    }
+    
     .user__photo {
-        width: 1.5rem;
+        margin-left: 0;
+    }
+    
+    .header__nav {
+        padding-right: 30px;
+        position: relative;
+    }
+
+    .header__nav:after {
+        right: 15px;
     }
 }
 

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from 'images/logo/logo.svg';
 import Button from 'reuse/button';
 
+import { toggleView } from 'actions/mobileActions';
 import { getUser } from 'selectors/data/dataSelector';
 import { logOut } from '../../firebase';
 
@@ -16,14 +17,20 @@ class Header extends Component {
         super(props);
         
         this.onLogoutClick = this.onLogoutClick.bind(this);
+        this.onUserClick = this.onUserClick.bind(this);
     }
     
     onLogoutClick() {
         logOut();
     }
     
+    onUserClick() {
+        this.props.toggleView('isNav');
+    }
+    
     render() {
-        const { user, isMobile } = this.props;
+        const { user, isMobile, isNav } = this.props;
+        const classLogoutNav = isNav ? 'on' : '';
         
         return (
             <div className="header">
@@ -32,36 +39,39 @@ class Header extends Component {
                     className="header__logo" 
                 />
                 <div className='header__navbar'>
-                    {!isMobile && 
                     <div className='header__nav'>
                         <Link to='/addcorner'>
                             <Button className='button--add'
-                                name='dodaj lokal'
+                                name={!isMobile && 'dodaj lokal'}
                                 icon='ion-plus-round' 
                             />
                         </Link>
                     </div>
-                    }
                     {user ? 
                     <div className='header__user'>
                         <div className='header__user-info'>
-                            <span>{user.displayName}</span>
+                            <span>{!isMobile && user.displayName}</span>
                             <img className='user__photo'
+                                onClick={this.onUserClick}
                                 alt='user thumbnail'
                                 src={user.photoURL} 
                             />
                         </div>
-                        <Link to='/'>
-                            <div className='header__signin'
-                                onClick={this.onLogoutClick}>
-                                wyloguj sie
-                            </div>
-                        </Link>
+                        
+                        <div className={`header__logout--mobile ${classLogoutNav}`}>
+                            <Link to='/'>
+                                <div className='header__signin'
+                                    onClick={this.onLogoutClick}>
+                                    wyloguj sie
+                                </div>
+                            </Link>
+                        </div>
+                        
                     </div>
                     : 
                     <Link to='/login'>
                         <Button className='button--login'
-                            name='zaloguj się'
+                            name={!isMobile && 'zaloguj sie'}
                             icon='ion-log-in' 
                         />
                     </Link>
@@ -74,7 +84,8 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
     user: getUser(state),
-    isMobile: state.isMobile
+    isMobile: state.isMobile,
+    isNav: state.mobile.isNav
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { toggleView })(Header);
