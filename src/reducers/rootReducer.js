@@ -1,4 +1,7 @@
 import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import TYPES from 'actions/action_types';
 
 import filter from './filterReducer';
 import data from './dataReducer';
@@ -8,15 +11,24 @@ import reviews from './detailsReducer';
 import mobile from './mobileReducer';
 
 const isMobile = (state = false, action) => {
+    
+    console.log(action);
+    
     switch(action.type) {
-        case 'DEVICE': return action.isMobile;
+        case TYPES.DEVICE: return action.isMobile;
         default: return state;
     }
 }
 
+const dataPersistConfig = {
+    storage,
+    key: 'data',
+    whitelist: ['resultCorners']
+}
+
 const rootReducer = combineReducers({
     isMobile,
-    data,
+    data: persistReducer(dataPersistConfig, data),
     map,
     filter,
     addCorner,

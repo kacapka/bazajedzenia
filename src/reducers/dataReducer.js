@@ -23,12 +23,15 @@ const corners = (state = [], action) => {
     
 }
 
+
 const resultCorners = ( state = [], action) => {
     
     switch(action.type) {
         case TYPES.SET_USER_CORNERS:
             return action.payload;
         case TYPES.FETCH_RECOMMENDED_CORNERS:
+            return action.payload;
+        case TYPES.SET_PERSISTED_STATE:
             return action.payload;
         default:
             return state;

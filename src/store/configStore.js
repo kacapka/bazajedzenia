@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistStore } from 'redux-persist';
 
 import thunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
@@ -20,7 +21,9 @@ const configStore = (preloadedState) => {
         composedEnhancer
     );
     
-    return store;
+    const persistor = persistStore(store);
+    
+    return { store, persistor }
     
 }
 

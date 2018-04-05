@@ -17,7 +17,7 @@ import ContentMobile from './content/content_mobile';
 
 import { setUser, fetchCorners, checkUserDevice } from 'actions/dataActions';
 import { toggleView } from 'actions/mobileActions';
-import { getCorners } from 'selectors/data/dataSelector';
+import { getCorners, getResultCorners } from 'selectors/data/dataSelector';
 import checkDevice from '../utils/checkDevice';
 
 import 'styles/app.css';
@@ -35,9 +35,11 @@ class App extends Component {
     }
     
     componentWillMount() {
-        this.props.setUser();
-        this.props.fetchCorners('all');
-        setTimeout(this.props.fetchCorners('recommended'), 2000);
+        const { setUser, fetchCorners, resultCorners } = this.props;
+    
+        setUser();
+        fetchCorners('all');
+        resultCorners.length === 0 && setTimeout(fetchCorners('recommended'), 2000);
         window.addEventListener('resize', this.handleWindowSizeChange);
         window.addEventListener('scroll', _.throttle(this.handleScroll, 100));
     }
@@ -75,6 +77,8 @@ class App extends Component {
         const classContentMobile = isMap ? 'app-mobile' : 'app-mobile on';
         const classMapMobile = isMap ? 'map-mobile on' : 'map-mobile';
         const classButton = isTop ? 'on' : '';
+        
+        console.log(isMobile);
                  
         return (
             <div className="app">
@@ -120,6 +124,7 @@ class App extends Component {
           
 const mapStateToProps = state => ({
     corners: getCorners(state),
+    resultCorners: getResultCorners(state),
     isMobile: state.isMobile,
     mobile: state.mobile
 })

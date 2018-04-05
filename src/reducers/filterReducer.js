@@ -68,7 +68,7 @@ const corner = (state = null, action) => {
     
 }
 
-const initialValue = 'Polecane restauracje';
+const initialValue = 'Ostatnie wyszukanie';
 
 const resultTitle = (state = initialValue, action) => {
     

@@ -1,4 +1,8 @@
 const Types = {
+    
+    DEVICE: 'set-device',
+    SET_PERSISTED_STATE: 'set-persisted-state',
+    
     //user auth
     SET_USER: 'set-user',
     

@@ -3,10 +3,30 @@ import { fetchCornersDB, setAuthStateChange, fetchPhotoSB } from '../firebase.js
 import { getRandomNumbers } from 'utils/bj_random';
 import { getCornerPhotos } from 'selectors/data/dataSelector';
 
-export const checkUserDevice = (status) => ({
-    type: 'DEVICE',
-    isMobile: status
-})
+export const checkUserDevice = (status) => {
+    
+    console.log(status);
+    
+    return {
+        type: TYPES.DEVICE,
+        isMobile: status
+    }
+}
+
+export const setPersistedState = () => (dispatch) => {
+    const persistedState = localStorage.getItem('persist:data') ? JSON.parse(localStorage.getItem('persist:data')) : {};
+    const initialCorners = persistedState.resultCorners ? JSON.parse(persistedState.resultCorners) : [];
+    
+    if(initialCorners.length > 0) {
+        dispatch({
+            type: TYPES.SET_PERSISTED_STATE,
+            payload: initialCorners
+        })    
+    } else {
+        dispatch({type: 'CANCEL_ACTION'})
+    }
+ 
+}
 
 //set event on users auth status
 export const setUser = () => {
@@ -25,7 +45,7 @@ export const setUser = () => {
 
 // get all corners before app is showed
 // or get recommended corners as a default ones
-export const fetchCorners = (condition) => {
+export const fetchCorners = (condition) => (dispatch) => {
     let PATH, actionType;
     
     if(condition === 'all') {
@@ -34,17 +54,21 @@ export const fetchCorners = (condition) => {
     } else if(condition === 'recommended') {
         PATH = 'recommended';
         actionType = TYPES.FETCH_RECOMMENDED_CORNERS;
-    } 
-    
-    return (dispatch) => {
-        fetchCornersDB(PATH)
-            .then(corners => {
-            dispatch({
-                type: actionType,
-                payload: corners.val()
-            })
+        dispatch({
+            type: TYPES.SET_RESULTS_TITLE,
+            payload: 'Polecane restauracje'
         })
     } 
+    
+    
+    fetchCornersDB(PATH)
+        .then(corners => {
+        dispatch({
+            type: actionType,
+            payload: corners.val()
+        })
+    });
+
 }
 
 export const savePhotos = (path, id) => {
