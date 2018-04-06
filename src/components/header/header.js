@@ -7,6 +7,7 @@ import Button from 'reuse/button';
 
 import { toggleView } from 'actions/mobileActions';
 import { getUser } from 'selectors/data/dataSelector';
+import { getNavStatus } from 'selectors/mobile/mobileSelector';
 import { logOut } from '../../firebase';
 
 import 'styles/header.css';
@@ -84,8 +85,8 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
     user: getUser(state),
-    isMobile: state.isMobile,
-    isNav: state.mobile.isNav
+    isNav: getNavStatus(state),
+    isMobile: state.isMobile
 });
 
 export default connect(mapStateToProps, { toggleView })(Header);

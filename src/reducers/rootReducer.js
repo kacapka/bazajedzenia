@@ -12,8 +12,6 @@ import mobile from './mobileReducer';
 
 const isMobile = (state = false, action) => {
     
-    console.log(action);
-    
     switch(action.type) {
         case TYPES.DEVICE: return action.isMobile;
         default: return state;
@@ -26,10 +24,16 @@ const dataPersistConfig = {
     whitelist: ['resultCorners']
 }
 
+const mapPersistConfig = {
+    storage,
+    key: 'map',
+    whitelist: ['activeMarkers']
+}
+
 const rootReducer = combineReducers({
-    isMobile,
     data: persistReducer(dataPersistConfig, data),
-    map,
+    map: persistReducer(mapPersistConfig, map),
+    isMobile,
     filter,
     addCorner,
     reviews,

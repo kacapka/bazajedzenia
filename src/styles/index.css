@@ -65,7 +65,7 @@ input,
 textarea,
 select {
     font-family: 'Hind Madurai', sans-serif;
-    color: var(--font);
+    color: #000;
     font-size: .8rem;
     font-weight: 300;
     box-shadow: none;
@@ -89,10 +89,6 @@ select {
     body, html {
         font-size: 14px;
     }
-}
-
-@media only screen and (max-width: 1023px) {
-    
 }
 
 @media only screen and (max-width: 767px) {

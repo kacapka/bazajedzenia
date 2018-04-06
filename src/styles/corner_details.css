@@ -45,7 +45,8 @@
 
 .corner-info {
     display: flex;
-    height: 55%;
+    height: 45%;
+    position: relative;
 }
 
 .corner-info:after {
@@ -54,7 +55,7 @@
     width: 90%;
     display: block;
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     left: 5%;
     background-color: var(--line);
 }
@@ -80,7 +81,7 @@
 }
 
 .corner-info__name {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     font-weight: 400;
 }
 
@@ -88,7 +89,7 @@
     display: flex;
     position: relative;
     margin-bottom: 20px;
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 .corner-info__icon {
@@ -96,7 +97,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: var(--blue);
 }
 
@@ -111,7 +112,7 @@
 
 .corner-info__location-info {
     font-style: italic;
-    font-size: .7rem;
+    font-size: .8rem;
     margin-top: 5px;
 }
 
@@ -144,7 +145,7 @@
 }
 
 .social-icon {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     width: 35px;
     height: 35px;
     display: flex;
@@ -196,7 +197,7 @@
 }
 
 .hours-row_item--hour {
-    font-size: .8rem;
+    font-size: 1rem;
 }
 
 

@@ -4,11 +4,11 @@ import { filterByTime } from 'utils/bj_filters';
 //DATE FILTER
 const getCorners = state => state.data.corners;
 const getDate = state => state.filter.checkbox.chooseDate;
-const getTime = state => state.filter.time;
+export const getInputTime = state => state.filter.time;
 const getDay = state => state.filter.day;
 
 export const filterByDate = createSelector(
-    [ getCorners, getDate, getTime, getDay ],
+    [ getCorners, getDate, getInputTime, getDay ],
     (corners, date, time, day) => {
         
         if(!date) return corners;

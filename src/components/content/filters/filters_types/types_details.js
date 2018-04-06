@@ -12,6 +12,7 @@ import DetailsDays from './types_details_days';
 
 import { checkboxSelect, getTime } from 'actions/filterActions';
 import { getCheckbox } from 'selectors/filters/filterSelector';
+import { getInputTime } from 'selectors/filters/dateSelector';
 
 import 'rc-time-picker/assets/index.css';
 import 'styles/details_filter.css';
@@ -100,11 +101,8 @@ class DetailsFilter extends Component {
 
 const mapStateToProps = (state) => ({
     checkbox: getCheckbox(state),
-    isMobile: state.isMobile,
-    time: state.filter.time
+    time: getInputTime(state),
+    isMobile: state.isMobile
 })
 
-export default connect(
-    mapStateToProps, 
-    { checkboxSelect, getTime }
-)(DetailsFilter);
+export default connect(mapStateToProps, { checkboxSelect, getTime })(DetailsFilter);

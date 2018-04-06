@@ -41,7 +41,8 @@ class AddressInput extends Component {
         return (
             <input className="address-input"
                 placeholder="np. Grójecka 40"
-                ref="addressInput" />
+                ref="addressInput" 
+            />
         );
     }
 }

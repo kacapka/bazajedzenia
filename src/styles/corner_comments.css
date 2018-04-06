@@ -1,6 +1,6 @@
 .corner-comments {
     display: flex;
-    padding: 20px 0;
+    padding: 20px 0 40px 0;
 }
 
 .comments {
@@ -27,8 +27,8 @@
     background-color: var(--line);
     height: 90%;
     width: 1px;
-    top: 5%;
-    left: 10px;
+    top: 10%;
+    right: 0;
     position: absolute;
 }
 

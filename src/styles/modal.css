@@ -14,23 +14,23 @@
 }
 
 .modal-add-corner {
-    width: 70%;
-    height: 80vh;
-    margin: 10vh auto;
-    padding: 0 50px 20px 50px;
+    width: 60%;
+    height: 60vh;
+    margin: 20vh auto;
+    padding: 50px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
 
 .modal-sign-in {
-    width: 30%;
-    height: 70%;
-    margin: 15vh auto;
+    width: 25%;
+    height: 60%;
+    margin: 20vh auto;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 50px;
+    padding: 70px;
 }
 
 .modal_close {
@@ -46,11 +46,11 @@
 
 /*MEDAI QUERIES*/
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1600px) {
     
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1400px) {
     
 }
 

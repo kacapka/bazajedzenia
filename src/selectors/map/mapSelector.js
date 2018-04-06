@@ -5,3 +5,4 @@ export const getCornersId = createSelector(getCorners, corners => corners.map(co
 
 export const getAddress = state => state.map.address;
 export const getMarker = state => state.map.corner;
+export const getActiveMarkers = state => state.map.activeMarkers;

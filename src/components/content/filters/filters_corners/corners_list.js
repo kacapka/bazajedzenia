@@ -7,8 +7,8 @@ import ListItem from './corners_list_item';
 import Loader from 'reuse/loader';
 
 import { getMoreItems } from 'actions/dataActions';
-import { getCornersToLoad } from 'selectors/data/dataSelector';
-import { getResultTitle, getSelectedCorner} from 'selectors/filters/filterSelector';
+import { getCornersToLoad, getCorners, getBool } from 'selectors/data/dataSelector';
+import { getResultTitle, getSelectedCorner } from 'selectors/filters/filterSelector';
  
 class CornersList extends Component {
     
@@ -50,8 +50,10 @@ class CornersList extends Component {
     }
      
     render() {
+        
+        console.log(this.props.activeMarkers);
 
-        const { toLoad, load, corners, resultsTitle, isMobile } = this.props;
+        const { toLoad, isMore, corners, resultsTitle, isMobile } = this.props;
          
         const list = (toLoad.length === 0) ? 
             <div className='corners-not-found'>
@@ -77,7 +79,7 @@ class CornersList extends Component {
                     <InfiniteScroll loadMore={this.loadMoreItems}
                         useWindow={isMobile ? true : false}
                         loader={<Loader key={1} />}
-                        hasMore={load.isMore}
+                        hasMore={isMore}
                         threshold={100}
                     >
                         {list}
@@ -93,9 +95,11 @@ const mapStateToProps = (state) => ({
     resultsTitle: getResultTitle(state),
     toLoad: getCornersToLoad(state),
     selectedCorner: getSelectedCorner(state),
-    load: state.data.load,
-    corners: state.data.corners,
-    isMobile: state.isMobile
+    corners: getCorners(state),
+    isMore: getBool(state),
+    isMobile: state.isMobile,
+    
+    activeMarkers: state.map.activeMarkers
 })
 
 export default connect(mapStateToProps, { getMoreItems })(CornersList);

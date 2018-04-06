@@ -14,8 +14,6 @@ import './styles/zindex.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import checkDevice from './utils/checkDevice';
-import { setPersistedState } from 'actions/dataActions';
-
 
 import configStore from './store/configStore';
 const store = configStore();
@@ -29,12 +27,10 @@ store.store.dispatch({type: TYPES.DEVICE, isMobile})
 //hover pseudo class only aviable on desktop devices
 if(!isMobile) rootEl.classList.add('hover');
 
-//set persisted state for resultcorners
-setPersistedState();
 
 ReactDOM.render(
     <Provider store={store.store} >
-        <PersistGate loading={<div>loading...</div>} persistor={store.persistor}>
+        <PersistGate loading={null} persistor={store.persistor}>
             <BrowserRouter>
                 <App />
             </BrowserRouter>

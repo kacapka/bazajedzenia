@@ -18,6 +18,7 @@ import ContentMobile from './content/content_mobile';
 import { setUser, fetchCorners, checkUserDevice } from 'actions/dataActions';
 import { toggleView } from 'actions/mobileActions';
 import { getCorners, getResultCorners } from 'selectors/data/dataSelector';
+import { getTopStatus, getMapStatus } from 'selectors/mobile/mobileSelector';
 import checkDevice from '../utils/checkDevice';
 
 import 'styles/app.css';
@@ -54,7 +55,7 @@ class App extends Component {
     }
     
     handleScroll() {
-        const { mobile: {isTop}, toggleView } = this.props;
+        const { isTop, toggleView } = this.props;
         if(window.scrollY > 1.7 * window.innerHeight) {
             if(!isTop) toggleView('isTop'); 
         } else {
@@ -71,15 +72,13 @@ class App extends Component {
     }
    
     render() {
-        const { isMobile, corners, mobile: {isMap, isTop} } = this.props;
+        const { isMobile, corners, isMap, isTop } = this.props;
         const content = corners.length ? <Filters /> : <Loader size={60} className="loader--filters" />
         const classIcon = isMap ? 'ion-android-arrow-back' : 'ion-map';      
         const classContentMobile = isMap ? 'app-mobile' : 'app-mobile on';
         const classMapMobile = isMap ? 'map-mobile on' : 'map-mobile';
         const classButton = isTop ? 'on' : '';
-        
-        console.log(isMobile);
-                 
+                  
         return (
             <div className="app">
                 <Route path="/addcorner" component={AddCorner} />
@@ -125,8 +124,9 @@ class App extends Component {
 const mapStateToProps = state => ({
     corners: getCorners(state),
     resultCorners: getResultCorners(state),
+    isTop: getTopStatus(state),
+    isMap: getMapStatus(state),
     isMobile: state.isMobile,
-    mobile: state.mobile
 })
 
 export default withRouter(connect(mapStateToProps, { fetchCorners, setUser, checkUserDevice, toggleView })(App));

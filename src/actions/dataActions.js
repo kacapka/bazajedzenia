@@ -3,30 +3,10 @@ import { fetchCornersDB, setAuthStateChange, fetchPhotoSB } from '../firebase.js
 import { getRandomNumbers } from 'utils/bj_random';
 import { getCornerPhotos } from 'selectors/data/dataSelector';
 
-export const checkUserDevice = (status) => {
-    
-    console.log(status);
-    
-    return {
-        type: TYPES.DEVICE,
-        isMobile: status
-    }
-}
-
-export const setPersistedState = () => (dispatch) => {
-    const persistedState = localStorage.getItem('persist:data') ? JSON.parse(localStorage.getItem('persist:data')) : {};
-    const initialCorners = persistedState.resultCorners ? JSON.parse(persistedState.resultCorners) : [];
-    
-    if(initialCorners.length > 0) {
-        dispatch({
-            type: TYPES.SET_PERSISTED_STATE,
-            payload: initialCorners
-        })    
-    } else {
-        dispatch({type: 'CANCEL_ACTION'})
-    }
- 
-}
+export const checkUserDevice = (status) => ({
+    type: TYPES.DEVICE,
+    isMobile: status
+})
 
 //set event on users auth status
 export const setUser = () => {

@@ -6,6 +6,7 @@ import CornersInput from './filters/filters_corners/corners_input';
 import CornersList from './filters/filters_corners/corners_list';
 
 import { toggleView } from 'actions/mobileActions';
+import { getFiltersStatus } from 'selectors/mobile/mobileSelector';
 
 import 'styles/filters.css';
 
@@ -27,7 +28,7 @@ class ContentMobile extends Component {
         
         return (
             <Fragment>
-                <div className='button-accordion'
+                <div className='button--accordion'
                     onClick={this.onFiltersClick}
                 >
                     {isFilters ? 'zamknij' : 'filtry'}
@@ -45,7 +46,7 @@ class ContentMobile extends Component {
 }
 
 const mapStateToProps = state => ({
-    isFilters: state.mobile.isFilters
+    isFilters: getFiltersStatus(state)
 });
         
 export default connect(mapStateToProps, { toggleView } )(ContentMobile);

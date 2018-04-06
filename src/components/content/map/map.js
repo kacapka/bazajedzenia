@@ -7,10 +7,11 @@ import MultipleInfoWindow from './map_multiple_info_window';
 import { MarkerClusterer } from 'utils/markerclusterer';
 import settings from 'utils/map_settings';
 
-import { getCornersId, getAddress, getMarker } from 'selectors/map/mapSelector';
+import { getCornersId, getAddress, getMarker, getActiveMarkers } from 'selectors/map/mapSelector';
 import { getCorners } from 'selectors/data/dataSelector';
 import { selectCorner, showCornerOnMap } from 'actions/filterActions';
 import { toggleView } from 'actions/mobileActions';
+import { setActiveMarkers } from 'actions/mapActions';
 
 import 'styles/info_window.css';
 
@@ -48,6 +49,7 @@ class Map extends Component {
         this.clusterOpenInfo = null;
         this.markerOpenInfo = null;
         this.markerCluster = new MarkerClusterer(this.map, null, settings.clusterOpt);
+        
         this.markerCluster.onClickZoom = (cluster) => this.openMultipleInfoWindow(cluster);
         
         this.selectCornerInfoWindow = this.selectCornerInfoWindow.bind(this);
@@ -136,6 +138,12 @@ class Map extends Component {
                     this.markerOpenInfo = marker.infoWindow;
                 });
             })
+            
+            //if there is persistedState for markers print on map
+            if(this.props.activeMarkers) {
+                let markers = this.markers.filter(marker => this.props.activeMarkers.includes(marker.id));   
+                this.markerCluster.addMarkers(markers, false);
+            } 
                          
         }
         
@@ -147,6 +155,7 @@ class Map extends Component {
             let markers = this.markers.filter(marker => cornersId.includes(marker.id));
             this.markerCluster.addMarkers(markers, false);
             
+            this.props.setActiveMarkers(cornersId);
         } 
         
         //show selected corner on map 
@@ -165,7 +174,6 @@ class Map extends Component {
     }
     
     render() {
-   
         return (
             <div className="map" ref={ref => this.mapDiv = ref} />
         );
@@ -177,7 +185,8 @@ const mapStateToProps = (state) => ({
     allCorners: getCorners(state),
     cornersId: getCornersId(state),
     markerToShow: getMarker(state),
-    isMobile: state.isMobile
+    activeMarkers: getActiveMarkers(state),
+    isMobile: state.isMobile,
 })
 
-export default withRouter(connect(mapStateToProps, { selectCorner, showCornerOnMap, toggleView })(Map));
+export default withRouter(connect(mapStateToProps, { selectCorner, showCornerOnMap, toggleView, setActiveMarkers })(Map));
