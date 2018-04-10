@@ -33,7 +33,7 @@ class LogIn extends Component {
                     src={logo} 
                 />
                 <div className='sign-in__description'>
-                    Zaloguj sie do serwisu przy uzyciu ulubionej metody logowania. Jesli nie posiadasz konta, w celu rejestrcji  wybierz jedna z ponizszych opcji.
+                    Aby oceniać oraz dodawać opinię restauracji zaloguj sie do serwisu przy uzyciu dostępnych metod logowania. Jesli nie posiadasz konta, w celu rejestrcji  wybierz jedna z ponizszych opcji. 
                 </div>
                 <FirebaseAuth uiConfig={config} firebaseAuth={setAuthStateChange()} />    
             </Modal>

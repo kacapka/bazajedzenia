@@ -16,7 +16,7 @@ export const filterByOpenNow = createSelector(
         //get current time and day
         const nowInSec = getSec(moment());
         const nowDayId = getDayId(moment());
-        
+            
         const userCorners = filterByTime(corners, nowInSec, nowDayId);
     
         return userCorners;

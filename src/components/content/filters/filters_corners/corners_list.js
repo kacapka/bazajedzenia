@@ -50,10 +50,9 @@ class CornersList extends Component {
     }
      
     render() {
-        
-        console.log(this.props.activeMarkers);
-
         const { toLoad, isMore, corners, resultsTitle, isMobile } = this.props;
+        
+        console.log(this.props.result)
          
         const list = (toLoad.length === 0) ? 
             <div className='corners-not-found'>
@@ -99,7 +98,7 @@ const mapStateToProps = (state) => ({
     isMore: getBool(state),
     isMobile: state.isMobile,
     
-    activeMarkers: state.map.activeMarkers
+    result: state.data.resultCorners
 })
 
 export default connect(mapStateToProps, { getMoreItems })(CornersList);

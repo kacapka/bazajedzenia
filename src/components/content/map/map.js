@@ -49,7 +49,6 @@ class Map extends Component {
         this.clusterOpenInfo = null;
         this.markerOpenInfo = null;
         this.markerCluster = new MarkerClusterer(this.map, null, settings.clusterOpt);
-        
         this.markerCluster.onClickZoom = (cluster) => this.openMultipleInfoWindow(cluster);
         
         this.selectCornerInfoWindow = this.selectCornerInfoWindow.bind(this);

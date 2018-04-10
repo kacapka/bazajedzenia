@@ -36,6 +36,11 @@ class DetailsFilter extends Component {
     onInputChange(e) {
         const { checked, id} = e.target;
         this.props.checkboxSelect({[id]: checked}); 
+        
+        //chcnage initial value only when its 0
+        if(id === 'chooseDate' && this.props.time === 0) {
+            this.props.getTime(moment());    
+        }
     }
     
     onTimeChange(value) {
@@ -49,8 +54,10 @@ class DetailsFilter extends Component {
     
     render() {
         const { isMobile, time, checkbox: { delivery, openNow, chooseDate } } = this.props;
-
+        
         const days = chooseDate && <DetailsDays />;
+        
+        console.log(time);
         
         return (
             <FilterBox title='Szczegóły'>
@@ -73,23 +80,22 @@ class DetailsFilter extends Component {
                     onChange={e => this.onInputChange(e)} 
                 />
                 {isMobile ?
-                <select className='details-select'
-                    ref={select => this.select = select}
-                    disabled={!chooseDate}
-                    onChange={e => this.onSelectChange(e)} 
-                    value={time}
-                >
-                    {hours.map(hour => <option value={hour.sec} key={hour.string}>{hour.string}</option>)}
-                </select>
-                :
-                <TimePicker
-                    className="details-time-picker"
-                    showSecond={false}
-                    defaultValue={moment()}
-                    disabled={!chooseDate} 
-                    onChange={this.onTimeChange}
-                    allowEmpty={false} 
-                />
+                    <select className='details-select'
+                        disabled={!chooseDate}
+                        onChange={e => this.onSelectChange(e)} 
+                        value={time}
+                    >
+                        {hours.map(hour => <option value={hour.sec} key={hour.string}>{hour.string}</option>)}
+                    </select>
+                    :
+                    <TimePicker
+                        className="details-time-picker"
+                        showSecond={false}
+                        defaultValue={moment()}
+                        disabled={!chooseDate} 
+                        onChange={this.onTimeChange}
+                        allowEmpty={false} 
+                    />
                 }
                 <CSSTransitionGroup {...transitionOpt} >
                     {days}

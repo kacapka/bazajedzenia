@@ -1,11 +1,11 @@
 .corner-comments {
     display: flex;
-    padding: 20px 0 40px 0;
+    padding: 40px 0 40px 0;
 }
 
 .comments {
     flex: 1;
-    padding: 0 30px;
+    padding: 0 40px;
 }
 
 .comments__title {

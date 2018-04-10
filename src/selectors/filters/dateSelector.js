@@ -15,6 +15,8 @@ export const filterByDate = createSelector(
         
         const dayId = (day === 0) ? 7 : day;
         
+        console.log(corners, time, dayId)
+        
         const userCorners = filterByTime(corners, time, dayId);
         
         return userCorners;
