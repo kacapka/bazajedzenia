@@ -14,16 +14,20 @@ export const  filterKitchenTypes = corners => {
     return kitchenTypes.sort();
 }
 
-export const filterByTime = (corners, seconds, dayId) => {
+export const filterByTime = (corners, seconds, dayId, type) => {
         return corners.filter(corner => {
             if(!corner.dayRanges) return;
             return corner.dayRanges.find(day => {
                 
+            if(day.type === type) {
+                        
                 if(day.dayOfWeek === dayId || dayId === null) {
                     if(day.fromInSeconds <= seconds && day.toInSeconds >= seconds) {
                         return corner;
                     }    
                 }
+                
+            }
                 
             });    
         });

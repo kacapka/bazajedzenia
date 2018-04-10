@@ -51,8 +51,6 @@ class CornersList extends Component {
      
     render() {
         const { toLoad, isMore, corners, resultsTitle, isMobile } = this.props;
-        
-        console.log(this.props.result)
          
         const list = (toLoad.length === 0) ? 
             <div className='corners-not-found'>
