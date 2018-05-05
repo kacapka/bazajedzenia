@@ -8,13 +8,15 @@ import CornerHours from './corner_hours';
 import Loader from 'reuse/loader';
 import Button from 'reuse/button';
 
-import { fetchComments, resetCommentForm } from 'actions/detailsActions';
+import { fetchComments } from 'actions/detailsActions';
 import { fetchPhoto } from 'actions/dataActions';
 import { getCornerPhotos } from 'selectors/data/dataSelector';
 import { getDetailsById } from 'selectors/data/cornerSelector';
 
 import 'styles/corner_details.css';
 import "react-image-gallery/styles/css/image-gallery.css";
+
+import _ from 'underscore';
 
 class Corner extends Component {
     
@@ -25,15 +27,16 @@ class Corner extends Component {
     }
     
     componentWillMount() {
-        const id = this.props.match.params.id
+        const id = this.props.match.params.id;
+        
         this.props.fetchComments(id);
         this.props.fetchPhoto(id);
     }
     
     componentWillReceiveProps(nextProps) {
         if(nextProps.location !== this.props.location) {
-            const id = nextProps.match.params.id
-            this.props.resetCommentForm();
+            const id = nextProps.match.params.id;
+            
             this.props.fetchComments(id);   
             this.props.fetchPhoto(id);
         }
@@ -56,7 +59,7 @@ class Corner extends Component {
             thumbnailPosition: isMobile ? 'bottom' : 'right',
             showPlayButton: false,
             showNav: false,
-            showFullscreenButton: isMobile ? false : true
+            showFullscreenButton: false
         }
         
         return (
@@ -111,6 +114,7 @@ class Corner extends Component {
                                 <span>{clientNumber1}</span>
                                 <span>{clientNumber2}</span>
                                 <span>{mail}</span>
+                                {!clientNumber1 && !mail && <span>brak kontaktu</span>}
                             </div>
                         </div>
                         <div className="corner-info--box">
@@ -150,5 +154,7 @@ const mapStateToProps = (state, props) => ({
     isMobile: state.isMobile
 })
 
-export default connect(mapStateToProps, { fetchComments, resetCommentForm, fetchPhoto })(Corner);
+export default connect(mapStateToProps, { fetchComments, fetchPhoto })(Corner);
+
+
 

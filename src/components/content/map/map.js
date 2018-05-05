@@ -9,9 +9,9 @@ import settings from 'utils/map_settings';
 
 import { getCornersId, getAddress, getMarker, getActiveMarkers } from 'selectors/map/mapSelector';
 import { getCorners } from 'selectors/data/dataSelector';
-import { selectCorner, showCornerOnMap } from 'actions/filterActions';
+import { selectCorner } from 'actions/filterActions';
 import { toggleView } from 'actions/mobileActions';
-import { setActiveMarkers } from 'actions/mapActions';
+import { setActiveMarkers, showCornerOnMap } from 'actions/mapActions';
 
 import 'styles/info_window.css';
 

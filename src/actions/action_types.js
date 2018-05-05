@@ -8,7 +8,7 @@ const Types = {
     FETCH_PHOTO: 'fetch-photo',
     FETCH_ALL_CORNERS: 'fetch-all-corners',
     FETCH_RECOMMENDED_CORNERS: 'fetch-recommended-corners',
-    
+
     //filters
     GET_ADDRESS: 'get-address',
     SET_VALUE: 'set-value',

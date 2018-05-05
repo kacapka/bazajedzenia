@@ -157,11 +157,11 @@
 }
 
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1440px) {
     
-}
-
-@media only screen and (max-width: 1023px) {
+    .details-days {
+        margin-left: 0;
+    }
     
 }
 

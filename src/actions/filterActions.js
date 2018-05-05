@@ -123,17 +123,7 @@ export const setResultsTitle = (title) => ({
     
 })
 
-//show clciked corner on map - map.panTo()
-export const showCornerOnMap = (id) => {
-    
-    const random = Math.random();
- 
-    return {
-        type: TYPES.SHOW_CORNER_ON_MAP,
-        payload: [parseInt(id, 10), random]
-    }
-    
-}
+
 
 
 

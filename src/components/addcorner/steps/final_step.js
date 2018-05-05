@@ -30,36 +30,37 @@ class FinalStep extends Component {
                         Checę dodać lokal jako:
                     </div>
                     {_.map(data, (value, key) => (
-                    key !== 'email' ?
-                    <div className="modal_step_confirm_item" 
-                        key={key} 
-                    >
-                        <input className=" modal_checkbox details-input__checkbox"
-                            type='radio' 
-                            checked={value.value}
-                            name="user"
-                            data-name={key}
-                            onChange={e => this.onInputChange(e)} 
-                        />
-                        <label className="modal_label">
-                            {value.label}
-                        </label>
-                    </div> : 
-                    <div className="modal_step_confirm_contact" key={key}>
-                        <div className="modal_step_confirm_description">
-                            Jak możemy się z Tobą skontaktowac?
-                        </div>
-                        <div className="modal_step_confirm_item" >
-                            <input className="modal_input"
-                                placeholder={value.placeholder}
-                                type='text' 
-                                value={value.value}
-                                data-name={key}
-                                onChange={e => this.onInputChange(e)} 
-                            />
-                        </div>
-                    </div>
-                    ))}
+                        key !== 'email' 
+                        ?   <div className="modal_step_confirm_item" 
+                                key={key} 
+                            >
+                                <input className=" modal_checkbox details-input__checkbox"
+                                    type='radio' 
+                                    checked={value.value}
+                                    name="user"
+                                    data-name={key}
+                                    onChange={e => this.onInputChange(e)} 
+                                />
+                                <label className="modal_label">
+                                    {value.label}
+                                </label>
+                            </div> 
+                        :   <div className="modal_step_confirm_contact" key={key}>
+                                <div className="modal_step_confirm_description">
+                                    Jak możemy się z Tobą skontaktowac?
+                                </div>
+                                <div className="modal_step_confirm_item" >
+                                    <input className="modal_input"
+                                        placeholder={value.placeholder}
+                                        type='text' 
+                                        value={value.value}
+                                        data-name={key}
+                                        onChange={e => this.onInputChange(e)} 
+                                    />
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
                 <AddButtons back save/>
             </Fragment>

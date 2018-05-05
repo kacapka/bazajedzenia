@@ -16,6 +16,7 @@
 
 .filters-column__filters {
     padding: 0 20px;
+    overflow-x: hidden;
     overflow-y: scroll;
     height: calc(100% - 80px);
 }
@@ -138,21 +139,8 @@
 
 /*MEDAI QUERIES*/
 
-@media only screen and (max-width: 1600px) {
-    .filter-box {
-       padding: 25px 0;
-    }
 
-    .filter-box--padding {
-       padding: 25px 15px; 
-    }
-    
-    .filter-box--line::after {
-        bottom: -25px;
-    }
-}
-
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1440px) {
     .filter-box {
        padding: 20px 0;
     }
@@ -163,6 +151,14 @@
     
     .filter-box--line::after {
         bottom: -20px;
+    }
+    
+    .filters-column__filters {
+        height: calc(100% - 60px);
+    }
+
+    .filters-column__button {
+        height: 60px;
     }
 }
 

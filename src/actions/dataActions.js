@@ -1,5 +1,5 @@
 import TYPES from './action_types';
-import { fetchCornersDB, setAuthStateChange, fetchPhotoSB } from '../firebase.js';
+import { fetchCornersDB, fetchCornerByIdDB, setAuthStateChange, fetchPhotoSB } from '../firebase.js';
 import { getRandomNumbers } from 'utils/bj_random';
 import { getCornerPhotos } from 'selectors/data/dataSelector';
 
@@ -24,7 +24,7 @@ export const setUser = () => {
 }
 
 // get all corners before app is showed
-// or get recommended corners as a default ones
+// get recommended corners when there is no persisted data (last result)
 export const fetchCorners = (condition) => (dispatch) => {
     let PATH, actionType;
     
@@ -40,13 +40,12 @@ export const fetchCorners = (condition) => (dispatch) => {
         })
     } 
     
-    
     fetchCornersDB(PATH)
         .then(corners => {
-        dispatch({
-            type: actionType,
-            payload: corners.val()
-        })
+            dispatch({
+                type: actionType,
+                payload: corners.val()
+            })
     });
 
 }

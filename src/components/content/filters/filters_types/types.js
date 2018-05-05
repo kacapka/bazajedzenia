@@ -21,17 +21,27 @@ class FiltersTypes extends Component {
     }
     
     onButtonClick() {
-        const {isMobile, toggleView, setInfiniteLoadOn, setUserCorners, setResultsTitle} = this.props; 
+        const {isMobile, toggleView, setInfiniteLoadOn, setUserCorners, setResultsTitle, userCorners } = this.props; 
         setInfiniteLoadOn();
         isMobile && toggleView('isFilters');
-        setUserCorners(this.props.userCorners);
-        setResultsTitle('Wyniki wyszukiwania');
+        
+        if(userCorners.length > 400) {
+            let con = this.allowToShowCorners();
+            if(con) {
+                setUserCorners(userCorners);
+                setResultsTitle('Wyniki wyszukiwania');    
+            }
+        } else {
+            setUserCorners(userCorners);
+            setResultsTitle('Wyniki wyszukiwania');  
+        }
+    }
+    
+    allowToShowCorners() {
+        return window.confirm(`Znaleziono ${this.props.userCorners.length} lokali. Zalecamy stosowanie wielu filtrów. Przy tak dużej ilości wyników obsługa widoku mapy może być nieczytelna oraz utrudniona. Czy mimo to chcesz kontynuować?`)
     }
     
     render() {
-        
-        
-        
         return (
             <div className="filters-column filters-column--line">
                 <div className="filters-column__filters">

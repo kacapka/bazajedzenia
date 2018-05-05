@@ -79,17 +79,19 @@ select {
 
 /*MEDAI QUERIES*/
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1440px) {
     body, html {
         font-size: 16px;
     }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1023px) {
     body, html {
         font-size: 14px;
     }
 }
+
+
 
 @media only screen and (max-width: 767px) {
         

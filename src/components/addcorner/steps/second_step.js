@@ -53,22 +53,23 @@ class SecondStep extends Component {
                             Aby określić dokładne położenie restauracji ustaw czerwony pin zgodnie z rzeczywistym polożeniem lokalu. 
                         </div>
                         {_.map(data, (value, key) => (
-                        key !== 'coords' &&
-                        <div className="modal_step_map_item" 
-                            key={key} 
-                        >
-                            <label className="modal_label">
-                                {value.label}
-                            </label>
-                            <input className="modal_input"
-                                placeholder={value.placeholder}
-                                type='text' 
-                                value={value.value}
-                                name={key}
-                                onChange={e => this.onInputChange(e)} 
-                            />
-                        </div> 
-                        ))}
+                            key !== 'coords' &&
+                            <div className="modal_step_map_item" 
+                                key={key} 
+                            >
+                                <label className="modal_label">
+                                    {value.label}
+                                </label>
+                                <input className="modal_input"
+                                    placeholder={value.placeholder}
+                                    type='text' 
+                                    value={value.value}
+                                    name={key}
+                                    onChange={e => this.onInputChange(e)} 
+                                />
+                            </div> 
+                        ))
+                        }
                     </div>
                     <div ref={ref => this.mapDiv = ref} className='map-add-corner'></div>
                 </div>

@@ -36,30 +36,31 @@ class ThirdStep extends Component {
                         </div>
                         {_.map(data, (value, key) => (
                         key !== 'coords' &&
-                        <div className="modal_step_hours_item" 
-                            key={key} 
-                        >
-                            <label className="modal_label">
-                                {value.label}
-                            </label>
-                            <input className="modal_input"
-                                placeholder={value.placeholder}
-                                type='text' 
-                                value={value.value[0]}
-                                name={key}
-                                ref={input => this.open[key] = input}
-                                onChange={e => this.onInputChange(e)} 
-                            />
-                            <input className="modal_input"
-                                placeholder={value.placeholder}
-                                type='text' 
-                                value={value.value[1]}
-                                name={key}
-                                ref={input => this.delivery[key] = input}
-                                onChange={e => this.onInputChange(e)} 
-                            />
-                        </div> 
-                        ))}
+                            <div className="modal_step_hours_item" 
+                                key={key} 
+                            >
+                                <label className="modal_label">
+                                    {value.label}
+                                </label>
+                                <input className="modal_input"
+                                    placeholder={value.placeholder}
+                                    type='text' 
+                                    value={value.value[0]}
+                                    name={key}
+                                    ref={input => this.open[key] = input}
+                                    onChange={e => this.onInputChange(e)} 
+                                />
+                                <input className="modal_input"
+                                    placeholder={value.placeholder}
+                                    type='text' 
+                                    value={value.value[1]}
+                                    name={key}
+                                    ref={input => this.delivery[key] = input}
+                                    onChange={e => this.onInputChange(e)} 
+                                />
+                            </div> 
+                        ))
+                        }
                 </div>
                 <AddButtons back forward/>
             </Fragment>

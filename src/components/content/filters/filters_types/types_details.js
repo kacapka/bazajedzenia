@@ -57,8 +57,6 @@ class DetailsFilter extends Component {
         
         const days = chooseDate && <DetailsDays />;
         
-        console.log(time);
-        
         return (
             <FilterBox title='Szczegóły'>
                 <DetailsInput

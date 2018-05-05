@@ -24,7 +24,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -39,7 +39,6 @@
     background-color: #fff;
     border: 2px solid var(--line);
     text-align: center;
-    margin-bottom: 10px;
 }
 
 .progress-bar_step:after,
@@ -277,19 +276,22 @@
 
 /*MEDAI QUERIES*/
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1440px) {
+    
+   
     
 }
 
-@media only screen and (max-width: 1023px) {
-    
-}
 
 @media only screen and (max-width: 767px) {
     
     .modal_progress-bar {
         margin: 0;
         padding-top: 0;
+    }
+    
+    .progress-bar {
+        justify-content: flex-start;
     }
 
     .progress-bar_step {

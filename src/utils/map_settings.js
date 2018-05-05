@@ -1,6 +1,6 @@
 import markerAddress from '../images/markers/marker_address.png';
-import markerCorner from '../images/markers/marker_corner_red_small.png';
-import markerCornerSpecial from '../images/markers/marker_corner_green_small.png';
+import markerCorner from '../images/markers/marker_corner_normal.png';
+import markerCornerSpecial from '../images/markers/marker_corner_special.png';
 import markerMultiple from '../images/markers/marker_corner_multiple.png';
 
 const mapSettings = {
@@ -11,6 +11,7 @@ const mapSettings = {
         fullscreenControl: false,
         streetViewControl: false,
         mapTypeControl: false,
+        gestureHandling: 'greedy',
         styles: [
             {"featureType": "poi","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.park","elementType": "all","stylers": [{"visibility": "on"}]},{"featureType": "road","elementType": "labels.icon","stylers": [{"visibility": "off"}]}   
         ]

@@ -16,6 +16,8 @@ export const filterByDate = createSelector(
         
         const dayId = (day === 0) ? 7 : day;
         
+        //according to corners data last parameter is 1 wich is day type(1 - open hours, 2 - delivery hours)
+        //this way when delivery checkbox is marked we only search for delivery hours
         const dayType = delivery ? 2 : 1;
         
         const userCorners = filterByTime(corners, time, dayId, dayType);

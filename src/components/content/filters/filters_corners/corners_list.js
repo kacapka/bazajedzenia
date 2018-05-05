@@ -50,14 +50,14 @@ class CornersList extends Component {
     }
      
     render() {
-        const { toLoad, isMore, corners, resultsTitle, isMobile } = this.props;
-         
+        const { toLoad, isMore, corners, resultsTitle, isMobile } = this.props;       
         const list = (toLoad.length === 0) ? 
             <div className='corners-not-found'>
               <div>nie znaleziono lokali spelniajacych podane kryteria</div>
               <i className='ion-sad-outline' />
             </div> : 
             toLoad.map((corner, index) => {
+            if(!corner) return;
             return (
                 <div key={corner.id}>
                     <ListItem name={corner.name} 
@@ -94,9 +94,7 @@ const mapStateToProps = (state) => ({
     selectedCorner: getSelectedCorner(state),
     corners: getCorners(state),
     isMore: getBool(state),
-    isMobile: state.isMobile,
-    
-    result: state.data.resultCorners
+    isMobile: state.isMobile
 })
 
 export default connect(mapStateToProps, { getMoreItems })(CornersList);

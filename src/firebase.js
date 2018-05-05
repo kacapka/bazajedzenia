@@ -33,6 +33,10 @@ export const fetchCornersDB = (path) => {
     return Database.ref(path).once('value');
 }
 
+export const fetchCornerByIdDB = (id) => {
+    return Database.ref(`cornersBYID/${id}`).once('value');
+}
+
 export const setAuthStateChange = () => {
     return Firebase.auth();
 }

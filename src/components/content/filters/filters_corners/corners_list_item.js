@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { showCornerOnMap } from 'actions/filterActions';
+import { showCornerOnMap } from 'actions/mapActions';
 import { toggleView } from 'actions/mobileActions';
 
 import 'styles/list_item.css';

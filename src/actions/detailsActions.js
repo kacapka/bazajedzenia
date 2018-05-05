@@ -7,13 +7,10 @@ export const updateInput = value => ({
     payload: value
 });
 
-export const updateRates = value => {
-    
-    return {
-        type: TYPES.UPDATE_RATES,
-        payload: value
-    }
-};
+export const updateRates = value => ({
+    type: TYPES.UPDATE_RATES,
+    payload: value
+});
 
 export const commentFormValidate = (element, value) => {
     
@@ -23,14 +20,6 @@ export const commentFormValidate = (element, value) => {
         type: TYPES.VALIDATE_COMMENT,
         payload: { [element]: error }
     }
-    
-}
-
-export const resetCommentForm = () => (dispatch) => {
-    
-    dispatch(updateInput(''));
-    dispatch(updateRates(null));
-    dispatch({type: TYPES.VALIDATE_RESET})
     
 }
 
@@ -59,16 +48,21 @@ const saveComment = (comment, id) => {
     
 }
 
-export const fetchComments = id => {
+export const fetchComments = id => dispatch => {
     
-    return (dispatch) => {
-        fetchCommentsDB(id).on('value', comments => {
-            dispatch({
-                type: TYPES.FETCH_COMMENTS,
-                payload: comments.val()
-            })
+    //reset comments and rate inputs
+    dispatch(updateInput(''));
+    dispatch(updateRates(null));
+    dispatch({type: TYPES.VALIDATE_RESET})
+    
+    //fetch commnets
+    fetchCommentsDB(id).on('value', comments => {
+        dispatch({
+            type: TYPES.FETCH_COMMENTS,
+            payload: comments.val()
         })
-    }
+    })
+    
     
 }
 

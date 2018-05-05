@@ -23,7 +23,7 @@ class CommentsAdd extends Component {
             this.props.commentFormValidate('rating');
         } else if(input.length < 2) {
             this.props.commentFormValidate('text');
-        } else if(rate !== null & input.length > 2) {
+        } else if(rate !== null && input.length > 2) {
             this.props.addComment(this.props.id); 
         }           
     }
@@ -47,43 +47,41 @@ class CommentsAdd extends Component {
         return (
             <Fragment>
                 {allowAddComment 
-                 ?
-                <div className='comments-add-empty'>
-                    <p>
-                        Dla tej restauracji dodałeś już recenzję jako <span className='comments__username'>{user.displayName}</span>
-                    </p>
-                </div>
-                 :
-                <Fragment>
-                    <div className='comments-add__rates'>
-                        <Rating emptySymbol='comments__star--big ion-ios-star-outline'
-                            fullSymbol='comments__star--big ion-ios-star'
-                            fractions={2}
-                            onChange={this.onRatingChange}
-                            initialRating={rate}
-                        />
-                        <div className={errorRate} >
-                            zapomniałeś dodać oceny
+                 ?  <div className='comments-add-empty'>
+                        <p>
+                            Dla tej restauracji dodałeś już recenzję jako <span className='comments__username'>{user.displayName}</span>
+                        </p>
+                    </div>
+                 :  <Fragment>
+                        <div className='comments-add__rates'>
+                            <Rating emptySymbol='comments__star--big ion-ios-star-outline'
+                                fullSymbol='comments__star--big ion-ios-star'
+                                fractions={2}
+                                onChange={this.onRatingChange}
+                                initialRating={rate}
+                            />
+                            <div className={errorRate} >
+                                zapomniałeś dodać oceny
+                            </div>
                         </div>
-                    </div>
-                    <div className='comments-add__input'>
-                        <textarea className='comments-add__input-comment' 
-                            onChange={e => this.onTextareaChange(e)}
-                            value={input}
-                        >
-                        </textarea>
-                        <div className={errorText} >
-                            napisz krótką recenzję
+                        <div className='comments-add__input'>
+                            <textarea className='comments-add__input-comment' 
+                                onChange={e => this.onTextareaChange(e)}
+                                value={input}
+                            >
+                            </textarea>
+                            <div className={errorText} >
+                                napisz krótką recenzję
+                            </div>
                         </div>
-                    </div>
-                    <div className='button--comment-wrapper'>
-                        <Button className='button--green button--comment'
-                            name='dodaj opinie'
-                            icon='ion-plus-round' 
-                            onClick={this.onButtonClick}
-                        />
-                    </div>
-                </Fragment>
+                        <div className='button--comment-wrapper'>
+                            <Button className='button--green button--comment'
+                                name='dodaj opinie'
+                                icon='ion-plus-round' 
+                                onClick={this.onButtonClick}
+                            />
+                        </div>
+                    </Fragment>
                 }
             </Fragment>
         );

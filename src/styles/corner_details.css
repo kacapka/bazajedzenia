@@ -45,7 +45,6 @@
 
 .corner-info {
     display: flex;
-    height: 45%;
     position: relative;
 }
 
@@ -153,12 +152,12 @@
     justify-content: center;
 }
 
-.corner-info--social .on:hover {
+.hover .corner-info--social .on:hover {
     background-color: var(--green-light); 
     color: #000;
 }
 
-.corner-info--social .off:hover {
+.hover .corner-info--social .off:hover {
     background-color: var(--green-light); 
 }
 
@@ -167,7 +166,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0 30px 30px 30px;
+    padding: 30px;
 }
 
 .hours-row {
@@ -204,7 +203,21 @@
 
 /*MEDAI QUERIES*/
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1440px) {
+    
+    .social-icon {
+        font-size: 1.2rem;
+        width: 30px;
+        height: 30px;
+    }
+    
+    .corner-info--box {
+        font-size: .9rem;
+    }
+    
+    .hours-row_item--hour {
+        font-size: .9rem;
+    }
     
 }
 

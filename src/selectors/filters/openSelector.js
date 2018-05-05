@@ -24,10 +24,6 @@ export const filterByOpenNow = createSelector(
         //this way when delivery checkbox is marked we only search for delivery hours
         const dayType = delivery ? 2 : 1;
         
-        console.log(dayType);
-        console.log(nowInSec);
-        //console.log(nowInSec);
-            
         const userCorners = filterByTime(corners, nowInSec, nowDayId, dayType);
     
         return userCorners;

@@ -35,10 +35,9 @@ class Header extends Component {
         
         return (
             <div className="header">
-                <img src={logo} 
-                    alt="logo" 
-                    className="header__logo" 
-                />
+                <div className="header__logo">
+                    <img src={logo} alt="logo" />
+                </div>
                 <div className='header__navbar'>
                     <div className='header__nav'>
                         <Link to='/addcorner'>
@@ -48,34 +47,31 @@ class Header extends Component {
                             />
                         </Link>
                     </div>
-                    {user ? 
-                    <div className='header__user'>
-                        <div className='header__user-info'>
-                            <span>{!isMobile && user.displayName}</span>
-                            <img className='user__photo'
-                                onClick={this.onUserClick}
-                                alt='user thumbnail'
-                                src={user.photoURL} 
+                    {user 
+                    ?   <div className='header__user'>
+                            <div className='header__user-info'>
+                                <span>{!isMobile && user.displayName}</span>
+                                <img className='user__photo'
+                                    onClick={this.onUserClick}
+                                    alt='user thumbnail'
+                                    src={user.photoURL} 
+                                />
+                            </div>
+                            <div className={`header__logout--mobile ${classLogoutNav}`}>
+                                <Link to='/'>
+                                    <div className='header__signin'
+                                        onClick={this.onLogoutClick}>
+                                        wyloguj sie
+                                    </div>
+                                </Link>
+                            </div>
+                        </div>
+                    :   <Link to='/login'>
+                            <Button className='button--login'
+                                name={!isMobile && 'zaloguj sie'}
+                                icon='ion-log-in' 
                             />
-                        </div>
-                        
-                        <div className={`header__logout--mobile ${classLogoutNav}`}>
-                            <Link to='/'>
-                                <div className='header__signin'
-                                    onClick={this.onLogoutClick}>
-                                    wyloguj sie
-                                </div>
-                            </Link>
-                        </div>
-                        
-                    </div>
-                    : 
-                    <Link to='/login'>
-                        <Button className='button--login'
-                            name={!isMobile && 'zaloguj sie'}
-                            icon='ion-log-in' 
-                        />
-                    </Link>
+                        </Link>
                     }
                 </div>
             </div>

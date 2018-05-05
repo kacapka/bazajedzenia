@@ -46,11 +46,39 @@
 
 /*MEDAI QUERIES*/
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1440px) {
+    
+    .modal-add-corner {
+        width: 70%;
+        height: 80vh;
+        margin: 10vh auto;
+        padding: 10px 30px 30px 30px;
+    }
+
+    .modal-sign-in {
+        width: 40%;
+        height: 80%;
+        margin: 10vh auto;
+        padding: 50px;
+    }
     
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1023px) {
+    
+    .modal-add-corner {
+        width: 65%;
+        height: 70vh;
+        margin: 15vh auto;
+        padding: 30px 50px 50px 50px;
+    }
+
+    .modal-sign-in {
+        width: 40%;
+        height: 70%;
+        margin: 15vh auto;
+        padding: 40px;
+    }
     
 }
 
@@ -65,7 +93,7 @@
 
     .modal-sign-in {
         width: 80%;
-        height: 70;
+        height: 70vh;
         margin: 10vh auto;
         padding: 10px;
     }

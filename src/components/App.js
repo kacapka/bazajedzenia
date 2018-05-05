@@ -14,6 +14,7 @@ import AddCorner from './addcorner/add_corner';
 import LogIn from './login/login';
 import Loader from './reuse/loader';
 import ContentMobile from './content/content_mobile';
+import tablet from 'images/logo/tablet.png';
 
 import { setUser, fetchCorners, checkUserDevice } from 'actions/dataActions';
 import { toggleView } from 'actions/mobileActions';
@@ -40,7 +41,7 @@ class App extends Component {
     
         setUser();
         fetchCorners('all');
-        resultCorners.length === 0 && setTimeout(fetchCorners('recommended'), 2000);
+        resultCorners.length === 0 && setTimeout(fetchCorners('recommended'), 2000);        
         window.addEventListener('resize', this.handleWindowSizeChange);
         window.addEventListener('scroll', _.throttle(this.handleScroll, 100));
     }
@@ -78,45 +79,52 @@ class App extends Component {
         const classContentMobile = isMap ? 'app-mobile' : 'app-mobile on';
         const classMapMobile = isMap ? 'map-mobile on' : 'map-mobile';
         const classButton = isTop ? 'on' : '';
-                  
+        
         return (
-            <div className="app">
-                <Route path="/addcorner" component={AddCorner} />
-                <Route path="/login" component={LogIn} />
-                {!isMobile ?
-                <Fragment>
-                    <Header />
-                    <div className="app-content">
-                        {content}
-                        <Route path="/:id" component={Corner} />
-                        <Route path="/" component={Map} />
-                    </div>
-                </Fragment>
-                :
-                <Fragment>
-                    <div className={classContentMobile} >
-                        <Header />
-                        <Switch>
-                            <Route path="/:id" component={Corner} />
-                            <Route path="/" component={ContentMobile} />
-                        </Switch>
-                    </div>
-                    <div className={classMapMobile} >
-                        <Map />
-                    </div>
-                    <div className={`button-mobile button-mobile--view ${classButton}`}
-                        onClick={this.onViewClick}
-                    >
-                        <i className={classIcon} />
-                    </div>
-                    <div className={`button-mobile button-mobile--top ${classButton}`}
-                        onClick={this.onTopClick}
-                    >
-                        <i className='ion-chevron-up' />
-                    </div>
-                </Fragment>
-                }
-            </div>
+            <Fragment>
+                <div className="app-tablet-portrait">
+                    <img src={tablet} 
+                        alt="tablet" 
+                    />
+                    <p>Aby korzystac z aplikacji przekręć urządzenie w tryb orientacji poziomej.</p>   
+                </div>
+                <div className="app">
+                    <Route path="/addcorner" component={AddCorner} />
+                    <Route path="/login" component={LogIn} />
+                    {!isMobile 
+                    ?   <Fragment>
+                            <Header />
+                            <div className="app-content">
+                                {content}
+                                <Route path="/:id" component={Corner} />
+                                <Route path="/" component={Map} />
+                            </div>
+                        </Fragment>
+                    :   <Fragment>
+                            <div className={classContentMobile} >
+                                <Header />
+                                <Switch>
+                                    <Route path="/:id" component={Corner} />
+                                    <Route path="/" component={ContentMobile} />
+                                </Switch>
+                            </div>
+                            <div className={classMapMobile} >
+                                <Map />
+                            </div>
+                            <div className={`button-mobile button-mobile--view ${classButton}`}
+                                onClick={this.onViewClick}
+                            >
+                                <i className={classIcon} />
+                            </div>
+                            <div className={`button-mobile button-mobile--top ${classButton}`}
+                                onClick={this.onTopClick}
+                            >
+                                <i className='ion-chevron-up' />
+                            </div>
+                        </Fragment>
+                    }
+                </div>
+            </Fragment>
         );
     }
 }

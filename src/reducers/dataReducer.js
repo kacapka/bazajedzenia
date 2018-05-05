@@ -23,7 +23,6 @@ const corners = (state = [], action) => {
     
 }
 
-
 const resultCorners = ( state = [], action) => {
     
     switch(action.type) {
