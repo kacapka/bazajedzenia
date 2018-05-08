@@ -22,7 +22,6 @@ export const getAddress = (place) => {
 //get user location based on async action
 export const getMyLocation = () => (dispatch) => {
     getUserLocation(data => {
-        alert('callback odpalnoy');
         const latLng = new google.maps.LatLng(
             data.coords.latitude,
             data.coords.longitude

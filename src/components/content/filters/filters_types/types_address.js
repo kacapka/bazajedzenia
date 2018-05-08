@@ -21,21 +21,29 @@ class AddressSearchbar extends Component {
     }
     
     render() {
+        const isMobile = this.props.isMobile;
+        
         return (
             <FilterBox title="Podaj adres" line>
                 <AddressInput />
-                <div className="address-locate" 
-                    onClick={this.onLocationClick}
-                    onTouchEnd={this.onLocationClick}
-                >
-                    <i className="ion-android-locate address-locate__icon"></i>
-                    <span className="address-locate__text">
-                        szukaj dla obecnej lokalizacji
-                    </span>
-                </div>
+                {!isMobile &&
+                    <div className="address-locate" 
+                        onClick={this.onLocationClick}
+                        onTouchEnd={this.onLocationClick}
+                    >
+                        <i className="ion-android-locate address-locate__icon"></i>
+                        <span className="address-locate__text">
+                            szukaj dla obecnej lokalizacji
+                        </span>
+                    </div>
+                }
             </FilterBox>
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    isMobile: state.isMobile
+})
         
-export default connect(null, { getMyLocation })(AddressSearchbar);
+export default connect(mapStateToProps, { getMyLocation })(AddressSearchbar);
